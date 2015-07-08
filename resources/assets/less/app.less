@@ -1,8 +1,205 @@
 @import "bootstrap/bootstrap";
+@import "variables";
+@import "bootswatch";
+@import "magnifier";
 
 @btn-font-weight: 300;
-@font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
 
 body, label, .checkbox label {
 	font-weight: 300;
+}
+
+footer {
+  padding-top: 40px;
+  background-color: @gray-dark;
+  color: white;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.text-lg {
+  font-size: @font-size-base * 1.5;
+}
+
+.bg-primary {
+  & a {
+    color: @gray-lighter;
+  }
+}
+
+//
+// Jumbotron
+// --------------------------------------------------
+
+.jumbotron {
+  padding: 200px (@jumbotron-padding / 2);
+  background-size: cover;
+
+  &-sm {
+    padding: @jumbotron-padding * 3 (@jumbotron-padding / 2);
+    padding-bottom: @jumbotron-padding;
+  }
+
+  @media screen and (max-width: @screen-sm-max) {
+    padding: 100px (@jumbotron-padding / 2);
+
+    &-sm {
+      padding: @jumbotron-padding * 3 (@jumbotron-padding / 2);
+      padding-bottom: @jumbotron-padding;
+    }
+  }
+
+}
+
+.navbar {
+
+  &-solid:extend(.navbar-default) {
+    background-color: #fff;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  transition: all 0.3s ease 0s;
+}
+
+.thumbnail {
+  &-product {
+    padding: 0;
+
+    .img-container {
+      overflow: hidden;
+      position: relative;
+    }
+    .img-container > .detail-link {
+      opacity: 0;
+      transition: all 0.3s ease 0.2s;
+      display: block;
+      position: absolute;
+      top: 0; left: 0; bottom: 0; right: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      text-transform: uppercase;
+      font-size: 14px;
+      text-align: center;
+      vertical-align: middle;
+      font-weight: 400;
+
+      & > span {
+        position: absolute;
+        top:49%; left:0; bottom:0; right:0;
+        margin: auto;
+      }
+    }
+
+    .detail-link:hover {
+      text-decoration: none;
+    }
+
+    .img-container > img {
+      transition: all 0.3s ease 0s;
+    }
+
+    .img-container:hover > img {
+      transform: scale(1.5, 1.5);
+    }
+
+    .img-container:hover > .detail-link {
+      opacity: 1;
+    }
+
+    h3 {
+      font-size: 14px;
+    }
+
+    p {
+      font-size: 13px;
+      line-height: 1.7;
+    }
+  }
+}
+
+.icon-button {
+  width: (@font-size-h1 * 2);
+  height: (@font-size-h1 * 2);
+  display: inline-block;
+  border-radius: (@font-size-h1);
+  color: @gray-light;
+  border: 1px @gray-light solid;
+  font-size: @font-size-h1;
+  font-weight: 100;
+  line-height: (@font-size-h1 * 2);
+  text-align: center;
+  vertical-align: middle;
+}
+
+#zoomView {
+  height: 400px;
+  display: none;
+  min-width: 100%;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-color: #FFF;
+  z-index: 200
+;
+
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85),
+  0 0 7px 7px rgba(0, 0, 0, 0.25),
+  inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+
+  top: 5px;
+  left: 0;
+}
+
+.paginate-col {
+  position: absolute;
+  top: 0; bottom: 0;
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
+  padding: 0 20px;
+
+  &.pull-left {
+    left: 0px;
+
+    &:hover {
+//      background: linear-gradient(to right, rgba(100, 100, 100, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+      background: radial-gradient(circle at -200%, rgba(100, 100, 100, 0.6) 0%, rgba(0, 0, 0, 0) 60%);
+    }
+  }
+  &.pull-right {
+    right: 0px;
+
+    &:hover {
+      background: radial-gradient(circle at 300%, rgba(100, 100, 100, 0.6) 0%, rgba(0, 0, 0, 0) 60%);
+    }
+  }
+
+  & > .paginate-button {
+    font-size: @font-size-base * 4;
+    margin-top: -@font-size-base * 2;
+    display: block;
+    line-height: @font-size-base * 4;
+    position: relative;
+    top: 50%;
+    color: @gray-light;
+    transition: all 0.2s ease 0s;
+  }
+
+
+  &:hover {
+    & > .paginate-button {
+      color: @gray-dark;
+    }
+  }
+}
+
+
+
+.product-details {
+  position: relative;
+}
+
+.enquiry-form {
+  position: relative;
 }
