@@ -18,10 +18,6 @@ Route::get('home', 'HomeController@index');
 
 
 // UI Stubs
-Route::get('products/show', function()
-{
-    return view('products.show');
-});
 Route::get('about', function()
 {
     return view('about');
@@ -53,4 +49,6 @@ Route::controllers([
 ]);
 
 Route::resource('products', 'ProductsController');
+Route::resource('catalogues', 'CataloguesController');
 
+Route::get('{access_key}', 'CataloguesController@showCatalogue');

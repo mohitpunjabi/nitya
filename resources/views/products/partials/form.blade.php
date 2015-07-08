@@ -2,8 +2,8 @@
     <div class="col-md-6">
         <div>
             {!! Form::label('images', 'Images') !!}
-            {!! Form::text('images', null, ['class' => 'form-control', 'placeholder' => 'Images']) !!}
-            <label class="help-block">Images of the product. TBD.</label>
+            {!! Form::file('images', null, ['class' => 'form-control', 'placeholder' => 'Images', 'multiple' => 'multiple', 'accept' => 'image']) !!}
+            <label class="help-block">Images of the product.</label>
             @if($errors->first('images')) <div class="alert alert-danger">{{ $errors->first('images') }}</div> @endif
         </div>
     </div>
@@ -35,6 +35,13 @@
             {!! Form::label('available', 'This product is available') !!}
             <label class="help-block"></label>
             @if($errors->first('available')) <div class="alert alert-danger">{{ $errors->first('available') }}</div> @endif
+        </div>
+
+        <div>
+            {!! Form::label('catalogue_list', 'Catalogues') !!}
+            {!! Form::select('catalogue_list[]', $catalogues, null, ['class' => 'form-control select2', 'multiple' => 'multiple', 'id' => 'catalogue_list']) !!}
+            <label class="help-block small"><a href="{{ url('/catalogues/create') }}" target="_blank">+ Add new catalogues</a></label>
+            @if($errors->first('catalogues')) <div class="alert alert-danger">{{ $errors->first('catalogues') }}</div> @endif
         </div>
     </div>
 </div>

@@ -1,6 +1,8 @@
 $(function() {
     $('.navbar').stickyNav();
 
+    $('.select2').select2();
+
     if(isTouchDevice()) $('.show-on-hover').css('opacity', 1);
 
     $('.magnify').carousel();

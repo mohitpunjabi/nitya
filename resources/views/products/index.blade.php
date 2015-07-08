@@ -18,27 +18,7 @@
             <?php $i = 0 ?>
             @foreach($products as $product)
                 <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail thumbnail-product">
-                        <div class="img-container">
-                            <img class="img img-responsive" src="{{ asset('img/try'.($i%6).'.jpg') }}" alt="Alternate text">
-                            <?php $i++ ?>
-                            <a href="{{ url('products/show') }}" class="detail-link">
-                                <span>View details</span>
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>{{ $product->name }}</h3>
-                            <p>{{ $product->description }}</p>
-                            <div class="clearfix">
-                                <div class="pull-left">
-                                    <small class="text-primary">ID {{ $product->design_no }}</small>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="#" class="btn btn-xs btn-primary" role="button">Enquire</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('products.partials.thumbnail', ['product' => $product])
                 </div>
             @endforeach
         </div>

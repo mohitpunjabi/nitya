@@ -1,11 +1,14 @@
 <?php namespace App\Http\Controllers;
 
+use App\Catalogue;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ProductRequest;
 use App\Product;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ProductsController extends Controller {
 
@@ -20,7 +23,9 @@ class ProductsController extends Controller {
 	 */
 	public function index()
 	{
-        $products = Product::all();
+        $products = Product::inCatalogue('public')->get();
+        if(Session::has('catalogue')) $products = $products->merge(Product::inCatalogue(Session::get('catalogue')->name)->get());
+
         return view('products.index', compact('products'));
 	}
 
@@ -31,7 +36,8 @@ class ProductsController extends Controller {
 	 */
 	public function create()
 	{
-		return view('products.create');
+        $catalogues = Catalogue::all()->lists('name', 'id');
+		return view('products.create', compact('catalogues'));
 	}
 
 	/**
@@ -44,6 +50,7 @@ class ProductsController extends Controller {
         $product = new Product($request->all());
         $product->available = $request->has('available');
         $product->save();
+        $this->syncCatalogues($product, $request->input('catalogue_list'));
         return redirect('products/' . $product->id);
 	}
 
@@ -66,7 +73,8 @@ class ProductsController extends Controller {
 	 */
 	public function edit(Product $product)
 	{
-		return view('products.edit', compact('product'));
+        $catalogues = Catalogue::all()->lists('name', 'id');
+		return view('products.edit', compact('product', 'catalogues'));
 	}
 
 	/**
@@ -77,8 +85,10 @@ class ProductsController extends Controller {
 	 */
 	public function update(Product $product, ProductRequest $request)
 	{
-        $product->available = $request->has('available');
 		$product->update($request->all());
+        $product->available = $request->has('available');
+        $product->save();
+        $this->syncCatalogues($product, $request->input('catalogue_list'));
         return redirect('products/' . $product->id);
 	}
 
@@ -92,5 +102,11 @@ class ProductsController extends Controller {
 	{
 		//
 	}
+
+    private function syncCatalogues(Product $product, $catalogues = [])
+    {
+        if($catalogues == null) $catalogues = [];
+        $product->catalogues()->sync($catalogues);
+    }
 
 }
