@@ -11,38 +11,47 @@ $(function() {
 
     $('.enquiry-form').hide();
 
-    $('#sendEnquiryBtn').click(function(e) {
-        e.preventDefault();
-        $('.product-details').animate({
-            opacity: 0,
-            top: '-=100'
-        }, 150, function() {
-            $(this).hide();
-            $('.enquiry-form').css({
-                display: 'block',
-                opacity: '0',
-                top: '100px'
-            }).animate({
-                opacity: 1,
-                top: '0'
-            });
-        });
-    });
-
-    $('#cancelEnquiryBtn').click(function(e) {
-        e.preventDefault();
-        $('.enquiry-form').animate({
-            opacity: 0,
-            top: '+=100'
-        }, 150, function() {
-            $(this).hide();
-            $('.product-details').css({
-                display: 'block',
-                opacity: '0'
-            }).animate({
-                opacity: 1,
-                top: '0'
-            });
-        });
-    });
+    $('#sendEnquiryBtn').click(showEnquiry);
+    $('#cancelEnquiryBtn').click(hideEnquiry);
+    if(window.location.hash == '#enquire') showEnquiry();
 });
+
+function showEnquiry(e) {
+    var animTime = 150;
+    if(e) e.preventDefault();
+    else  animTime = 1;
+    $(window).scrollTop($('#enquire').scrollTop());
+    $('.product-details').animate({
+        opacity: 0,
+        top: '-=100'
+    }, animTime, function() {
+        $(this).hide();
+        $('.enquiry-form').css({
+            display: 'block',
+            opacity: '0',
+            top: '100px'
+        }).animate({
+            opacity: 1,
+            top: '0'
+        }, animTime);
+    });
+}
+
+function hideEnquiry(e) {
+    var animTime = 150;
+    if(e) e.preventDefault();
+    else  animTime = 1;
+    $('.enquiry-form').animate({
+        opacity: 0,
+        top: '+=100'
+    }, animTime, function() {
+        $(this).hide();
+        $('.product-details').css({
+            display: 'block',
+            opacity: '0'
+        }).animate({
+            opacity: 1,
+            top: '0'
+        }, animTime);
+    });
+}

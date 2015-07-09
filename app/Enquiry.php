@@ -2,14 +2,16 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model {
+class Enquiry extends Model {
 
-    protected $fillable = [
+	protected $fillable = [
         'name',
+        'email',
+        'contact',
+        'message'
     ];
 
-    public function product()
-    {
+    public function product() {
         return $this->belongsTo('App\Product');
     }
 

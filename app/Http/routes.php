@@ -13,7 +13,7 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('home', 'WelcomeController@index');
 
 
 
@@ -50,5 +50,6 @@ Route::controllers([
 
 Route::resource('products', 'ProductsController');
 Route::resource('catalogues', 'CataloguesController');
+Route::resource('enquiries', 'EnquiriesController');
 
 Route::get('{access_key}', 'CataloguesController@showCatalogue');

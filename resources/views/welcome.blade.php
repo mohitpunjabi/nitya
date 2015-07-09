@@ -9,7 +9,7 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
             <p>
-                <a href="#" class="btn btn-lg btn-primary">Browse our products</a>
+                <a href="{{ url('products') }}" class="btn btn-lg btn-primary">Browse our products</a>
             </p>
 
         </div>
@@ -44,32 +44,13 @@
                 <p class="text-center lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
             </div>
         </div>
-        <div class="row">
+        <div class="row product-grid">
 
-        @for($i = 0; $i < 4; $i++)
+        @foreach($products as $product)
             <div class="col-sm-6 col-md-3">
-                <div class="thumbnail thumbnail-product">
-                    <div class="img-container">
-                        <img class="img img-responsive" src="{{ asset('img/try2thumb.jpg') }}" alt="Alternate text">
-                        <a href="#" class="detail-link">
-                            <span>View details</span>
-                        </a>
-                    </div>
-                    <div class="caption">
-                        <h3>Lorem ipsum dolor</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                        <div class="clearfix">
-                            <div class="pull-left">
-                                <small class="text-primary">ID 904035</small>
-                            </div>
-                            <div class="pull-right">
-                                <a href="#" class="btn btn-xs btn-primary" role="button">Enquire</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @include('products.partials.thumbnail', $product)
             </div>
-        @endfor
+        @endforeach
 
         </div>
     </div>

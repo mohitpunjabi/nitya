@@ -6749,6 +6749,16 @@ h5 {
 .paginate-col:hover > .paginate-button {
   color: #333333;
 }
+@media screen and (min-width: 992px) {
+  .product-grid > .col-md-3:nth-child(4n+5) {
+    clear: left;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .product-grid > .col-sm-6:nth-child(2n+3) {
+    clear: left;
+  }
+}
 .product-details {
   position: relative;
 }

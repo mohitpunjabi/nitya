@@ -1,6 +1,8 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class Product extends Model {
 
@@ -31,8 +33,21 @@ class Product extends Model {
         return $query->where('available', true);
     }
 
+    public function scopeVisibleToUser($query) {
+        if(Auth::user()) return $query->latest();
+        $catalogues = ['public'];
+        if(Session::has('catalogue')) array_push($catalogues, Session::get('catalogue')->name);
+        return $query->available()->whereHas('catalogues', function($q) use (&$catalogues) {
+            $q->whereIn('name', $catalogues);
+        })->latest();
+    }
+
     public function getCatalogueListAttribute() {
         return $this->catalogues()->lists('catalogue_id');
+    }
+
+    public function enquiries() {
+        return $this->hasMany('App\Enquiry');
     }
 
 }

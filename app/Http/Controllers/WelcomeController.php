@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Product;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -20,7 +22,7 @@ class WelcomeController extends Controller {
 	 */
 	public function __construct()
 	{
-		$this->middleware('guest');
+//		$this->middleware('guest');
 	}
 
 	/**
@@ -30,7 +32,8 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+        $products = Product::visibleToUser()->take(4)->get();
+		return view('welcome', compact('products'));
 	}
 
 }

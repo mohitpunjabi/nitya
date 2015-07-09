@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-6">
         <div>
-            {!! Form::label('images', 'Images') !!}
-            {!! Form::file('images', null, ['class' => 'form-control', 'placeholder' => 'Images', 'multiple' => 'multiple', 'accept' => 'image']) !!}
+            {!! Form::label('images[]', 'Images') !!}
+            {!! Form::file('images[]', ['class' => 'form-control', 'multiple' => 'multiple', 'accept' => 'image/*']) !!}
             <label class="help-block">Images of the product.</label>
             @if($errors->first('images')) <div class="alert alert-danger">{{ $errors->first('images') }}</div> @endif
         </div>

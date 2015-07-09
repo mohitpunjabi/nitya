@@ -21,13 +21,13 @@
                     <a href="#" class="show-on-hover btn-zoom"><i class="glyphicon glyphicon-zoom-in"></i> Full screen</a>
 
                     <ul class="row thumbnails show-on-hover text-right">
-                        @for($i = 0; $i < 6; $i++)
-                            <li class="thumbnail col-xs-1 {{ ($i == 2)? "current": "" }}" data-large-src="{{ asset('img/try'.$i.'.jpg') }}" data-small-src="{{ asset('img/try'.$i.'.jpg') }}" data-thumbnail-src="{{ asset('img/try'.$i.'thumb.jpg') }}">
+                        @foreach($product->images as $image)
+                            <li class="thumbnail col-xs-1" data-large-src="{{ asset('img/lg/'.$image->name) }}" data-small-src="{{ asset('img/md/'.$image->name) }}" data-thumbnail-src="{{ asset('img/sm/'.$image->name) }}">
                                 <a href="#">
-                                    <img class="img img-responsive" src="{{ asset('img/try2thumb.jpg') }}" >
+                                    <img class="img img-responsive" src="{{ asset('img/lg/'.$image->name) }}" >
                                 </a>
                             </li>
-                        @endfor
+                        @endforeach
                     </ul>
                 </div>
 
@@ -49,52 +49,35 @@
                             <td><abbr title="38&quot;">M</abbr>, <abbr title="40&quot;">L</abbr>, <abbr title="42&quot;">XL</abbr>, <abbr title="44&quot;">XXL</abbr></td>
                         </tr>
                     </table>
-                    <p>
-                        <a href="#" id="sendEnquiryBtn" class="btn btn-lg btn-primary btn-block">Send an enquiry</a>
-                    </p>
+
+                        @if(Session::has('sent'))
+                            <div class="alert alert-success">
+                                <h3>Thank you for contacting us</h3>
+                                <p>Your enquiry has been sent. We will get back to you as soon as we can.</p>
+                            </div>
+                        @else
+                            <p>
+                                <a href="#enquire" id="sendEnquiryBtn" class="btn btn-lg btn-primary btn-block">Send an enquiry</a>
+                            </p>
+                        @endif
                 </div>
 
-
-                <div class="enquiry-form">
+                <div id="enquire" class="enquiry-form">
                     <h2 class="media-heading">Need more details?</h2>
                     <p>Please fill out your contact details, and we shall get back to you.</p>
-                    <div>
-                        {!! Form::text('name', null, ['class' => 'form-control form-cont', 'placeholder' => 'Name']) !!}
-                        <label class="help-block"></label>
-                        @if($errors->first('name')) <div class="alert alert-danger">{{ $errors->first('name') }}</div> @endif
-                    </div>
-                    <div>
-                        {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Email Address']) !!}
-                        <label class="help-block"></label>
-                        @if($errors->first('email')) <div class="alert alert-danger">{{ $errors->first('email') }}</div> @endif
-                    </div>
-                    <div>
-                        {!! Form::text('phone', null, ['class' => 'form-control', 'placeholder' => 'Contact Number']) !!}
-                        <label class="help-block"></label>
-                        @if($errors->first('phone')) <div class="alert alert-danger">{{ $errors->first('phone') }}</div> @endif
-                    </div>
-                    <div>
-                        {!! Form::textarea('message', null, ['class' => 'form-control', 'placeholder' => 'Your message', 'rows' => 4]) !!}
-                        <label class="help-block"></label>
-                        @if($errors->first('message')) <div class="alert alert-danger">{{ $errors->first('message') }}</div> @endif
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-envelope"></i> Submit</button>
-
-                            <a href="#" class="btn" id="cancelEnquiryBtn"><i class="glyphicon glyphicon-remove"></i> Cancel</a>
-                        </div>
-                    </div>
+                    @include('enquiries.partials.form', [
+                        'id' => 'ajaxContactForm',
+                        'cancelButton' => true,
+                        'product' => $product
+                    ])
                 </div>
             </div>
         </div>
 
     </div>
     <div class="container">
-        <div class="row">
-            <h3 class="page-header">You might also like</h3>
-
+        <h3 class="page-header">You might also like</h3>
+        <div class="row product-grid">
             @for($i = 0; $i < 4; $i++)
                 <div class="col-sm-6 col-md-3">
                     <div class="thumbnail thumbnail-product">
@@ -106,7 +89,7 @@
                         </div>
                         <div class="caption">
                             <h3>Lorem ipsum dolor</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             <div class="clearfix">
                                 <div class="pull-left">
                                     <small class="text-primary">ID 904035</small>
@@ -122,5 +105,9 @@
         </div>
     </div>
 
+
+    <script type="text/javascript">
+
+    </script>
 
 @endsection

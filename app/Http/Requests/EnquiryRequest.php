@@ -3,7 +3,7 @@
 use App\Http\Requests\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ProductRequest extends Request {
+class EnquiryRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -12,7 +12,7 @@ class ProductRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return Auth::user();
+		return Auth::guest();
 	}
 
 	/**
@@ -23,11 +23,11 @@ class ProductRequest extends Request {
 	public function rules()
 	{
 		return [
-            'design_no' => 'required',
-            'name'      => 'required',
-            'description' => 'required',
-            'images'     => 'required'
+			'name'    => 'required',
+            'email'   => 'required|email',
+            'contact' => 'required',
+            'message' => 'required',
+            'product_id' => 'exists:products,id'
 		];
 	}
-
 }

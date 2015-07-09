@@ -43,36 +43,15 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="enquiry-form-large text-center">
-                    <h1>Write to us</h1>
-                    <p class="lead">Fill out your contact details, and we shall get back to you.</p>
-                    <div>
-                        {!! Form::text('name', null, ['class' => 'form-control input-lg', 'placeholder' => 'Name']) !!}
-                        <label class="help-block"></label>
-                        @if($errors->first('name')) <div class="alert alert-danger">{{ $errors->first('name') }}</div> @endif
-                    </div>
-                    <div>
-                        {!! Form::text('email', null, ['class' => 'form-control input-lg', 'placeholder' => 'Email Address']) !!}
-                        <label class="help-block"></label>
-                        @if($errors->first('email')) <div class="alert alert-danger">{{ $errors->first('email') }}</div> @endif
-                    </div>
-                    <div>
-                        {!! Form::text('phone', null, ['class' => 'form-control input-lg', 'placeholder' => 'Contact Number']) !!}
-                        <label class="help-block"></label>
-                        @if($errors->first('phone')) <div class="alert alert-danger">{{ $errors->first('phone') }}</div> @endif
-                    </div>
-                    <div>
-                        {!! Form::textarea('message', null, ['class' => 'form-control input-lg', 'placeholder' => 'Your message', 'rows' => 4]) !!}
-                        <label class="help-block"></label>
-                        @if($errors->first('message')) <div class="alert alert-danger">{{ $errors->first('message') }}</div> @endif
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <p>
-                                <button class="btn btn-lg btn-block btn-primary" type="submit"><i class="glyphicon glyphicon-envelope"></i> Submit</button>
-                            </p>
+                    @if(Session::has('sent'))
+                        <div class="alert alert-success">
+                            <h3>Thank you for contacting us</h3>
+                            <p>Your enquiry has been sent. We will get back to you as soon as we can.</p>
                         </div>
-                    </div>
+                    @else
+                        <h1>Write to us</h1>
+                        @include('enquiries.partials.form')
+                    @endif
                 </div>
             </div>
         </div>

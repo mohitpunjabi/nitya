@@ -194,7 +194,18 @@ h1, h2, h3, h4, h5 {
   }
 }
 
-
+.product-grid {
+  @media screen and (min-width: @screen-md-min) {
+    & > .col-md-3:nth-child(4n+5) {
+      clear: left;
+    }
+  }
+  @media screen and (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+    & > .col-sm-6:nth-child(2n+3) {
+      clear: left;
+    }
+  }
+}
 
 .product-details {
   position: relative;

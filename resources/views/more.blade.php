@@ -15,6 +15,7 @@
                 <div class="enquiry-form-large text-center">
                     <h2>Write to us</h2>
                     <p class="lead">Fill out your contact details, and we shall get back to you.</p>
+                    {!! Form::open(['route' => 'enquiries.store']) !!}
                     <div>
                         {!! Form::text('name', null, ['class' => 'form-control input-lg', 'placeholder' => 'Name']) !!}
                         <label class="help-block"></label>
@@ -26,7 +27,7 @@
                         @if($errors->first('email')) <div class="alert alert-danger">{{ $errors->first('email') }}</div> @endif
                     </div>
                     <div>
-                        {!! Form::text('phone', null, ['class' => 'form-control input-lg', 'placeholder' => 'Contact Number']) !!}
+                        {!! Form::text('contact', null, ['class' => 'form-control input-lg', 'placeholder' => 'Contact Number']) !!}
                         <label class="help-block"></label>
                         @if($errors->first('phone')) <div class="alert alert-danger">{{ $errors->first('phone') }}</div> @endif
                     </div>
@@ -43,6 +44,8 @@
                             </p>
                         </div>
                     </div>
+
+                    {!! Form::close() !!}
                 </div>
             </div>
 

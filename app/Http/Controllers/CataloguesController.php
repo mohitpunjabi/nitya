@@ -53,9 +53,9 @@ class CataloguesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show(Catalogue $catalogue)
 	{
-		//
+		return view('catalogues.show', compact('catalogue'));
 	}
 
 	/**
