@@ -3,7 +3,7 @@ $.fn.extend({
     stickyNav: function() {
         var $navbar = $(this);
         var oldClasses = $navbar.attr('class');
-        var newClasses = 'navbar navbar-solid navbar-default navbar-fixed-top';
+        var newClasses = 'navbar navbar-sticky navbar-solid navbar-default navbar-fixed-top';
         var height = $navbar.height();
 
         function setNavbarClass() {

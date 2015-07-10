@@ -6,6 +6,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Nitya - Eternal Fashion</title>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ $metaDescription or '' }}" />
+    <meta name="revisit-after" content="2 days">
+    <meta name="language" content="english" />
+    <meta name="robots" content="{{ (isset($noIndex))? 'noindex, nofollow': 'index, follow'  }}" />
+    <meta name="author" content="{{ $author or 'Nitya' }}" />
+    <meta property="og:image" content="{{ $ogImage or '' }}"/>
+    <meta property="og:title" content="{{ $title or 'Nitya - Eternal Fashion' }}" />
+    <meta property="og:description" content="{{ $metaDescription or '' }}" />
+    <meta property="og:url" content="{{ Request::url() }}"/>
+    <meta property="og:site_name" content="Nitya - Eternal Fashion"/>
+
+    @yield('meta', '')
+
+    <link rel="icon" type="image/ico" href="{{ asset('favicon.png') }}" />
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
@@ -19,42 +36,8 @@
 	<![endif]-->
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Nitya</a>
-			</div>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
-                    <li><a href="{{ url('/about') }}">About</a></li>
-                    <li><a href="{{ url('/products') }}">Products</a></li>
-                    <li><a href="{{ url('/contact') }}">Contact Us</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}">Login</a></li>
-<!--						<li><a href="{{ url('/auth/register') }}">Register</a></li> -->
-					@else
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
-							</ul>
-						</li>
-					@endif
-				</ul>
-			</div>
-		</div>
-	</nav>
+    @include('partials.navbar')
 
 	@yield('content')
 
@@ -62,29 +45,47 @@
     <div class="bg-primary">
         <div class="container">
             <div class="text-center text-lg" style="padding: 20px">
-                For bulk orders and enquiries, <a href="#">write to us</a> or contact us at +91 96600091899 or <a href="#">info@nityajaipur.com</a>
+                For bulk orders and enquiries, <a href="{{ url('/contact') }}#write-to-us">write to us</a> or contact us at @include('partials.phone') or <a href="#">@include('partials.email')</a>
             </div>
         </div>
     </div>
 
     <footer>
         <div class="container">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <h3>About Nitya</h3>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis pulvinar hendrerit. Morbi metus leo, maximus eget pellentesque vel, tempus eget libero. Proin volutpat erat nec arcu convallis, ac tincidunt massa ultricies. Ut vestibulum mauris sagittis malesuada rhoncus. Quisque metus urna, sollicitudin in quam id, ornare fringilla dolor. Cras eleifend, ante id consequat facilisis, dui ligula convallis libero, quis rutrum urna ipsum sed nisl. Fusce non arcu fermentum, imperdiet lorem ut, condimentum velit.
+                    Nitya – Eternal Fashion is a premium lifestyle apparel brand for women that started in December 2014 with a strong focus on fits, quality and customer experience. We offer wearable fashion at pocket-friendly prices.
+                </p>
+                <p>
+                    Our vision is to change the local to global by bringing Jaipuri prints and embroidery to the world with trending fashion.
                 </p>
             </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <h3>Contact Us</h3>
+                <p class="small">Nitya is operated under license by Super Sales Agency having its registered office at:</p>
+                <p>
+                    @include('partials.address')
+                </p>
+                <p>
+                    Ph: @include('partials.phone') <br/>
+                    Email: @include('partials.email')
+                </p>
             </div>
         </div>
     </footer>
 
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        function url(path) {
+            if(path.charAt(0) == '/') path = path.substr(1);
+            return '{{ url() }}' + '/' + path;
+        }
+    </script>
     <script src="{{ elixir('js/app.js') }}"></script>
+
+
+    @yield('script', '')
 </body>
 </html>

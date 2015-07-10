@@ -20,7 +20,7 @@ class EnquiriesController extends Controller {
 	 */
 	public function index()
 	{
-		$enquiries = Enquiry::with('product')->latest()->get();
+		$enquiries = Enquiry::with('product')->latest()->paginate(10);
         return view('enquiries.index', compact('enquiries'));
 	}
 

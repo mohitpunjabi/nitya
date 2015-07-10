@@ -11,22 +11,16 @@
                 <div class="row text-center">
                     <div class="col-sm-4">
                         <h2>Call us at</h2>
-                        <p class="lead">+91 141 2542342</p>
+                        <p class="lead">@include('partials.phone')</p>
                     </div>
                     <div class="col-sm-4">
                         <h2>Mail us at</h2>
-                        <p class="lead">info@nityajaipur.com</p>
+                        <p class="lead">@include('partials.email')</p>
                     </div>
 
                     <div class="col-sm-4">
                         <h2>Visit us at</h2>
-
-                        <address>
-                            <strong>SUPER SALES AGENCY</strong><br/>
-                            132 Pitaliyon Ka Chowk, Johari Bazaar,<br/>
-                            Jaipur - 302002, Rajasthan <br/>
-                        </address>
-
+                        @include('partials.address')
                     </div>
 
                 </div>
@@ -39,8 +33,9 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" id="write-to-us">
         <div class="row">
+            <br/><br/>
             <div class="col-md-6 col-md-offset-3">
                 <div class="enquiry-form-large text-center">
                     @if(Session::has('sent'))
@@ -50,6 +45,9 @@
                         </div>
                     @else
                         <h1>Write to us</h1>
+                        <p class="lead">
+                            If you have any queries or feedback for us, please fill out the details below.
+                        </p>
                         @include('enquiries.partials.form')
                     @endif
                 </div>

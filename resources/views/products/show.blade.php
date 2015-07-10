@@ -1,17 +1,24 @@
 @extends('app')
 
 @section('content')
-    <div class="paginate-col pull-left hidden-sm hidden-xs">
-        <div class="paginate-button">
-            <i class="glyphicon glyphicon-circle-arrow-left"></i>
-        </div>
-    </div>
-
-    <div class="paginate-col pull-right hidden-sm hidden-xs">
-        <div class="paginate-button">
-            <i class="glyphicon glyphicon-circle-arrow-right"></i>
-        </div>
-    </div>
+    @if($product->previous)
+        <a href="{{ route('products.show', $product->previous) }}">
+            <div class="paginate-col pull-left hidden-sm hidden-xs">
+                <div class="paginate-button">
+                    <i class="glyphicon glyphicon-circle-arrow-left"></i>
+                </div>
+            </div>
+        </a>
+    @endif
+    @if($product->next)
+        <a href="{{ route('products.show', $product->next) }}">
+            <div class="paginate-col pull-right hidden-sm hidden-xs">
+                <div class="paginate-button">
+                    <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                </div>
+            </div>
+        </a>
+    @endif
 
     <div class="jumbotron jumbotron-sm">
         <div class="row">
@@ -36,6 +43,14 @@
                 <div id="zoomView">
                 </div>
                 <div class="product-details">
+                    @if(Auth::user())
+                        <div>
+                            @foreach($product->catalogues as $catalogue)
+                                <a href="{{ route('catalogues.show', $catalogue) }}"><span class="text-lg label label-default">{{ $catalogue->name }}</span></a>
+                            @endforeach
+                        </div>
+                        <br/>
+                    @endif
                     <h2 class="media-heading">{{ $product->name }}</h2>
                     <p class="lead">{{ $product->description }}</p>
                     <table class="table">
@@ -56,9 +71,16 @@
                                 <p>Your enquiry has been sent. We will get back to you as soon as we can.</p>
                             </div>
                         @else
-                            <p>
-                                <a href="#enquire" id="sendEnquiryBtn" class="btn btn-lg btn-primary btn-block">Send an enquiry</a>
-                            </p>
+                            <div>
+                                @if(Auth::guest())
+                                    <p>
+                                        <a href="#enquire" id="sendEnquiryBtn" class="btn btn-lg btn-primary btn-block">Send an enquiry</a>
+                                    </p>
+                                @else
+                                    <a href="{{ route('products.edit', $product) }}" class="btn btn-lg btn-primary btn-block" role="button">Edit</a>
+                                @endif
+
+                            </div>
                         @endif
                 </div>
 
@@ -95,7 +117,11 @@
                                     <small class="text-primary">ID 904035</small>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-xs btn-primary" role="button">Enquire</a>
+                                    @if(Auth::guest())
+                                        <a href="#enquire" class="btn btn-xs btn-primary" role="button">Enquire</a>
+                                    @else
+                                        <a href="{{ route('products.edit', $product) }}" class="btn btn-xs btn-primary" role="button">Edit</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -104,10 +130,4 @@
             @endfor
         </div>
     </div>
-
-
-    <script type="text/javascript">
-
-    </script>
-
 @endsection

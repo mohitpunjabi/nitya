@@ -6,7 +6,8 @@
             <h1 class="text-center">Our products</h1>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-                    <p class="text-center lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis pulvinar hendrerit. Quisque metus urna, sollicitudin in quam id, ornare fringilla dolor.</p>
+                    <p class="text-center lead">We work hard towards differentiating our products from the market and providing our customers some fresh prints and designs every week. </p>
+                    <p class="text-center">If you need more details about any of them, please send an enquiry.</p>
                 </div>
             </div>
         </div>

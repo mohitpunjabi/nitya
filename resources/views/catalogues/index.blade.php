@@ -14,7 +14,7 @@
                                     <div class="panel-heading">
                                         <h3>{{ $catalogue->name }}
                                         <div class="pull-right">
-                                            {{ url($catalogue->access_key) }}
+                                            {{ $catalogue->link }}
                                         </div>
                                         </h3>
                                     </div>
@@ -26,8 +26,10 @@
                                             </div>
                                         @endforeach
                                         <div class="col-sm-2">
-                                            <a class="btn btn-block btn-default" href="{{ url('catalogues/' . $catalogue->id) }}">View All</a>
-                                            <a class="btn btn-block btn-primary" href="{{ url('catalogues/' . $catalogue->id) }}">Add More</a>
+                                            <a class="btn btn-block btn-default" href="{{ url('catalogues/' . $catalogue->id) }}">
+                                                {{ (($catalogue->products->count() > 5)? ('+ ' . ($catalogue->products->count() - 5) . ' More'): 'View All') }}
+                                            </a>
+                                            <a class="btn btn-block btn-primary" href="{{ url('catalogues/' . $catalogue->id) }}">Add</a>
                                         </div>
                                     </div>
                                 </div>

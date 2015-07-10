@@ -47,8 +47,11 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
-
+Route::get('products/search', 'ProductsController@search');
 Route::resource('products', 'ProductsController');
+
+Route::post('catalogues/{catalogues}/add', 'CataloguesController@add');
+Route::get('catalogues/{catalogues}/remove', 'CataloguesController@remove');
 Route::resource('catalogues', 'CataloguesController');
 Route::resource('enquiries', 'EnquiriesController');
 

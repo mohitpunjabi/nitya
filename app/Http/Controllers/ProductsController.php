@@ -16,7 +16,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class ProductsController extends Controller {
 
     public function __construct() {
-        $this->middleware('auth', ['except' => ['index', 'show']]);
+        $public = ['index', 'show'];
+        $this->middleware('productVisible', ['only' => 'show']);
+        $this->middleware('auth', ['except' => $public]);
     }
 
 	/**
@@ -100,6 +102,12 @@ class ProductsController extends Controller {
 	{
 		//
 	}
+
+    public function search(Request $request) {
+        $searchTerm = $request->get('q');
+        return Product::search($searchTerm)->with('images', 'catalogues')->get();
+    }
+
 
     private function updateProduct(Product $product, ProductRequest $request) {
         $product->available = $request->has('available');

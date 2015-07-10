@@ -14,4 +14,8 @@ class Catalogue extends Model {
         return $this->belongsToMany('App\Product')->withTimestamps();
     }
 
+    public function getLinkAttribute() {
+        return str_replace('http://', '', url($this->attributes['access_key']));
+    }
+
 }

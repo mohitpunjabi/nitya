@@ -34,6 +34,10 @@
                         <hr/>
                     @endforeach
                 <br/>
+
+                <div class="text-center">
+                    {!! $enquiries->render() !!}
+                </div>
             </div>
         </div>
     </div>

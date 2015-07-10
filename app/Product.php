@@ -33,13 +33,34 @@ class Product extends Model {
         return $query->where('available', true);
     }
 
-    public function scopeVisibleToUser($query) {
+    public function scopeVisibleToUser($query, $order = true) {
         if(Auth::user()) return $query->latest();
         $catalogues = ['public'];
         if(Session::has('catalogue')) array_push($catalogues, Session::get('catalogue')->name);
-        return $query->available()->whereHas('catalogues', function($q) use (&$catalogues) {
+        $query = $query->available()->whereHas('catalogues', function($q) use (&$catalogues) {
             $q->whereIn('name', $catalogues);
-        })->latest();
+        });
+
+        if($order) $query = $query->latest();
+
+        return $query;
+    }
+
+    public function scopeSearch($query, $searchTerm) {
+        return $query->visibleToUser()
+            ->where(function($q) use (&$searchTerm) {
+            $q->where('design_no', 'like', "%$searchTerm%")
+                ->orWhere('name', 'like', "%$searchTerm%")
+                ->orWhere('description', 'like', "%$searchTerm%");
+        });
+    }
+
+    public function getPreviousAttribute() {
+        return Product::visibleToUser(false)->where('created_at', '>', $this->created_at)->orderBy('created_at', 'asc')->first();
+    }
+
+    public function getNextAttribute() {
+        return Product::visibleToUser(false)->where('created_at', '<', $this->created_at)->orderBy('created_at', 'desc')->first();
     }
 
     public function getCatalogueListAttribute() {

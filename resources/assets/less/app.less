@@ -22,6 +22,7 @@ h1, h2, h3, h4, h5 {
 
 .text-lg {
   font-size: @font-size-base * 1.5;
+  line-height: @line-height-base * 1.2;
 }
 
 .bg-primary {
@@ -30,17 +31,29 @@ h1, h2, h3, h4, h5 {
   }
 }
 
+.default-navbar-bg {
+  background: no-repeat center bottom;
+  background-attachment: scroll;
+  height: @navbar-height * 2;
+}
+
 //
 // Jumbotron
 // --------------------------------------------------
 
 .jumbotron {
-  padding: 200px (@jumbotron-padding / 2);
-  background-size: cover;
+  padding: 100px (@jumbotron-padding / 2);
+  background: no-repeat center center;
+  background-attachment: scroll;
 
   &-sm {
-    padding: @jumbotron-padding * 3 (@jumbotron-padding / 2);
-    padding-bottom: @jumbotron-padding;
+    padding: @jumbotron-padding @jumbotron-padding;
+  }
+
+  &-no-bg {
+    background-image: none;
+    background-color: @gray-lighter;
+    border-bottom: none;
   }
 
   @media screen and (max-width: @screen-sm-max) {
@@ -52,10 +65,20 @@ h1, h2, h3, h4, h5 {
     }
   }
 
+  @media screen and (max-width: @screen-xs-max) {
+    text-align: center;
+    & img {
+      max-width: 95%;
+    }
+  }
+
 }
 
 .navbar {
 
+  & .dropdown-menu {
+//    background: #fff;
+  }
   &-solid:extend(.navbar-default) {
     background-color: #fff;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
@@ -64,9 +87,17 @@ h1, h2, h3, h4, h5 {
   transition: all 0.3s ease 0s;
 }
 
+.text-overflow {
+  .text-overflow();
+}
+
 .thumbnail {
   &-product {
     padding: 0;
+
+    &.transparent {
+      opacity: 0.6;
+    }
 
     .img-container {
       overflow: hidden;
@@ -213,4 +244,8 @@ h1, h2, h3, h4, h5 {
 
 .enquiry-form {
   position: relative;
+}
+
+.section-heading {
+  padding-bottom: 30px;
 }

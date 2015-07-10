@@ -1,5 +1,5 @@
 $(function() {
-    $('.navbar').stickyNav();
+    $('.navbar-sticky').stickyNav();
 
     $('.select2').select2();
 
@@ -20,7 +20,6 @@ function showEnquiry(e) {
     var animTime = 150;
     if(e) e.preventDefault();
     else  animTime = 1;
-    $(window).scrollTop($('#enquire').scrollTop());
     $('.product-details').animate({
         opacity: 0,
         top: '-=100'
@@ -34,6 +33,7 @@ function showEnquiry(e) {
             opacity: 1,
             top: '0'
         }, animTime);
+        $(window).scrollTop($('#enquire').offset().top - 200);
     });
 }
 

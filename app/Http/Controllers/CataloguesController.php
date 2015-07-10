@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
 class CataloguesController extends Controller {
 
     public function __construct() {
-        $this->middleware('auth');
+        $this->middleware('auth', ['except' => 'showCatalogue']);
     }
 
 	/**
@@ -42,7 +42,7 @@ class CataloguesController extends Controller {
 	public function store(Request $request)
 	{
 		$catalogue = new Catalogue($request->only(['name']));
-        $catalogue->access_key = str_random(6);
+        $catalogue->access_key = strtolower(str_random(6));
         $catalogue->save();
         return redirect('catalogues');
 	}
@@ -90,6 +90,17 @@ class CataloguesController extends Controller {
 	{
 		//
 	}
+
+    public function add(Request $request, Catalogue $catalogue) {
+        $catalogue->products()->sync($request->input('products'), false);
+        return redirect()->back();
+    }
+
+    public function remove(Request $request, Catalogue $catalogue) {
+        $catalogue->products()->detach($request->get('product'));
+        return redirect()->back();
+    }
+
 
     public function showCatalogue($access_key) {
         $catalogue = Catalogue::where('access_key', $access_key)->first();
