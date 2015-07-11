@@ -1,4 +1,6 @@
-@extends('app')
+@extends('app', [
+    'title' =>(($title)? $title: 'Reach out to us')
+])
 
 @section('content')
 

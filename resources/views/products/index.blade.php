@@ -1,4 +1,6 @@
-@extends('app')
+@extends('app', [
+    'title' => 'Kurtis, Palazzos, Gota Patti, Dress Material and more'
+])
 
 @section('content')
     <div class="jumbotron jumbotron-sm" >

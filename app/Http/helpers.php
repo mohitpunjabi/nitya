@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Request;
 use Irazasyed\LaravelGAMP\Facades\GAMP;
 
 function ga($title = null) {
+//    return;
     if(Auth::guest()) {
         $gamp = GAMP::setClientId(Session::getId());
         $gamp->setDocumentPath(Request::getPathInfo());

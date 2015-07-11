@@ -3,7 +3,7 @@
         @if(isset($product->images[0]))
             <img itemprop="image" class="img img-responsive" src="{{ asset('img/md/' . $product->images[0]->name) }}" alt="{{ $product->name }}">
         @endif
-        <a href="{{ url('products/' . $product->id) }}"itemprop="url" class="detail-link">
+        <a href="{{ url('products/' . $product->id) }}"itemprop="url" class="detail-link" title="{{ $product->name }}">
             <span>View details</span>
         </a>
     </div>

@@ -15,12 +15,11 @@ class SendAnalytics {
 	 */
 	public function handle($request, Closure $next)
 	{
-        $response = $next($request);
-        ga();
-        return $response;
+        return $next($request);
 	}
 
     public function terminate($request, $response) {
+        ga();
     }
 
 }

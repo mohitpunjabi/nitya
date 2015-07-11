@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top @if(isset($stickyNav) && $stickyNav) navbar-sticky @else navbar-solid @endif" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+<nav class="navbar navbar-default navbar-fixed-top @if(isset($stickyNav) && $stickyNav) navbar-sticky @else navbar-solid @endif">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -12,11 +12,11 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li itemprop="name"><a href="{{ url('/') }}" title="Nitya - Eternal Fashion" itemprop="url">Home</a></li>
+                <li itemscope itemtype="http://www.schema.org/SiteNavigationElement"><a href="{{ url('/') }}" title="Nitya - Eternal Fashion" itemprop="url"><span itemprop="name">Home</span></a></li>
                 @if(Auth::guest())
-                    <li itemprop="name"><a href="{{ url('/about') }}" title="About Nitya" itemprop="url">About</a></li>
-                    <li itemprop="name"><a href="{{ url('/products') }}" title="Our Products" itemprop="url">Products</a></li>
-                    <li itemprop="name"><a href="{{ url('/contact') }}" title="For orders and enquires, contact us" itemprop="url">Contact Us</a></li>
+                    <li itemscope itemtype="http://www.schema.org/SiteNavigationElement"><a href="{{ url('/about') }}" title="About Nitya" itemprop="url"><span itemprop="name">About</span></a></li>
+                    <li itemscope itemtype="http://www.schema.org/SiteNavigationElement"><a href="{{ url('/products') }}" title="Our Products" itemprop="url"><span itemprop="name">Products</span></a></li>
+                    <li itemscope itemtype="http://www.schema.org/SiteNavigationElement"><a href="{{ url('/contact') }}" title="For orders and enquires, contact us" itemprop="url"><span itemprop="name">Contact Us</span></a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Create <span class="caret"></span></a>

@@ -107,6 +107,7 @@ class CataloguesController extends Controller {
         if($catalogue) Session::put('catalogue', $catalogue);
         else           abort(404);
 
+        ga('Catalogue - ' .$catalogue->name);
         return redirect('products');
     }
 
