@@ -4,11 +4,11 @@
 
 @section('content')
     <div class="jumbotron" style="background-image: url('{{ asset('img/jumbotron-img-1.jpg') }}')">
-        <div class="container">
+        <div class="container" itemscope itemtype="http://schema.org/Brand">
             <p>
-                <img src="{{ asset('img/nitya-logo.png') }}" alt="Nitya - Eternal Fashion" title="Nitya - Eternal Fashion">
+                <img itemprop="logo" src="{{ asset('img/nitya-logo.png') }}" alt="Nitya - Eternal Fashion" title="Nitya - Eternal Fashion">
             </p>
-            <p class="lead">
+            <p class="lead" itemprop="description">
                 Manufacturers and Wholesalers of <br/>
                 Cotton Kurtis, Dress Material and more.
             </p>

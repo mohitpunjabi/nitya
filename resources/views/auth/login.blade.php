@@ -1,4 +1,6 @@
-@extends('app')
+@extends('app', [
+    'noIndex' => true
+])
 
 @section('content')
 <div class="container-fluid">

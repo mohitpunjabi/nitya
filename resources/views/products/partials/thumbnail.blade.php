@@ -1,9 +1,9 @@
-<div class="thumbnail thumbnail-product @if(!$product->available) transparent @endif">
+<div class="thumbnail thumbnail-product @if(!$product->available) transparent @endif" itemscope itemtype="http://schema.org/Product">
     <div class="img-container">
         @if(isset($product->images[0]))
-            <img class="img img-responsive" src="{{ asset('img/md/' . $product->images[0]->name) }}" alt="{{ $product->name }}">
+            <img itemprop="image" class="img img-responsive" src="{{ asset('img/md/' . $product->images[0]->name) }}" alt="{{ $product->name }}">
         @endif
-        <a href="{{ url('products/' . $product->id) }}" class="detail-link">
+        <a href="{{ url('products/' . $product->id) }}"itemprop="url" class="detail-link">
             <span>View details</span>
         </a>
     </div>
@@ -23,13 +23,13 @@
                 @if(!$product->available)
                     <span class="label label-warning">Unavailable</span>
                 @endif
-                {{ $product->name }}
+                <span itemprop="name">{{ $product->name }}</span>
             </h3>
-            <p>{{ $product->description }}</p>
+            <p itemprop="description">{{ $product->description }}</p>
         @endunless
         <div class="clearfix">
             <div class="pull-left">
-                <small class="text-primary">ID {{ $product->design_no }}</small>
+                <small class="text-primary">ID <span itemprop="productID">{{ $product->design_no }}</span></small>
             </div>
             @unless(isset($small))
                 <div class="pull-right">

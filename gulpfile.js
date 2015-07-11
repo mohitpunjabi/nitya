@@ -19,7 +19,6 @@ elixir(function(mix) {
         'bootstrap.min.js',
         'select2.min.js',
         'product-select2.js',
-        'dropzone.js',
         'stickyNav.js',
         'magnifier.js',
         'app.js'

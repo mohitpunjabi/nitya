@@ -146,6 +146,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
         'Intervention\Image\ImageServiceProvider',
+        'Irazasyed\LaravelGAMP\LaravelGAMPServiceProvider'
 
 	],
 
@@ -197,6 +198,8 @@ return [
         'Html'      => 'Illuminate\Html\HtmlFacade',
         'Form'      => 'Illuminate\Html\FormFacade',
         'Image'     => 'Intervention\Image\Facades\Image',
+        'GAMP'      => 'Irazasyed\LaravelGAMP\Facades\GAMP'
+
 	],
 
 ];

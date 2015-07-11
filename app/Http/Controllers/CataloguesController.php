@@ -106,6 +106,8 @@ class CataloguesController extends Controller {
         $catalogue = Catalogue::where('access_key', $access_key)->first();
         if($catalogue) Session::put('catalogue', $catalogue);
         else           abort(404);
+
+        ga($catalogue->name);
         return redirect('products');
     }
 

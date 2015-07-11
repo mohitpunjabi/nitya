@@ -14,11 +14,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-1 col-sm-1 pull-right"> </div>
             <div class="col-md-6 col-sm-6 pull-right">
                 <img class="img img-responsive" src="{{ asset('img/eternal-style.jpg') }}" alt=""/>
             </div>
-            <div class="col-md-4 col-sm-6 col-md-offset-1 col-sm-offset-1">
+            <div class="col-md-4 col-sm-6 col-md-offset-1">
                 <h1 class="text-center section-heading">Eternal Style. Eternal Fashion.</h1>
                 <p class="lead"><strong>Nitya – Eternal Fashion</strong> is a premium lifestyle apparel brand for women that started in December 2014 with a strong focus on fits, quality and customer experience. We offer wearable fashion at pocket-friendly prices.</p>
                 <p class="lead">
@@ -30,10 +29,10 @@
         <br/>
 
         <div class="row">
-            <div class="col-md-6 col-sm-4 col-md-offset-1 col-sm-offset-1">
+            <div class="col-md-6 col-sm-12 col-md-offset-1">
                 <img class="img img-responsive" src="{{ asset('img/gota-patti-quality.jpg') }}" alt=""/>
             </div>
-            <div class="col-md-4 col-sm-4">
+            <div class="col-md-4 col-sm-12">
                 <h1 class="text-center section-heading">Committed to quality</h1>
                 <p class="lead">At Nitya, our focus remains on using the highest quality materials and providing finest finished products. We work hard towards differentiating our products from the market and providing our customers some fresh prints and designs every week. </p>
             </div>

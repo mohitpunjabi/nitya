@@ -1,1 +1,1 @@
-info@nityajaipur.com
+<span itemprop="email">info@nityajaipur.com</span>

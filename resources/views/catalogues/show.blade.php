@@ -1,4 +1,6 @@
-@extends('app')
+@extends('app', [
+    'noIndex' => true
+])
 
 @section('content')
     <div class="jumbotron jumbotron-sm" >
@@ -29,6 +31,9 @@
         </div>
         <br/><br/>
         <div class="row product-grid">
+            @if($catalogue->products->isEmpty())
+                <p class="text-center">There are no products in this catalogue.</p>
+            @endif
             @foreach($catalogue->products as $product)
                 <div class="col-sm-6 col-md-3">
                     @include('products.partials.thumbnail', ['product' => $product, 'currentCatalogue' => $catalogue])

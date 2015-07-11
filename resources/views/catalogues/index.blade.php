@@ -1,4 +1,6 @@
-@extends('app')
+@extends('app', [
+    'noIndex' => true
+])
 
 @section('content')
     <div class="container">
@@ -20,15 +22,20 @@
                                     </div>
 
                                     <div class="panel-body">
+                                        @if($catalogue->products->isEmpty())
+                                            <p>There are no products in this catalogue.</p>
+                                        @endif
                                         @foreach($catalogue->products->slice(0, 5) as $product)
                                             <div class="col-sm-2">
                                                 @include('products.partials.thumbnail', ['product' => $product, 'small' => true])
                                             </div>
                                         @endforeach
                                         <div class="col-sm-2">
-                                            <a class="btn btn-block btn-default" href="{{ url('catalogues/' . $catalogue->id) }}">
-                                                {{ (($catalogue->products->count() > 5)? ('+ ' . ($catalogue->products->count() - 5) . ' More'): 'View All') }}
-                                            </a>
+                                            @unless($catalogue->products->isEmpty())
+                                                <a class="btn btn-block btn-default" href="{{ url('catalogues/' . $catalogue->id) }}">
+                                                    {{ (($catalogue->products->count() > 5)? ('+ ' . ($catalogue->products->count() - 5) . ' More'): 'View All') }}
+                                                </a>
+                                            @endunless
                                             <a class="btn btn-block btn-primary" href="{{ url('catalogues/' . $catalogue->id) }}">Add</a>
                                         </div>
                                     </div>

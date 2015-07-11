@@ -1,4 +1,8 @@
-@extends('app')
+@extends('app', [
+    'title'           => $product->name,
+    'metaDescription' => $product->description,
+    'ogImage'         => asset('img/md/'.$product->images[0]->name)
+])
 
 @section('content')
     @if($product->previous)
@@ -39,7 +43,7 @@
                         @foreach($product->images as $image)
                             <li class="thumbnail col-xs-1" data-large-src="{{ asset('img/lg/'.$image->name) }}" data-small-src="{{ asset('img/md/'.$image->name) }}" data-thumbnail-src="{{ asset('img/sm/'.$image->name) }}">
                                 <a href="#">
-                                    <img class="img img-responsive" src="{{ asset('img/lg/'.$image->name) }}" >
+                                    <img itemprop="image" class="img img-responsive" src="{{ asset('img/lg/'.$image->name) }}" >
                                 </a>
                             </li>
                         @endforeach
@@ -47,7 +51,7 @@
                 </div>
 
             </div>
-            <div class="col-md-5 col-lg-4">
+            <div class="col-md-5 col-lg-4" itemscope itemtype="http://schema.org/Product">
                 <div id="zoomView">
                 </div>
                 <div class="product-details">
@@ -63,17 +67,17 @@
                         </div>
                         <br/>
                     @endif
-                    <h2 class="media-heading">@if(!$product->available)<span class="text-lg label label-warning">Unavailable</span> @endif{{ $product->name }}</h2>
-                    <p class="lead">{{ $product->description }}</p>
+                    <h2 class="media-heading" itempropp="name">@if(!$product->available)<span class="text-lg label label-warning">Unavailable</span> @endif{{ $product->name }}</h2>
+                    <p class="lead" itemprop="description">{{ $product->description }}</p>
                     <table class="table">
                         <tr>
                             <th>Design Number</th>
-                            <td>{{ $product->design_no }}</td>
+                            <td itemprop="productID">{{ $product->design_no }}</td>
                         </tr>
 
                         <tr>
                             <th>Available Sizes</th>
-                            <td><abbr title="38&quot;">M</abbr>, <abbr title="40&quot;">L</abbr>, <abbr title="42&quot;">XL</abbr>, <abbr title="44&quot;">XXL</abbr></td>
+                            <td><abbr title="38&quot;">M</abbr>, <abbr title="40&quot;">L</abbr>, <abbr title="42&quot;">XL</abbr>, <abbr title="44&quot;">XXL</abbr>, <abbr title="46&quot;">3XL</abbr></td>
                         </tr>
                     </table>
 

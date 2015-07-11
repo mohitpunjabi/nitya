@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top @if(isset($stickyNav) && $stickyNav) navbar-sticky @else navbar-solid @endif">
+<nav class="navbar navbar-default navbar-fixed-top @if(isset($stickyNav) && $stickyNav) navbar-sticky @else navbar-solid @endif" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -7,16 +7,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ url('/') }}">Nitya @if(Auth::user()) <small class="text-primary">- Admin Panel</small> @endif</a>
+            <a class="navbar-brand" href="{{ url('/') }}" title="Nitya - Eternal Fashion">Nitya @if(Auth::user()) <small class="text-primary">- Admin Panel</small> @endif</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url('/') }}">Home</a></li>
+                <li itemprop="name"><a href="{{ url('/') }}" title="Nitya - Eternal Fashion" itemprop="url">Home</a></li>
                 @if(Auth::guest())
-                    <li><a href="{{ url('/about') }}">About</a></li>
-                    <li><a href="{{ url('/products') }}">Products</a></li>
-                    <li><a href="{{ url('/contact') }}">Contact Us</a></li>
+                    <li itemprop="name"><a href="{{ url('/about') }}" title="About Nitya" itemprop="url">About</a></li>
+                    <li itemprop="name"><a href="{{ url('/products') }}" title="Our Products" itemprop="url">Products</a></li>
+                    <li itemprop="name"><a href="{{ url('/contact') }}" title="For orders and enquires, contact us" itemprop="url">Contact Us</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Create <span class="caret"></span></a>

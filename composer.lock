@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4e7acb03efac72456c2ad44be37ec84d",
+    "hash": "3ed21cc510084558bf23c5363e208b32",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -223,6 +223,119 @@
             "time": "2014-12-20 21:24:13"
         },
         {
+            "name": "guzzlehttp/guzzle",
+            "version": "6.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "a8dfeff00eb84616a17fea7a4d72af35e750410f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a8dfeff00eb84616a17fea7a4d72af35e750410f",
+                "reference": "a8dfeff00eb84616a17fea7a4d72af35e750410f",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/promises": "~1.0",
+                "guzzlehttp/psr7": "~1.1",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "~4.0",
+                "psr/log": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2015-07-04 20:09:24"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "2ee5bc7f1a92efecc90da7f6711a53a7be26b5b7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/2ee5bc7f1a92efecc90da7f6711a53a7be26b5b7",
+                "reference": "2ee5bc7f1a92efecc90da7f6711a53a7be26b5b7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "time": "2015-06-24 16:16:25"
+        },
+        {
             "name": "guzzlehttp/psr7",
             "version": "1.1.0",
             "source": {
@@ -382,6 +495,56 @@
                 "watermark"
             ],
             "time": "2015-06-28 15:55:12"
+        },
+        {
+            "name": "irazasyed/laravel-gamp",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/irazasyed/laravel-gamp.git",
+                "reference": "1292e7d55f25b811fa916affa8986d4b3fa94e60"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/irazasyed/laravel-gamp/zipball/1292e7d55f25b811fa916affa8986d4b3fa94e60",
+                "reference": "1292e7d55f25b811fa916affa8986d4b3fa94e60",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.0.*|5.1.*",
+                "php": ">=5.5.0",
+                "theiconic/php-ga-measurement-protocol": "^2.0"
+            },
+            "suggest": {
+                "irazasyed/larasupport": "Adds Package Support in Lumen, Lets you install any Laravel Package."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Irazasyed\\LaravelGAMP\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Syed Irfaq R.",
+                    "email": "syed+gh@lukonet.com",
+                    "homepage": "https://github.com/irazasyed"
+                }
+            ],
+            "description": "Send analytics data to Google Analytics from Laravel. A package for GA Measurement Protocol API",
+            "keywords": [
+                "analytics",
+                "ga measurement protocol",
+                "google analytics",
+                "laravel google analytics",
+                "measurement protocol",
+                "tracking"
+            ],
+            "time": "2015-07-03 18:28:58"
         },
         {
             "name": "ircmaxell/password-compat",
@@ -698,31 +861,27 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.4",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "56862959b45131ad33e5a7727a25db19f2cf090b"
+                "reference": "e87d33ecc3a9fe2b1931856dc9921628f8c18cd5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/56862959b45131ad33e5a7727a25db19f2cf090b",
-                "reference": "56862959b45131ad33e5a7727a25db19f2cf090b",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/e87d33ecc3a9fe2b1931856dc9921628f8c18cd5",
+                "reference": "e87d33ecc3a9fe2b1931856dc9921628f8c18cd5",
                 "shasum": ""
             },
             "require": {
-                "ext-mbstring": "*",
                 "php": ">=5.4.0"
             },
             "require-dev": {
                 "ext-fileinfo": "*",
-                "league/phpunit-coverage-listener": "~1.1",
                 "mockery/mockery": "~0.9",
-                "phpspec/phpspec": "~2.0",
+                "phpspec/phpspec": "^2.2",
                 "phpspec/prophecy-phpunit": "~1.0",
-                "phpunit/phpunit": "~4.1",
-                "predis/predis": "~1.0",
-                "tedivm/stash": "~0.12.0"
+                "phpunit/phpunit": "~4.1"
             },
             "suggest": {
                 "ext-fileinfo": "Required for MimeType",
@@ -736,8 +895,7 @@
                 "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
                 "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
                 "league/flysystem-webdav": "Allows you to use WebDAV storage",
-                "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter",
-                "predis/predis": "Allows you to use Predis for caching"
+                "league/flysystem-ziparchive": "Allows you to use ZipArchive adapter"
             },
             "type": "library",
             "extra": {
@@ -760,10 +918,11 @@
                     "email": "info@frenky.net"
                 }
             ],
-            "description": "Many filesystems, one API.",
+            "description": "Filesystem abstraction: Many filesystems, one API.",
             "keywords": [
                 "Cloud Files",
                 "WebDAV",
+                "abstraction",
                 "aws",
                 "cloud",
                 "copy.com",
@@ -771,6 +930,7 @@
                 "file systems",
                 "files",
                 "filesystem",
+                "filesystems",
                 "ftp",
                 "rackspace",
                 "remote",
@@ -778,7 +938,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-06-07 21:27:37"
+            "time": "2015-07-08 20:43:57"
         },
         {
             "name": "monolog/monolog",
@@ -2006,6 +2166,48 @@
                 "dump"
             ],
             "time": "2015-05-01 14:14:24"
+        },
+        {
+            "name": "theiconic/php-ga-measurement-protocol",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/theiconic/php-ga-measurement-protocol.git",
+                "reference": "3f17b0985d1c8b69a0e3c4c013d5815f7d527d76"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/theiconic/php-ga-measurement-protocol/zipball/3f17b0985d1c8b69a0e3c4c013d5815f7d527d76",
+                "reference": "3f17b0985d1c8b69a0e3c4c013d5815f7d527d76",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0",
+                "php": ">=5.5",
+                "symfony/finder": "^2.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.7.*",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TheIconic\\Tracking\\GoogleAnalytics\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "THE ICONIC ENGINEERING TEAM",
+                    "email": "engineering@theiconic.com.au"
+                }
+            ],
+            "description": "Send data to Google Analytics from the server using PHP. This library fully implements GA measurement protocol.",
+            "time": "2015-07-03 10:13:15"
         },
         {
             "name": "vlucas/phpdotenv",
