@@ -1,6 +1,8 @@
 <div class="thumbnail thumbnail-product @if(!$product->available) transparent @endif">
     <div class="img-container">
-        <img class="img img-responsive" src="{{ asset('img/md/' . $product->images[0]->name) }}" alt="{{ $product->name }}">
+        @if(isset($product->images[0]))
+            <img class="img img-responsive" src="{{ asset('img/md/' . $product->images[0]->name) }}" alt="{{ $product->name }}">
+        @endif
         <a href="{{ url('products/' . $product->id) }}" class="detail-link">
             <span>View details</span>
         </a>
@@ -10,7 +12,10 @@
             @if(Auth::user())
                 <div>
                     @foreach($product->catalogues as $catalogue)
-                        <a href="{{ route('catalogues.show', $catalogue) }}"><span class="label label-default">{{ $catalogue->name }}</span></a>
+                        @include('catalogues.partials.tag', [
+                            'catalogue' => $catalogue,
+                            'product'   => $product
+                        ])
                     @endforeach
                 </div>
             @endif
@@ -32,7 +37,7 @@
                         <a href="{{ url('products/' . $product->id . '#enquire') }}" class="btn btn-xs btn-primary" role="button">Enquire</a>
                     @else
                         @if(isset($currentCatalogue))
-                            <a href="{{ url('catalogues/' . $currentCatalogue->id . '/remove?product=' . $product->id) }}" class="btn btn-xs btn-danger">&times; Remove</a>
+                            <a href="{{ url('catalogues/' . $currentCatalogue->id . '/remove?product=' . $product->id) }}" class="btn btn-xs btn-danger" title="Remove this product from {{ $currentCatalogue->name }}">&times; Remove</a>
                         @endif
                         <a href="{{ route('products.edit', $product) }}" class="btn btn-xs btn-primary" role="button">Edit</a>
                     @endif

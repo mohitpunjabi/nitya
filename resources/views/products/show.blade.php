@@ -18,6 +18,14 @@
                 </div>
             </div>
         </a>
+    @else
+        <a href="{{ url('more') }}">
+            <div class="paginate-col pull-right hidden-sm hidden-xs">
+                <div class="paginate-button">
+                    <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                </div>
+            </div>
+        </a>
     @endif
 
     <div class="jumbotron jumbotron-sm">
@@ -46,12 +54,16 @@
                     @if(Auth::user())
                         <div>
                             @foreach($product->catalogues as $catalogue)
-                                <a href="{{ route('catalogues.show', $catalogue) }}"><span class="text-lg label label-default">{{ $catalogue->name }}</span></a>
+                                @include('catalogues.partials.tag', [
+                                    'size' => 'lg',
+                                    'product' => $product,
+                                    'catalogue' => $catalogue
+                                ])
                             @endforeach
                         </div>
                         <br/>
                     @endif
-                    <h2 class="media-heading">{{ $product->name }}</h2>
+                    <h2 class="media-heading">@if(!$product->available)<span class="text-lg label label-warning">Unavailable</span> @endif{{ $product->name }}</h2>
                     <p class="lead">{{ $product->description }}</p>
                     <table class="table">
                         <tr>
@@ -78,6 +90,7 @@
                                     </p>
                                 @else
                                     <a href="{{ route('products.edit', $product) }}" class="btn btn-lg btn-primary btn-block" role="button">Edit</a>
+
                                 @endif
 
                             </div>
@@ -100,34 +113,11 @@
     <div class="container">
         <h3 class="page-header">You might also like</h3>
         <div class="row product-grid">
-            @for($i = 0; $i < 4; $i++)
+            @foreach($product->similarProducts as $simProduct)
                 <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail thumbnail-product">
-                        <div class="img-container">
-                            <img class="img img-responsive" src="{{ asset('img/try'.($i%6).'.jpg') }}" alt="Alternate text">
-                            <a href="{{ url('products/show') }}" class="detail-link">
-                                <span>View details</span>
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <h3>Lorem ipsum dolor</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <div class="clearfix">
-                                <div class="pull-left">
-                                    <small class="text-primary">ID 904035</small>
-                                </div>
-                                <div class="pull-right">
-                                    @if(Auth::guest())
-                                        <a href="#enquire" class="btn btn-xs btn-primary" role="button">Enquire</a>
-                                    @else
-                                        <a href="{{ route('products.edit', $product) }}" class="btn btn-xs btn-primary" role="button">Edit</a>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @include('products.partials.thumbnail', ['product' => $simProduct])
                 </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 @endsection

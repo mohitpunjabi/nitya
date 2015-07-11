@@ -63,6 +63,10 @@ class Product extends Model {
         return Product::visibleToUser(false)->where('created_at', '<', $this->created_at)->orderBy('created_at', 'desc')->first();
     }
 
+    public function getSimilarProductsAttribute() {
+        return Product::visibleToUser(false)->where('id', '!=', $this->id)->orderByRaw('RAND()')->limit(4)->get();
+    }
+
     public function getCatalogueListAttribute() {
         return $this->catalogues()->lists('catalogue_id');
     }

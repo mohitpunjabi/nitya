@@ -1,8 +1,20 @@
 <div class="row">
     <div class="col-md-6">
+        <div class="thumbnails-added clearfix">
+            @if(isset($product))
+                @foreach($product->images as $image)
+                    <div class="thumbnail col-sm-3">
+                        <img class="img img-responsive" src="{{ asset('img/sm/'.$image->name) }}"/>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+        <div class="thumbnails clearfix">
+        </div>
+
         <div>
             {!! Form::label('images[]', 'Images') !!}
-            {!! Form::file('images[]', ['class' => 'form-control', 'multiple' => 'multiple', 'accept' => 'image/*']) !!}
+            {!! Form::file('images[]', ['class' => 'form-control', 'multiple' => 'multiple', 'accept' => 'image/*', 'id' => 'product-images']) !!}
             <label class="help-block">Images of the product.</label>
             @if($errors->first('images')) <div class="alert alert-danger">{{ $errors->first('images') }}</div> @endif
         </div>
@@ -49,3 +61,46 @@
 <div>
     <button class="btn btn-block btn-primary" type="submit">{{ $buttonText }}</button>
 </div>
+
+@section('script')
+    <script type="text/javascript">
+        $(function() {
+            var $productImages = $("#product-images");
+            var $thumbnails = $(".thumbnails");
+            $productImages.change(function() {
+                $thumbnails.html('');
+                var files = $productImages[0].files;
+
+
+                for(var i = 0; i < files.length; i++) {
+                    var uploadFile = (function(file) {
+                        var reader = new FileReader();
+                        reader.onloadend = function() {
+                            var $img = $('<div class="thumbnail col-sm-3"><img src="' + reader.result + '" class="img img-responsive" /></div>');
+                            $thumbnails.append($img);
+                        };
+
+                        reader.readAsDataURL(file);
+                    })(files[i]);
+                    setTimeout(uploadFile, 0);
+                }
+            });
+        });
+
+        function previewFile() {
+            var preview = document.querySelector('img');
+            var file    = document.querySelector('input[type=file]').files[0];
+            var reader  = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "";
+            }
+        }
+    </script>
+@endsection

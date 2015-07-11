@@ -116,8 +116,7 @@ class ProductsController extends Controller {
         $this->syncCatalogues($product, $request->input('catalogue_list'));
     }
 
-    private function saveImages(Product $product, $imageFiles = [])
-    {
+    private function saveImages(Product $product, $imageFiles = []) {
         $images = [];
         foreach($imageFiles as $imageFile) {
             if($imageFile != null)  array_push($images, new \App\Image(['name' => $this->processImage($product, $imageFile)]));

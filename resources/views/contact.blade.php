@@ -35,7 +35,6 @@
 
     <div class="container" id="write-to-us">
         <div class="row">
-            <br/><br/>
             <div class="col-md-6 col-md-offset-3">
                 <div class="enquiry-form-large text-center">
                     @if(Session::has('sent'))

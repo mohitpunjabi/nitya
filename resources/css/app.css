@@ -6618,11 +6618,13 @@ h5 {
 .default-navbar-bg {
   background: no-repeat center bottom;
   background-attachment: scroll;
+  background-size: cover;
   height: 120px;
 }
 .jumbotron {
   padding: 100px 15px;
   background: no-repeat center center;
+  background-size: cover;
   background-attachment: scroll;
 }
 .jumbotron-sm {
