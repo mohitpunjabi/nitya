@@ -34,6 +34,9 @@
                             <li><a href="{{ url('/catalogues') }}">All catalogues</a></li>
                         </ul>
                     </li>
+                    <li><a href="{{ url('/sitemap/submit') }}" title="Submit your changes to Google"><span>Submit to Google</span></a></li>
+                    <li><a href="https://plus.google.com/u/0/b/105229227002561113902/dashboard/overview" title="The Google+ page"><span>Google+ Page and Analytics</span></a></li>
+                    <li><a href="{{ url('/logs') }}" title="View the website error Logs"><span>Logs</span></a></li>
                 @endif
             </ul>
 

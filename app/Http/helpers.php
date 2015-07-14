@@ -12,7 +12,6 @@ function ga($title = null) {
         if($title) $gamp->setDocumentTitle($title);
         $gamp->setIpOverride(Request::ip());
         $gamp->sendPageview();
-        Log::info('Pageview ' . Request::getPathInfo() . ' sent');
     }
 }
 

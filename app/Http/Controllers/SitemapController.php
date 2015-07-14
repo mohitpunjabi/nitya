@@ -40,6 +40,8 @@ class SitemapController extends Controller {
         {
             submit_to_facebook($item['loc']);
         }
+
+        return "Submitted";
     }
 
     /**

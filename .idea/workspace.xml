@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0be400b8-82ec-4fcc-8ea4-779ee478c7f3" name="Default" comment="" />
+    <list default="true" id="0be400b8-82ec-4fcc-8ea4-779ee478c7f3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SitemapController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SitemapController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/helpers.php" afterPath="$PROJECT_DIR$/app/Http/helpers.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/partials/navbar.blade.php" afterPath="$PROJECT_DIR$/resources/views/partials/navbar.blade.php" />
+    </list>
     <ignored path="nitya.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -34,8 +38,8 @@
       <file leaf-file-name="helpers.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/helpers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.26923" vertical-offset="374" max-vertical-offset="1003">
-              <caret line="56" column="1" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
+            <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="986">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -51,10 +55,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/app.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1717">
+            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1717">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -74,11 +78,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="navbar.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/partials/navbar.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.16558442" vertical-offset="170" max-vertical-offset="1088">
+              <caret line="16" column="118" selection-start-line="16" selection-start-column="118" selection-end-line="16" selection-end-column="118" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SitemapController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SitemapController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.692307" vertical-offset="748" max-vertical-offset="1377">
-              <caret line="68" column="100" selection-start-line="68" selection-start-column="100" selection-end-line="68" selection-end-column="100" />
+            <state vertical-scroll-proportion="-17.0" vertical-offset="289" max-vertical-offset="1411">
+              <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
               <folding>
                 <element signature="e#39#61#0#PHP" expanded="true" />
               </folding>
@@ -171,7 +185,6 @@
         <option value="$PROJECT_DIR$/resources/views/products/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/about.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/products/partials/thumbnail.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/partials/navbar.blade.php" />
         <option value="$PROJECT_DIR$/vendor/irazasyed/laravel-gamp/src/config/gamp.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/CataloguesController.php" />
         <option value="$PROJECT_DIR$/config/mail.php" />
@@ -184,10 +197,11 @@
         <option value="$PROJECT_DIR$/resources/views/contact.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/app/Http/helpers.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SitemapController.php" />
         <option value="$PROJECT_DIR$/resources/views/welcome.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/app.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/helpers.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SitemapController.php" />
+        <option value="$PROJECT_DIR$/resources/views/partials/navbar.blade.php" />
       </list>
     </option>
   </component>
@@ -593,14 +607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/partials/navbar.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="83" max-vertical-offset="1037">
-          <caret line="18" column="135" selection-start-line="18" selection-start-column="135" selection-end-line="18" selection-end-column="135" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CataloguesController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-17.0" vertical-offset="1326" max-vertical-offset="1955">
@@ -780,24 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/helpers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.26923" vertical-offset="374" max-vertical-offset="1003">
-          <caret line="56" column="1" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SitemapController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.692307" vertical-offset="748" max-vertical-offset="1377">
-          <caret line="68" column="100" selection-start-line="68" selection-start-column="100" selection-end-line="68" selection-end-column="100" />
-          <folding>
-            <element signature="e#39#61#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/products/partials/thumbnail.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.576923" vertical-offset="202" max-vertical-offset="901">
@@ -844,6 +832,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1717">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/helpers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.1923075" vertical-offset="0" max-vertical-offset="986">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SitemapController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.0" vertical-offset="289" max-vertical-offset="1411">
+          <caret line="43" column="27" selection-start-line="43" selection-start-column="27" selection-end-line="43" selection-end-column="27" />
+          <folding>
+            <element signature="e#39#61#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/partials/navbar.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16558442" vertical-offset="170" max-vertical-offset="1088">
+          <caret line="16" column="118" selection-start-line="16" selection-start-column="118" selection-end-line="16" selection-end-column="118" />
           <folding />
         </state>
       </provider>
