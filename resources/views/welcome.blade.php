@@ -6,6 +6,7 @@
     <div class="jumbotron" style="background-image: url('{{ asset('img/jumbotron-img-1.jpg') }}')">
         <div class="container" itemscope itemtype="http://schema.org/Brand">
             <meta itemprop="name" content="Nitya - Eternal Fashion"/>
+            <meta itemprop="sameAs" content="https://plus.google.com/105229227002561113902"/>
             <p>
                 <img itemprop="logo" src="{{ asset('img/nitya-logo.png') }}" alt="Nitya - Eternal Fashion" title="Nitya - Eternal Fashion">
             </p>

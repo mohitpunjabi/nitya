@@ -28,7 +28,7 @@
                 </div>
 
                 @if($showMap)
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1778.751015814024!2d75.82582989389958!3d26.91929467075284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1436585352464" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1778.753091362584!2d75.82467900000002!3d26.919163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db40b8621fc49%3A0x83d5ac3f3306edad!2sNitya+-+Eternal+Fashion%2C+132%2C+Pitaliyon+Ka+Chowk+Johari+Bazar%2C+Jaipur%2C+Rajasthan+302003!5e0!3m2!1sen!2sin!4v1436886358710" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
                 @endif
 
             </div>

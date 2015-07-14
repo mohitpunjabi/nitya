@@ -11,13 +11,19 @@
 |
 */
 
+Route::group(['middleware' => 'auth'], function()
+{
+    Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+});
+
+Route::get('sitemap', 'SitemapController@index');
+Route::get('sitemap/submit', 'SitemapController@submit');
+
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'WelcomeController@index');
 
-
-
-// UI Stubs
 Route::get('about', function()
 {
     return view('about');
@@ -39,9 +45,6 @@ Route::get('more', function()
         'showMap'  => false
     ]);
 });
-
-
-
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

@@ -24,7 +24,7 @@
 
     <link rel="icon" type="image/ico" href="{{ asset('favicon.png') }}" />
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
-    <link href="https://plus.google.com/109589785742064462895" rel="publisher" />
+    <link href="https://plus.google.com/105229227002561113902" rel="publisher" />
 	<!-- Fonts -->
 	<!-- <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> -->
 
@@ -36,7 +36,7 @@
 	<![endif]-->
 
     <script type="text/javascript" async defer
-            src="https://apis.google.com/js/platform.js?publisherid=109589785742064462895">
+            src="https://apis.google.com/js/platform.js?publisherid=105229227002561113902">
     </script>
 </head>
 <body>
@@ -54,10 +54,10 @@
     </div>
 
     <footer>
-        <div class="container">
+        <div class="container" itemscope itemtype="http://schema.org/Organization">
             <div class="col-md-6">
                 <h3>About Nitya</h3>
-                <p>
+                <p itemprop="description">
                     Nitya – Eternal Fashion is a premium lifestyle apparel brand for women that started in December 2014 with a strong focus on fits, quality and customer experience. We offer wearable fashion at pocket-friendly prices.
                 </p>
                 <p>
@@ -65,14 +65,16 @@
                 </p>
             </div>
 
-            <div class="col-md-6" itemscope itemtype="http://schema.org/Organization">
+            <div class="col-md-6">
+                <meta itemprop="url" content="http://www.nityajaipur.com"/>
+                <meta itemprop="sameAs" content="https://plus.google.com/105229227002561113902"/>
                 <h3>Contact Us</h3>
                 <p class="small">Nitya is operated under license by Super Sales Agency having its registered office at:</p>
                 <p>
                     @include('partials.address')
                 </p>
                 <p>
-                    Ph: @include('partials.phone'), <span itemprop="telephone">+91 96600 09899</span>, <span itemprop="telephone">+91 81975 46707</span> <br/>
+                    Ph: @include('partials.phone'), <span itemprop="telephone">+91 96600 09899</span>, <span itemprop="telephone">+91 99503 00151</span> <br/>
                     Email: @include('partials.email')
                 </p>
             </div>

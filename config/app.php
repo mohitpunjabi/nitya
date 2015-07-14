@@ -146,8 +146,9 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
         'Intervention\Image\ImageServiceProvider',
-        'Irazasyed\LaravelGAMP\LaravelGAMPServiceProvider'
-
+        'Irazasyed\LaravelGAMP\LaravelGAMPServiceProvider',
+        'Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider',
+        'Roumen\Sitemap\SitemapServiceProvider',
 	],
 
 	/*
