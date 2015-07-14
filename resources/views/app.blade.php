@@ -72,7 +72,7 @@
                     @include('partials.address')
                 </p>
                 <p>
-                    Ph: @include('partials.phone') <br/>
+                    Ph: @include('partials.phone'), <span itemprop="telephone">+91 96600 09899</span>, <span itemprop="telephone">+91 81975 46707</span> <br/>
                     Email: @include('partials.email')
                 </p>
             </div>

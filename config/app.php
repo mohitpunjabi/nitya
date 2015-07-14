@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => 'http://dev.nityajaipur.com',
+	'url' => 'http://www.nityajaipur.com',
 
 	/*
 	|--------------------------------------------------------------------------

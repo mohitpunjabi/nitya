@@ -54,7 +54,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => null, 'name' => null],
+	'from' => ['address' => 'info@nityajaipur.com', 'name' => 'Nitya - Eternal Fashion'],
 
 	/*
 	|--------------------------------------------------------------------------
