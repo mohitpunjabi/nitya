@@ -6,6 +6,7 @@
 
 @section('content')
 <div itemscope itemtype="http://schema.org/Product">
+    <meta itemprop="url" content="{{ url_product($product) }}"/>
     @if($product->previous)
         <a href="{{ route('products.show', $product->previous) }}">
             <div class="paginate-col pull-left hidden-sm hidden-xs">
