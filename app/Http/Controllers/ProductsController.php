@@ -62,8 +62,9 @@ class ProductsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show(Product $product)
+	public function show(Product $product, $slug = '')
 	{
+        if($slug === '') return redirect(url_product($product));
 		return view('products.show', compact('product'));
 	}
 

@@ -72,6 +72,10 @@ class Product extends Model {
         return $this->catalogues()->lists('catalogue_id');
     }
 
+    public function getSlugAttribute() {
+        return str_slug($this->name);
+    }
+
     public function enquiries() {
         return $this->hasMany('App\Enquiry');
     }

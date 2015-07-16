@@ -68,7 +68,7 @@ class SitemapController extends Controller {
             // add every public Product to the sitemap
             foreach ($products as $product)
             {
-                $sitemap->add(route('products.show', $product), $product->updated_at, '0.8', 'weekly');
+                $sitemap->add(url_product($product), $product->updated_at, '0.8', 'weekly');
             }
         }
 

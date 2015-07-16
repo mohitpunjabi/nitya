@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Request;
 use Irazasyed\LaravelGAMP\Facades\GAMP;
 
+function url_product($product) {
+    return url('products/' . $product->id . '/' . $product->slug);
+}
+
 function ga($title = null) {
     if(Auth::guest()) {
         $gamp = GAMP::setClientId(Session::getId());
