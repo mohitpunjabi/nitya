@@ -1,4 +1,6 @@
-<div class="thumbnail thumbnail-product @if(!$product->available) transparent @endif" itemscope itemtype="http://schema.org/Product">
+<div class="thumbnail thumbnail-product @if(!$product->available) transparent @endif"
+     @if(isset($isSimilarTo) && $isSimilarTo) itemprop="isSimilarTo" @endif
+     itemscope itemtype="http://schema.org/Product">
     <div class="img-container">
         @if(isset($product->images[0]))
             <img itemprop="image" class="img img-responsive" src="{{ asset('img/md/' . $product->images[0]->name) }}" alt="{{ $product->name }}">
