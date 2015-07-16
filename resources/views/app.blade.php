@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Nitya - Eternal Fashion | {{ $title or 'Manufacturers and wholesalers of Jaipuri kurtis and dress material' }}</title>
+	<title>{{ $title or 'Manufacturers and wholesalers of Jaipuri kurtis and dress material' }} | Nitya - Eternal Fashion</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -48,7 +48,7 @@
     <div class="bg-primary">
         <div class="container">
             <div class="text-center text-lg" style="padding: 20px">
-                For bulk orders and enquiries, <a href="{{ url('/contact') }}#write-to-us">write to us</a> or contact us at @include('partials.phone') or <a href="#">@include('partials.email')</a>
+                For bulk orders and enquiries, <a href="{{ url('/contact') }}#write-to-us">write to us</a> or contact us at @include('partials.mobiles') or <a href="#">@include('partials.email')</a>
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@
                     @include('partials.address')
                 </p>
                 <p>
-                    Ph: @include('partials.phone'), <span itemprop="telephone">+91 96600 09899</span>, <span itemprop="telephone">+91 99503 00151</span> <br/>
+                    Ph: @include('partials.phone'), @include('partials.mobiles') <br/>
                     Email: @include('partials.email')
                 </p>
             </div>
