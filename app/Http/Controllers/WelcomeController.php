@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Product;
+use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller {
 
@@ -16,22 +17,13 @@ class WelcomeController extends Controller {
 	*/
 
 	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-//		$this->middleware('guest');
-	}
-
-	/**
 	 * Show the application welcome screen to the user.
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
+        if(Auth::user()) return redirect('enquiries');
         $products = Product::visibleToUser()->take(4)->get();
 		return view('welcome', compact('products'));
 	}
