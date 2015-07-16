@@ -43,6 +43,13 @@
         </div>
 
         <div>
+            {!! Form::label('length', 'Length') !!}
+            {!! Form::text('length', null, ['class' => 'form-control', 'placeholder' => 'Length']) !!}
+            <label class="help-block">Length (in inches) of the product</label>
+            @if($errors->first('length')) <div class="alert alert-danger">{{ $errors->first('length') }}</div> @endif
+        </div>
+
+        <div>
             {!! Form::checkbox('available', null, ['class' => 'form-control']) !!}
             {!! Form::label('available', 'This product is available') !!}
             <label class="help-block"></label>

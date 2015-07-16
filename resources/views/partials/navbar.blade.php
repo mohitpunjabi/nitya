@@ -35,7 +35,8 @@
                         </ul>
                     </li>
                     <li><a href="{{ url('/sitemap/submit') }}" title="Submit your changes to Google"><span>Submit to Google</span></a></li>
-                    <li><a href="https://plus.google.com/u/0/b/105229227002561113902/dashboard/overview" title="The Google+ page"><span>Google+ Page and Analytics</span></a></li>
+                    <li><a href="https://plus.google.com/u/0/b/105229227002561113902/dashboard/overview" title="The Google+ page"><span>Google+ Page</span></a></li>
+                    <li><a href="https://www.google.com/analytics/web/?authuser=0&_ga=1.79741023.914416622.1436886813#dashboard" title="Analytics for the website"><span>Analytics</span></a></li>
                     <li><a href="{{ url('/logs') }}" title="View the website error Logs"><span>Logs</span></a></li>
                 @endif
             </ul>

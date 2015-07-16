@@ -9,8 +9,14 @@ function ga($title = null) {
     if(Auth::guest()) {
         $gamp = GAMP::setClientId(Session::getId());
         $gamp->setDocumentPath(Request::getPathInfo());
-        if($title) $gamp->setDocumentTitle($title);
         $gamp->setIpOverride(Request::ip());
+        $gamp->setUserAgentOverride(Request::server('HTTP_USER_AGENT'));
+
+        if($title)
+            $gamp->setDocumentTitle($title);
+        if(Request::server('HTTP_REFERER'))
+            $gamp->setDocumentReferrer(Request::server('HTTP_REFERER'));
+
         $gamp->sendPageview();
     }
 }

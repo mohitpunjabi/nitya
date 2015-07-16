@@ -10,7 +10,8 @@ class Product extends Model {
         'design_no',
         'name',
         'description',
-        'available'
+        'available',
+        'length'
     ];
 
     public function images()

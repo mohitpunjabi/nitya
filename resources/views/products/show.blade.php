@@ -79,6 +79,13 @@
                             <th>Available Sizes</th>
                             <td><abbr title="38&quot;">M</abbr>, <abbr title="40&quot;">L</abbr>, <abbr title="42&quot;">XL</abbr>, <abbr title="44&quot;">XXL</abbr>, <abbr title="46&quot;">3XL</abbr></td>
                         </tr>
+
+                        @if($product->length)
+                            <tr>
+                                <th>Length</th>
+                                <td>{{ $product->length }}</td>
+                            </tr>
+                        @endif
                     </table>
 
                         @if(Session::has('sent'))
