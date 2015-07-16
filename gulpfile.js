@@ -21,6 +21,7 @@ elixir(function(mix) {
         'product-select2.js',
         'stickyNav.js',
         'magnifier.js',
+        'jquery.bgswitcher.js',
         'app.js'
     ], 'public/js/app.js');
 

@@ -3,7 +3,7 @@
 ])
 
 @section('content')
-    <div class="jumbotron" style="background-image: url('{{ asset('img/jumbotron-img-1.jpg') }}')">
+    <div class="jumbotron" style="background-image: url('{{ asset('img/jumbotron/jumbotron-img-1.jpg') }}')">
         <div class="container" itemscope itemtype="http://schema.org/Brand">
             <meta itemprop="name" content="Nitya - Eternal Fashion"/>
             <meta itemprop="sameAs" content="https://plus.google.com/105229227002561113902"/>
@@ -62,4 +62,21 @@
         @endforeach
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        $(function() {
+            var bgImages = [
+                '/img/jumbotron/jumbotron-img-1.jpg',
+                '/img/jumbotron/jumbotron-img-2.jpg',
+                '/img/jumbotron/jumbotron-img-3.jpg'
+            ];
+
+            $('.jumbotron').bgswitcher({
+                images: bgImages,
+                duration: 2000
+            });
+        });
+    </script>
 @endsection

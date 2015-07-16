@@ -56,5 +56,5 @@
 </nav>
 
 @unless(isset($stickyNav) && $stickyNav)
-    <div class="default-navbar-bg" style="background-image: url('{{ asset('img/jumbotron-img-1.jpg') }}')"></div>
+    <div class="default-navbar-bg" style="background-image: url('{{ asset('img/jumbotron/jumbotron-img-1.jpg') }}')"></div>
 @endunless
