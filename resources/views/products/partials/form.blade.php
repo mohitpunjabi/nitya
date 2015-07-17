@@ -50,6 +50,27 @@
         </div>
 
         <div>
+            {!! Form::label('neckline', 'Neckline') !!}
+            {!! Form::text('neckline', null, ['class' => 'form-control', 'placeholder' => 'Neckline']) !!}
+            <label class="help-block"></label>
+            @if($errors->first('neckline')) <div class="alert alert-danger">{{ $errors->first('neckline') }}</div> @endif
+        </div>
+
+        <div>
+            {!! Form::label('fabric', 'Fabric') !!}
+            {!! Form::text('fabric', null, ['class' => 'form-control', 'placeholder' => 'Fabric']) !!}
+            <label class="help-block"></label>
+            @if($errors->first('fabric')) <div class="alert alert-danger">{{ $errors->first('fabric') }}</div> @endif
+        </div>
+
+        <div>
+            {!! Form::label('rinse_care', 'Rinse Care') !!}
+            {!! Form::text('rinse_care', null, ['class' => 'form-control', 'placeholder' => 'Rinse Care']) !!}
+            <label class="help-block"></label>
+            @if($errors->first('rinse_care')) <div class="alert alert-danger">{{ $errors->first('rinse_care') }}</div> @endif
+        </div>
+
+        <div>
             {!! Form::checkbox('available', null, ['class' => 'form-control']) !!}
             {!! Form::label('available', 'This product is available') !!}
             <label class="help-block"></label>

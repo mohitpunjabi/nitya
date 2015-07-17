@@ -1,4 +1,5 @@
 {!! Form::open(['route' => 'enquiries.store', 'id' => ((isset($id))? $id: 'standardContactForm') ]) !!}
+
 @if(isset($product))
     {!! Form::hidden('product_id', $product->id, []) !!}
 @endif

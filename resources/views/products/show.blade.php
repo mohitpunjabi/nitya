@@ -8,7 +8,7 @@
 <div itemscope itemtype="http://schema.org/Product">
     <meta itemprop="url" content="{{ url_product($product) }}"/>
     @if($product->previous)
-        <a href="{{ route('products.show', $product->previous) }}">
+        <a href="{{ url_product($product->previous) }}">
             <div class="paginate-col pull-left hidden-sm hidden-xs">
                 <div class="paginate-button">
                     <i class="glyphicon glyphicon-circle-arrow-left"></i>
@@ -17,7 +17,7 @@
         </a>
     @endif
     @if($product->next)
-        <a href="{{ route('products.show', $product->next) }}">
+        <a href="{{ url_product($product->next) }}">
             <div class="paginate-col pull-right hidden-sm hidden-xs">
                 <div class="paginate-button">
                     <i class="glyphicon glyphicon-circle-arrow-right"></i>
@@ -90,6 +90,28 @@
                                 <td itemprop="value">{{ $product->length }}</td>
                             </tr>
                         @endif
+
+                        @if($product->neckline)
+                            <tr itemprop="additionalProperty" itemscope itemtype="http://schema.org/PropertyValue">
+                                <th itemprop="name">Neckline</th>
+                                <td itemprop="value">{{ $product->neckline }}</td>
+                            </tr>
+                        @endif
+
+                        @if($product->fabric)
+                            <tr itemprop="additionalProperty" itemscope itemtype="http://schema.org/PropertyValue">
+                                <th itemprop="name">Fabric</th>
+                                <td itemprop="value">{{ $product->fabric }}</td>
+                            </tr>
+                        @endif
+
+                        @if($product->rinse_care)
+                            <tr itemprop="additionalProperty" itemscope itemtype="http://schema.org/PropertyValue">
+                                <th itemprop="name">Rinse Care</th>
+                                <td itemprop="value">{{ $product->rinse_care }}</td>
+                            </tr>
+                        @endif
+
                     </table>
 
                         @if(Session::has('sent'))

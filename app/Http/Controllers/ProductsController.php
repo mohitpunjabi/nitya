@@ -64,7 +64,7 @@ class ProductsController extends Controller {
 	 */
 	public function show(Product $product, $slug = '')
 	{
-        if($slug === '') return redirect(url_product($product));
+        if($slug !== $product->slug) return redirect(url_product($product));
 		return view('products.show', compact('product'));
 	}
 

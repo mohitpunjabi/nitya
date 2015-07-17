@@ -15,6 +15,9 @@ class AddFieldsToProducts extends Migration {
 		Schema::table('products', function(Blueprint $table)
 		{
 			$table->string('length')->nullable()->default(null);
+            $table->string('neckline')->nullable()->default(null);
+            $table->string('fabric')->nullable()->default(null);
+            $table->string('rinse_care')->nullable()->default(null);
 		});
 	}
 
@@ -28,6 +31,9 @@ class AddFieldsToProducts extends Migration {
 		Schema::table('products', function(Blueprint $table)
 		{
 			$table->dropColumn('length');
+            $table->dropColumn('neckline');
+            $table->dropColumn('fabric');
+            $table->dropColumn('rinse_care');
 		});
 	}
 

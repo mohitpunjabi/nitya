@@ -1,5 +1,6 @@
 @extends('app', [
     'stickyNav' => true,
+    'title'     => 'Kurti Wholesalers and Manufacturers'
 ])
 
 @section('content')
@@ -61,6 +62,15 @@
             </div>
         @endforeach
         </div>
+
+        <div class="row">
+            <div class="hidden-md hidden-lg hidden-sm col-xs-12">
+                <a href="{{ url('products') }}" class="btn btn-block btn-lg btn-primary">
+                    <h2><i class="glyphicon glyphicon-plus"></i> More</h2>
+                </a>
+                <br/><br/>
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -73,10 +83,13 @@
                 '/img/jumbotron/jumbotron-img-3.jpg'
             ];
 
-            $('.jumbotron').bgswitcher({
-                images: bgImages,
-                duration: 2000
-            });
+            setTimeout(function() {
+                $('.jumbotron').bgswitcher({
+                    images: bgImages,
+                    duration: 2000
+                });
+            }, 2000);
+
         });
     </script>
 @endsection

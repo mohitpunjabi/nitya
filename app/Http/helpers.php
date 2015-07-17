@@ -13,9 +13,10 @@ function ga($title = null) {
     if(Auth::guest()) {
         $gamp = GAMP::setClientId(Session::getId());
         $gamp->setDocumentPath(Request::getPathInfo());
-        $gamp->setIpOverride(Request::ip());
-        $gamp->setUserAgentOverride(Request::server('HTTP_USER_AGENT'));
-
+        if(Request::ip())
+            $gamp->setIpOverride(Request::ip());
+        if(Request::server('HTTP_USER_AGENT'))
+            $gamp->setUserAgentOverride(Request::server('HTTP_USER_AGENT'));
         if($title)
             $gamp->setDocumentTitle($title);
         if(Request::server('HTTP_REFERER'))
