@@ -81,7 +81,6 @@
 
             <div class="col-md-6">
                 <meta itemprop="url" content="http://www.nityajaipur.com"/>
-                <meta itemprop="sameAs" content="https://plus.google.com/105229227002561113902"/>
                 <h3>Contact Us</h3>
                 <p class="small">Nitya is operated under license by Super Sales Agency having its registered office at:</p>
                 <p>
@@ -90,8 +89,8 @@
                     <strong>Email:</strong> @include('partials.email')
                 </p>
                 <p>
-                    <a class="btn btn-default btn-xs" href="https://www.facebook.com/nityajaipur" target="_blank">Facebook</a>
-                    <a class="btn btn-default btn-xs" href="https://google.com/+NityaEternalFashionJaipur" target="_blank">Google+</a>
+                    <a itemprop="sameAs" class="btn btn-default btn-xs" href="https://www.facebook.com/nityajaipur" target="_blank">Facebook</a>
+                    <a itemprop="sameAs" class="btn btn-default btn-xs" href="https://google.com/+NityaEternalFashionJaipur" target="_blank">Google+</a>
                 </p>
             </div>
         </div>
