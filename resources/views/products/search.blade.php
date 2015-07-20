@@ -23,7 +23,7 @@
 
 
     <div class="container">
-        <div class="row product-grid">
+        <div class="row">
             <p class="text-center lead">
                 @if(isset($query) && $query != "")
                     Found {{ $products->count() }} @if($products->count() > 1) products @else product @endif matching <strong><em>"{{ $query }}"</em></strong>
@@ -31,7 +31,8 @@
                     Search for a product.
                 @endif
             </p>
-
+        </div>
+        <div class="row product-grid">
             @foreach($products as $product)
                 <div class="col-sm-6 col-md-3">
                     @include('products.partials.thumbnail', ['product' => $product])
