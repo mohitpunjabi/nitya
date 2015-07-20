@@ -146,7 +146,7 @@
             </div>
         </div>
 
-        <div class="row hidden-sm">
+        <div class="row hidden-md hidden-lg">
             <br/><br/>
             @if($product->previous)
                     <div class="col-xs-6">

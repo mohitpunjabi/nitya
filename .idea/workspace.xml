@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0be400b8-82ec-4fcc-8ea4-779ee478c7f3" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/SitemapController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/SitemapController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/products/show.blade.php" afterPath="$PROJECT_DIR$/resources/views/products/show.blade.php" />
     </list>
     <ignored path="nitya.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -89,20 +89,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.blade.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="show.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/products/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.76923" vertical-offset="2665" max-vertical-offset="3281">
-              <caret line="187" column="11" selection-start-line="187" selection-start-column="11" selection-end-line="187" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.25487012" vertical-offset="2359" max-vertical-offset="3281">
+              <caret line="148" column="43" selection-start-line="148" selection-start-column="43" selection-end-line="148" selection-end-column="43" />
               <folding>
-                <marker date="1437424391495" expanded="true" signature="9:176" placeholder="..." />
-                <marker date="1437424391495" expanded="true" signature="17:175" placeholder="..." />
-                <marker date="1437424391495" expanded="true" signature="2892:3127" placeholder="..." />
-                <marker date="1437424391495" expanded="true" signature="2920:3126" placeholder="..." />
-                <marker date="1437424391495" expanded="true" signature="7065:7260" placeholder="..." />
-                <marker date="1437424391495" expanded="true" signature="7093:7259" placeholder="..." />
-                <marker date="1437424391495" expanded="true" signature="8658:8808" placeholder="..." />
-                <marker date="1437424391495" expanded="true" signature="8690:8807" placeholder="..." />
+                <marker date="1437425247469" expanded="true" signature="9:176" placeholder="..." />
+                <marker date="1437425247469" expanded="true" signature="17:175" placeholder="..." />
+                <marker date="1437425247469" expanded="true" signature="2892:3127" placeholder="..." />
+                <marker date="1437425247469" expanded="true" signature="2920:3126" placeholder="..." />
+                <marker date="1437425247469" expanded="true" signature="7065:7260" placeholder="..." />
+                <marker date="1437425247469" expanded="true" signature="7093:7259" placeholder="..." />
+                <marker date="1437425247469" expanded="true" signature="8668:8818" placeholder="..." />
+                <marker date="1437425247469" expanded="true" signature="8700:8817" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -144,10 +144,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SitemapController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SitemapController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SitemapController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5007949" vertical-offset="671" max-vertical-offset="1343">
+            <state vertical-scroll-proportion="-12.115385" vertical-offset="671" max-vertical-offset="1343">
               <caret line="63" column="59" selection-start-line="63" selection-start-column="59" selection-end-line="63" selection-end-column="59" />
               <folding />
             </state>
@@ -209,10 +209,10 @@
         <option value="$PROJECT_DIR$/resources/views/products/search.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/partials/navbar.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/app.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/products/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/contact.blade.php" />
         <option value="$PROJECT_DIR$/app/Product.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SitemapController.php" />
+        <option value="$PROJECT_DIR$/resources/views/products/show.blade.php" />
       </list>
     </option>
   </component>
@@ -828,23 +828,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/products/show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.76923" vertical-offset="2665" max-vertical-offset="3281">
-          <caret line="187" column="11" selection-start-line="187" selection-start-column="11" selection-end-line="187" selection-end-column="11" />
-          <folding>
-            <marker date="1437424391495" expanded="true" signature="9:176" placeholder="..." />
-            <marker date="1437424391495" expanded="true" signature="17:175" placeholder="..." />
-            <marker date="1437424391495" expanded="true" signature="2892:3127" placeholder="..." />
-            <marker date="1437424391495" expanded="true" signature="2920:3126" placeholder="..." />
-            <marker date="1437424391495" expanded="true" signature="7065:7260" placeholder="..." />
-            <marker date="1437424391495" expanded="true" signature="7093:7259" placeholder="..." />
-            <marker date="1437424391495" expanded="true" signature="8658:8808" placeholder="..." />
-            <marker date="1437424391495" expanded="true" signature="8690:8807" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/contact.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.615385" vertical-offset="302" max-vertical-offset="1581">
@@ -867,9 +850,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SitemapController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5007949" vertical-offset="671" max-vertical-offset="1343">
+        <state vertical-scroll-proportion="-12.115385" vertical-offset="671" max-vertical-offset="1343">
           <caret line="63" column="59" selection-start-line="63" selection-start-column="59" selection-end-line="63" selection-end-column="59" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/products/show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25487012" vertical-offset="2359" max-vertical-offset="3281">
+          <caret line="148" column="43" selection-start-line="148" selection-start-column="43" selection-end-line="148" selection-end-column="43" />
+          <folding>
+            <marker date="1437425247469" expanded="true" signature="9:176" placeholder="..." />
+            <marker date="1437425247469" expanded="true" signature="17:175" placeholder="..." />
+            <marker date="1437425247469" expanded="true" signature="2892:3127" placeholder="..." />
+            <marker date="1437425247469" expanded="true" signature="2920:3126" placeholder="..." />
+            <marker date="1437425247469" expanded="true" signature="7065:7260" placeholder="..." />
+            <marker date="1437425247469" expanded="true" signature="7093:7259" placeholder="..." />
+            <marker date="1437425247469" expanded="true" signature="8668:8818" placeholder="..." />
+            <marker date="1437425247469" expanded="true" signature="8700:8817" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
