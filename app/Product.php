@@ -38,7 +38,11 @@ class Product extends Model {
     }
 
     public function scopeVisibleToUser($query, $order = true) {
-        if(Auth::user()) return $query->latest();
+        if(Auth::user()) {
+            if($order) return $query->latest();
+            return $query;
+        }
+
         $catalogues = ['public'];
         if(Session::has('catalogue')) array_push($catalogues, Session::get('catalogue')->name);
         $query = $query->available()->whereHas('catalogues', function($q) use (&$catalogues) {
