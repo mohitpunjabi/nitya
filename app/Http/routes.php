@@ -32,7 +32,6 @@ Route::get('about', function()
 Route::get('contact', function()
 {
     return view('contact', [
-        'title' => 'Reach out to us',
         'subtitle' => 'To view more products, place an order or get price details, please reach out to us.',
         'showMap'  => true
     ]);

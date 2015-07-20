@@ -1,5 +1,5 @@
 @extends('app', [
-    'title' =>(($title)? $title: 'Reach out to us')
+    'title' =>(isset($title)? $title: 'Contact us')
 ])
 
 @section('content')
@@ -20,11 +20,10 @@
             <div class="col-md-10 col-md-offset-1">
                 @if($showMap)
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1778.753091362584!2d75.82467900000002!3d26.919163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db40b8621fc49%3A0x83d5ac3f3306edad!2sNitya+-+Eternal+Fashion%2C+132%2C+Pitaliyon+Ka+Chowk+Johari+Bazar%2C+Jaipur%2C+Rajasthan+302003!5e0!3m2!1sen!2sin!4v1436886358710" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    <br/><br/>
                 @endif
             </div>
         </div>
-
-        <br/><br/>
 
         <div class="row">
             <div class="col-md-4 col-md-offset-1 text-center">
@@ -75,7 +74,7 @@
                             <p>Your enquiry has been sent. We will get back to you as soon as we can.</p>
                         </div>
                     @else
-                        <h1>Write to us</h1>
+                        <h2>Write to us</h2>
                         <p class="lead">
                             If you have any queries or feedback for us, please fill out the details below.
                         </p>
@@ -85,6 +84,7 @@
             </div>
         </div>
     </div>
+    <br/>
 @endsection
 
 @section('script')

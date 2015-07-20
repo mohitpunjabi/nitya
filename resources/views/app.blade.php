@@ -15,7 +15,7 @@
     <meta name="robots" content="{{ (isset($noIndex))? 'noindex, nofollow': 'index, follow'  }}" />
     <meta name="author" content="{{ $author or 'Nitya - Eternal Fashion' }}" />
     <meta property="og:image" content="{{ $ogImage or asset('img/default-og-image.jpg') }}"/>
-    <meta property="og:title" content="{{ $title or 'Nitya - Eternal Fashion' }}" />
+    <meta property="og:title" content="@if(isset($title)) {{ $title }} | @endif Nitya - Eternal Fashion" />
     <meta property="og:description" content="{{ $metaDescription or '' }}" />
     <meta property="og:url" content="{{ Request::url() }}"/>
     <meta property="og:site_name" content="Nitya - Eternal Fashion"/>
@@ -88,7 +88,8 @@
                     @include('partials.address')
                     <strong>Ph:</strong> @include('partials.phone'), @include('partials.mobiles') <br/>
                     <strong>Email:</strong> @include('partials.email')
-                    <br/>
+                </p>
+                <p>
                     <a class="btn btn-default btn-xs" href="https://www.facebook.com/nityajaipur" target="_blank">Facebook</a>
                     <a class="btn btn-default btn-xs" href="https://google.com/+NityaEternalFashionJaipur" target="_blank">Google+</a>
                 </p>
