@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col-md-6">
         <div class="thumbnails-added clearfix">
@@ -5,6 +6,7 @@
                 @foreach($product->images as $image)
                     <div class="thumbnail col-sm-3">
                         <img class="img img-responsive" src="{{ asset('img/sm/'.$image->name) }}"/>
+                        <a href="{{ url('products/' . $product->id . '/removeImage/' . $image->id) }}" class="btn btn-xs btn-block btn-danger">&times; Remove</a>
                     </div>
                 @endforeach
             @endif
@@ -21,6 +23,13 @@
     </div>
 
     <div class="col-md-6">
+        <div>
+            {!! Form::checkbox('available', null, ['class' => 'form-control']) !!}
+            {!! Form::label('available', 'This product is available') !!}
+            <label class="help-block"></label>
+            @if($errors->first('available')) <div class="alert alert-danger">{{ $errors->first('available') }}</div> @endif
+        </div>
+
         <div>
             {!! Form::label('design_no', 'Design No.') !!}
             {!! Form::text('design_no', null, ['class' => 'form-control', 'placeholder' => 'Design No.']) !!}
@@ -68,13 +77,6 @@
             {!! Form::text('rinse_care', null, ['class' => 'form-control', 'placeholder' => 'Rinse Care']) !!}
             <label class="help-block"></label>
             @if($errors->first('rinse_care')) <div class="alert alert-danger">{{ $errors->first('rinse_care') }}</div> @endif
-        </div>
-
-        <div>
-            {!! Form::checkbox('available', null, ['class' => 'form-control']) !!}
-            {!! Form::label('available', 'This product is available') !!}
-            <label class="help-block"></label>
-            @if($errors->first('available')) <div class="alert alert-danger">{{ $errors->first('available') }}</div> @endif
         </div>
 
         <div>

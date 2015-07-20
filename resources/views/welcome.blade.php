@@ -8,6 +8,7 @@
         <div class="container" itemscope itemtype="http://schema.org/Brand">
             <meta itemprop="name" content="Nitya - Eternal Fashion"/>
             <meta itemprop="sameAs" content="https://plus.google.com/105229227002561113902"/>
+            <meta itemprop="sameAs" content="https://facebook.com/nityajaipur"/>
             <p>
                 <img itemprop="logo" src="{{ asset('img/nitya-logo.png') }}" alt="Nitya - Eternal Fashion" title="Nitya - Eternal Fashion">
             </p>

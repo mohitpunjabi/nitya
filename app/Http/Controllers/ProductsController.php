@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ProductRequest;
 use App\Product;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
@@ -99,10 +98,16 @@ class ProductsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Product $product)
 	{
-		//
+		$product->delete();
+        return redirect()->route('products.index');
 	}
+
+    public function removeImage(Product $product, \App\Image $image) {
+        $image->delete();
+        return redirect()->back();
+    }
 
     public function search(Request $request) {
         $searchTerm = $request->get('q');

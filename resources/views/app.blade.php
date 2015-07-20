@@ -24,7 +24,7 @@
 
     <link rel="icon" type="image/ico" href="{{ asset('favicon.png') }}" />
     <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
-    <link href="https://plus.google.com/105229227002561113902" rel="publisher" />
+    <link href="https://plus.google.com/+NityaEternalFashionJaipur" rel="publisher" />
 	<!-- Fonts -->
 	<!-- <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> -->
 
@@ -40,6 +40,17 @@
     </script>
 </head>
 <body>
+
+<div id="fb-root"></div>
+
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1634783170140278";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
     @include('partials.navbar')
 
 	@yield('content')
@@ -63,6 +74,9 @@
                 <p>
                     Our vision is to change the local to global by bringing Jaipuri prints and embroidery to the world with trending fashion.
                 </p>
+                <p>
+                <div class="fb-like" data-href="https://facebook.com/nityajaipur" data-layout="standard" data-colorscheme="dark" data-action="like" data-show-faces="true" data-share="true"></div>
+                </p>
             </div>
 
             <div class="col-md-6">
@@ -72,10 +86,11 @@
                 <p class="small">Nitya is operated under license by Super Sales Agency having its registered office at:</p>
                 <p>
                     @include('partials.address')
-                </p>
-                <p>
-                    Ph: @include('partials.phone'), @include('partials.mobiles') <br/>
-                    Email: @include('partials.email')
+                    <strong>Ph:</strong> @include('partials.phone'), @include('partials.mobiles') <br/>
+                    <strong>Email:</strong> @include('partials.email')
+                    <br/>
+                    <a class="btn btn-default btn-xs" href="https://www.facebook.com/nityajaipur" target="_blank">Facebook</a>
+                    <a class="btn btn-default btn-xs" href="https://google.com/+NityaEternalFashionJaipur" target="_blank">Google+</a>
                 </p>
             </div>
         </div>
