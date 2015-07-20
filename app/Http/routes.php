@@ -60,4 +60,6 @@ Route::get('catalogues/{catalogues}/remove', 'CataloguesController@remove');
 Route::resource('catalogues', 'CataloguesController');
 Route::resource('enquiries', 'EnquiriesController');
 
+Route::get('search', 'SearchController@search');
+
 Route::get('{access_key}', 'CataloguesController@showCatalogue');

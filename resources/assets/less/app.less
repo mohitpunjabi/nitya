@@ -78,12 +78,26 @@ h1, h2, h3, h4, h5 {
 
 .navbar {
 
+  .navbar-form {
+    display: none;
+    font-weight: 200;
+
+    @media screen and (max-width: @screen-xs-max) {
+      margin: 0;
+      padding: 5px;
+    }
+  }
+
+
   & .dropdown-menu {
 //    background: #fff;
   }
   &-solid:extend(.navbar-default) {
     background-color: #fff;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
+    .navbar-form {
+      display: block;
+    }
   }
 
   transition: all 0.3s ease 0s;
