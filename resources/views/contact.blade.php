@@ -86,12 +86,3 @@
     </div>
     <br/>
 @endsection
-
-@section('script')
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script type="text/javascript">
-        $(function(){
-            document.getElementsByClassName('g-page')[0].setAttribute('data-width', document.getElementById('google-badge').clientWidth);
-        });
-    </script>
-@endsection

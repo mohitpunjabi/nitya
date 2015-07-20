@@ -146,6 +146,30 @@
             </div>
         </div>
 
+        <div class="row hidden-sm">
+            <br/><br/>
+            @if($product->previous)
+                    <div class="col-xs-6">
+                        <a href="{{ url_product($product->previous) }}" class="btn btn-lg btn-block btn-default">
+                            <i class="glyphicon glyphicon-chevron-left"></i> Previous
+                        </a>
+                    </div>
+            @endif
+            @if($product->next)
+                    <div class="col-xs-6">
+                        <a href="{{ url_product($product->next) }}" class="btn btn-lg btn-block btn-primary">
+                            Next <i class="glyphicon glyphicon-chevron-right"></i>
+                        </a>
+                    </div>
+            @else
+                    <div class="col-xs-6">
+                        <a href="{{ url('more') }}" class="btn btn-lg btn-block btn-info">
+                            Next <i class="glyphicon glyphicon-chevron-right"></i>
+                        </a>
+                    </div>
+            @endif
+        </div>
+
     </div>
     <div class="container">
         <h3 class="page-header">You might also like</h3>
