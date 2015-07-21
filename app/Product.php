@@ -59,7 +59,10 @@ class Product extends Model {
             ->where(function($q) use (&$searchTerm) {
             $q->where('design_no', 'like', "%$searchTerm%")
                 ->orWhere('name', 'like', "%$searchTerm%")
-                ->orWhere('description', 'like', "%$searchTerm%");
+                ->orWhere('description', 'like', "%$searchTerm%")
+                ->orWhere('fabric', 'like', "%$searchTerm%")
+                ->orWhere('length', 'like', "%$searchTerm%")
+                ->orWhere('rinse_care', 'like', "%$searchTerm%");
         });
     }
 

@@ -149,6 +149,7 @@ return [
         'Irazasyed\LaravelGAMP\LaravelGAMPServiceProvider',
         'Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider',
         'Roumen\Sitemap\SitemapServiceProvider',
+        'Barryvdh\Debugbar\ServiceProvider',
 	],
 
 	/*
@@ -199,7 +200,8 @@ return [
         'Html'      => 'Illuminate\Html\HtmlFacade',
         'Form'      => 'Illuminate\Html\FormFacade',
         'Image'     => 'Intervention\Image\Facades\Image',
-        'GAMP'      => 'Irazasyed\LaravelGAMP\Facades\GAMP'
+        'GAMP'      => 'Irazasyed\LaravelGAMP\Facades\GAMP',
+        'Debugbar'  => 'Barryvdh\Debugbar\Facade'
 
 	],
 
