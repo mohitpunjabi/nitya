@@ -69,7 +69,7 @@
                     <li class="navbar-form">
                         {!! Form::open(['method' => 'GET', 'class' => 'navbar-form navbar-right', 'url' => 'search', 'role' => 'search']) !!}
                         <div class="input-group">
-                            <input type="text" class="form-control" name="q" value="{{ $query or '' }}" placeholder="Search" size="30" />
+                            <input type="text" class="form-control" name="q" value="{{ $query or '' }}" placeholder="Search" size="50" />
                             <span class="input-group-btn">
                                 <button class="btn btn-sm btn-info" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                             </span>
