@@ -7,13 +7,20 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <br/>
-                <h1 class="page-header">All Enquiries</h1>
+                <h1 class="page-header">
+                    All Enquiries
+                    @if(isset($showingRead) && $showingRead)
+                        <a class="btn btn-default pull-right" href="{{ url('enquiries') }}">Hide read enquiries</a>
+                    @else
+                        <a class="btn btn-default pull-right" href="{{ url('enquiries/read') }}">Show read enquiries</a>
+                    @endif
+                </h1>
 
                     @if($enquiries->isEmpty())
                         <p>There are no enquiries yet.</p>
                     @endif
                     @foreach($enquiries as $enquiry)
-                        <div class="row enquiry">
+                        <div class="row enquiry @unless($enquiry->trashed()) well well-sm @endunless">
                             <div class="col-xs-3 col-sm-2">
                                 @if(isset($enquiry->product))
                                     @include('products.partials.thumbnail', [
@@ -23,7 +30,17 @@
                                 @endif
                             </div>
                             <div class="col-xs-9 col-sm-10">
-                                <a class="btn btn-primary pull-right btn-reply" href="mailto:{{ $enquiry->email }}">Reply</a>
+
+                                {!! Form::open(['method' => 'DELETE', 'route' => ['enquiries.destroy', $enquiry], 'class' => 'pull-right']) !!}
+                                    @if($enquiry->trashed())
+                                        <button class="btn btn-info btn-xs" type="submit" title="Mark unread"><i class="glyphicon glyphicon-unchecked"></i> Mark as unread</button>
+                                    @else
+                                        <button class="btn btn-warning btn-xs" type="submit" title="Mark read"><i class="glyphicon glyphicon-check"></i> Mark as read</button>
+                                    @endif
+                                {!! Form::close() !!}
+
+                                <a target="_blank" class="btn btn-primary btn-xs pull-right btn-reply" href="mailto:{{ $enquiry->email }}"><i class="glyphicon glyphicon-share-alt"></i> Reply</a>
+
                                 <p class="lead">{!! nl2br(htmlentities($enquiry->message)) !!}</p>
                                 <p class="small text-muted">{{ $enquiry->created_at->diffForHumans() }}</p>
 
@@ -34,7 +51,6 @@
                                 </p>
                             </div>
                         </div>
-                        <hr/>
                     @endforeach
                 <br/>
 

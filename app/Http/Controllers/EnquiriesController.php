@@ -20,11 +20,19 @@ class EnquiriesController extends Controller {
 	 */
 	public function index()
 	{
-		$enquiries = Enquiry::with('product')->latest()->paginate(10);
+		$enquiries = Enquiry::with('product')->latest()->paginate(20);
         return view('enquiries.index', compact('enquiries'));
 	}
 
-	/**
+    public function read()
+    {
+        $enquiries = Enquiry::with('product')->withTrashed()->latest()->paginate(10);
+        $showingRead = true;
+        return view('enquiries.index', compact('enquiries', 'showingRead'));
+    }
+
+
+    /**
 	 * Store a newly created resource in storage.
 	 *
 	 * @return Response
@@ -52,5 +60,22 @@ class EnquiriesController extends Controller {
 	{
 		//
 	}
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param Enquiry $enquiry
+     * @return Response
+     * @throws \Exception
+     * @internal param int $id
+     */
+    public function destroy($id)
+    {
+        $enquiry = Enquiry::withTrashed()->findOrFail($id);
+        if($enquiry->trashed()) $enquiry->restore();
+        else                    $enquiry->delete();
+        return redirect()->back();
+    }
+
 
 }

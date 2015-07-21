@@ -58,6 +58,8 @@ Route::get('products/{products}/removeImage/{images}', 'ProductsController@remov
 Route::post('catalogues/{catalogues}/add', 'CataloguesController@add');
 Route::get('catalogues/{catalogues}/remove', 'CataloguesController@remove');
 Route::resource('catalogues', 'CataloguesController');
+
+Route::get('enquiries/read', 'EnquiriesController@read');
 Route::resource('enquiries', 'EnquiriesController');
 
 Route::get('search', 'SearchController@search');
