@@ -21,6 +21,9 @@ class CataloguesController extends Controller {
 	public function index()
 	{
         $catalogues = Catalogue::all();
+        $catalogues->load(['products' => function($query) {
+            $query->with('images');
+        }]);
         return view('catalogues.index', compact('catalogues'));
 	}
 

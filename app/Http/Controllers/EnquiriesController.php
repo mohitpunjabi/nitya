@@ -20,15 +20,24 @@ class EnquiriesController extends Controller {
 	 */
 	public function index()
 	{
-		$enquiries = Enquiry::with('product')->latest()->paginate(20);
+		$enquiries = $this->getEnquiries(false);
         return view('enquiries.index', compact('enquiries'));
 	}
 
     public function read()
     {
-        $enquiries = Enquiry::with('product')->withTrashed()->latest()->paginate(10);
+        $enquiries = $this->getEnquiries(true);
         $showingRead = true;
         return view('enquiries.index', compact('enquiries', 'showingRead'));
+    }
+
+    private function getEnquiries($trashed) {
+        $enquiries = Enquiry::with(['product' => function($query) {
+            $query->with('images');
+        }]);
+        if($trashed) $enquiries = $enquiries->withTrashed();
+
+        return $enquiries->latest()->paginate(20);
     }
 
 

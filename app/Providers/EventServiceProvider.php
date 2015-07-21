@@ -3,6 +3,7 @@
 use App\Product;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Cache;
 
 class EventServiceProvider extends ServiceProvider {
 
@@ -29,7 +30,6 @@ class EventServiceProvider extends ServiceProvider {
 
 
         Product::saved(function($product) {
-            dd($product);
             Cache::flush();
         });
     }
