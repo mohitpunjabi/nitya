@@ -27,7 +27,7 @@ class ProductsController extends Controller {
 	 */
 	public function index()
 	{
-        $products = Product::visibleToUser()->get();
+        $products = Product::visibleToUser()->with(Product::getAssociatedModels())->get();
 
         return view('products.index', compact('products'));
 	}
@@ -64,6 +64,7 @@ class ProductsController extends Controller {
 	public function show(Product $product, $slug = '')
 	{
         if($slug !== $product->slug) return redirect(url_product($product));
+        $product->load(Product::getAssociatedModels());
 		return view('products.show', compact('product'));
 	}
 
@@ -111,7 +112,7 @@ class ProductsController extends Controller {
 
     public function search(Request $request) {
         $searchTerm = $request->get('q');
-        return Product::search($searchTerm)->with('images', 'catalogues')->get();
+        return Product::search($searchTerm)->with(Product::getAssociatedModels())->get();
     }
 
 

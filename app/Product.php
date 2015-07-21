@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
 
 class Product extends Model {
@@ -63,19 +64,47 @@ class Product extends Model {
                 ->orWhere('fabric', 'like', "%$searchTerm%")
                 ->orWhere('length', 'like', "%$searchTerm%")
                 ->orWhere('rinse_care', 'like', "%$searchTerm%");
-        });
+        })->with(Product::getAssociatedModels());
+    }
+
+    private function getCacheKey($attribute) {
+        $attrKey = Session::get('catalogue')? Session::get('catalogue')->id: '';
+        if(Auth::user()) $attrKey .= 'admin';
+        $attrKey = $attribute . '_' . $this->id . '_' . $attrKey;
+        return $attrKey;
     }
 
     public function getPreviousAttribute() {
-        return Product::visibleToUser(false)->where('created_at', '>', $this->created_at)->orderBy('created_at', 'asc')->first();
+        return Cache::remember($this->getCacheKey('prev'), 120, function() {
+            return Product::visibleToUser(false)
+                ->where('created_at', '>', $this->created_at)
+                ->orderBy('created_at', 'asc')
+                ->first();
+        });
     }
 
     public function getNextAttribute() {
-        return Product::visibleToUser(false)->where('created_at', '<', $this->created_at)->orderBy('created_at', 'desc')->first();
+        return Cache::remember($this->getCacheKey('next'), 120, function() {
+            return Product::visibleToUser(false)
+                ->where('created_at', '<', $this->created_at)
+                ->orderBy('created_at', 'desc')
+                ->first();
+        });
     }
 
     public function getSimilarProductsAttribute() {
-        return Product::visibleToUser(false)->where('id', '!=', $this->id)->orderByRaw('RAND()')->limit(4)->get();
+        return Cache::remember('similar_' . $this->id, 120, function() {
+            return Product::visibleToUser(false)
+                ->where('id', '!=', $this->id)->orderByRaw('RAND()')
+                ->limit(4)
+                ->with(Product::getAssociatedModels())
+                ->get();
+        });
+    }
+
+    public static function getAssociatedModels() {
+        if(Auth::user()) return ['images', 'catalogues'];
+        return ['images'];
     }
 
     public function getCatalogueListAttribute() {

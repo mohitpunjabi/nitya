@@ -24,7 +24,7 @@ class WelcomeController extends Controller {
 	public function index()
 	{
         if(Auth::user()) return redirect('enquiries');
-        $products = Product::visibleToUser()->take(4)->get();
+        $products = Product::visibleToUser()->with('images')->take(4)->get();
 		return view('welcome', compact('products'));
 	}
 

@@ -10,7 +10,8 @@ function url_product($product) {
 }
 
 function ga($title = null) {
-    if(Auth::guest()) {
+
+    if(!config('app.debug')) {
         $gamp = GAMP::setClientId(Session::getId());
         $gamp->setDocumentPath(Request::getPathInfo());
         if(Request::ip())

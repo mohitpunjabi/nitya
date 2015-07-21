@@ -5,34 +5,34 @@
 ])
 
 @section('content')
-<div itemscope itemtype="http://schema.org/Product">
+    <div itemscope itemtype="http://schema.org/Product">
     <meta itemprop="url" content="{{ url_product($product) }}"/>
-    @if($product->previous)
-        <a href="{{ url_product($product->previous) }}">
-            <div class="paginate-col pull-left hidden-sm hidden-xs">
-                <div class="paginate-button">
-                    <i class="glyphicon glyphicon-circle-arrow-left"></i>
+        @if($product->previous)
+            <a href="{{ url_product($product->previous) }}">
+                <div class="paginate-col pull-left hidden-sm hidden-xs">
+                    <div class="paginate-button">
+                        <i class="glyphicon glyphicon-circle-arrow-left"></i>
+                    </div>
                 </div>
-            </div>
-        </a>
-    @endif
-    @if($product->next)
-        <a href="{{ url_product($product->next) }}">
-            <div class="paginate-col pull-right hidden-sm hidden-xs">
-                <div class="paginate-button">
-                    <i class="glyphicon glyphicon-circle-arrow-right"></i>
+            </a>
+        @endif
+        @if($product->next)
+            <a href="{{ url_product($product->next) }}">
+                <div class="paginate-col pull-right hidden-sm hidden-xs">
+                    <div class="paginate-button">
+                        <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                    </div>
                 </div>
-            </div>
-        </a>
-    @else
-        <a href="{{ url('more') }}">
-            <div class="paginate-col pull-right hidden-sm hidden-xs">
-                <div class="paginate-button">
-                    <i class="glyphicon glyphicon-circle-arrow-right"></i>
+            </a>
+        @else
+            <a href="{{ url('more') }}">
+                <div class="paginate-col pull-right hidden-sm hidden-xs">
+                    <div class="paginate-button">
+                        <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                    </div>
                 </div>
-            </div>
-        </a>
-    @endif
+            </a>
+        @endif
 
     <div class="jumbotron jumbotron-sm">
         <meta itemprop="productID" content="{{ $product->design_no }}"/>
