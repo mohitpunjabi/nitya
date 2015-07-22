@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{{ $title or 'Manufacturers and wholesalers of Jaipuri kurtis and dress material' }} | Nitya - Eternal Fashion</title>
+	<title>@unless(isset($title) && $title != '') Nitya - Eternal Fashion | Manufacturers and wholesalers of kurtis @else {{ $title }} | Nitya - Eternal Fashion @endif</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

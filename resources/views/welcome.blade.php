@@ -1,6 +1,5 @@
 @extends('app', [
     'stickyNav' => true,
-    'title'     => 'Kurti Wholesalers and Manufacturers'
 ])
 
 @section('content')
