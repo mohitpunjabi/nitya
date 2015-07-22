@@ -18,6 +18,8 @@ class AddFieldsToProducts extends Migration {
             $table->string('neckline')->nullable()->default(null);
             $table->string('fabric')->nullable()->default(null);
             $table->string('rinse_care')->nullable()->default(null);
+            $table->string('sizes')->nullable()->default(null);
+            $table->string('price')->nullable()->default(null);
 		});
 	}
 
@@ -34,6 +36,8 @@ class AddFieldsToProducts extends Migration {
             $table->dropColumn('neckline');
             $table->dropColumn('fabric');
             $table->dropColumn('rinse_care');
+            $table->dropColumn('sizes');
+            $table->dropColumn('price');
 		});
 	}
 
