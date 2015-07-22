@@ -51,6 +51,13 @@
             @if($errors->first('short_description')) <div class="alert alert-danger">{{ $errors->first('short_description') }}</div> @endif
         </div>
 
+<div>
+            {!! Form::label('sizes', 'Sizes Available') !!}
+            {!! Form::text('sizes', null, ['class' => 'form-control', 'placeholder' => 'Sizes Available']) !!}
+            <label class="help-block">Sizes separated by comma (Eg: M, L, XL, XXL, 3XL)</label>
+            @if($errors->first('sizes')) <div class="alert alert-danger">{{ $errors->first('sizes') }}</div> @endif
+        </div>
+
         <div>
             {!! Form::label('length', 'Length') !!}
             {!! Form::text('length', null, ['class' => 'form-control', 'placeholder' => 'Length']) !!}

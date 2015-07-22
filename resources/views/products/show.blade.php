@@ -79,10 +79,12 @@
                             <td itemprop="value">{{ $product->design_no }}</td>
                         </tr>
 
-                        <tr itemprop="additionalProperty" itemscope itemtype="http://schema.org/PropertyValue">
-                            <th itemprop="name">Available Sizes</th>
-                            <td itemprop="value"><abbr title="38&quot;">M</abbr>, <abbr title="40&quot;">L</abbr>, <abbr title="42&quot;">XL</abbr>, <abbr title="44&quot;">XXL</abbr>, <abbr title="46&quot;">3XL</abbr></td>
-                        </tr>
+                        @if($product->sizes)
+                            <tr itemprop="additionalProperty" itemscope itemtype="http://schema.org/PropertyValue">
+                                <th itemprop="name">Available Sizes</th>
+                                <td itemprop="value">{{ $product->sizes }}</td>
+                            </tr>
+                        @endif
 
                         @if($product->length)
                             <tr itemprop="additionalProperty" itemscope itemtype="http://schema.org/PropertyValue">

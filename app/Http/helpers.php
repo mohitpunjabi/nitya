@@ -9,17 +9,26 @@ function url_product($product) {
     return url('products/' . $product->id . '/' . $product->slug);
 }
 
-function ga($title = null) {
+function getCurrentPath() {
+    return (Request::getPathInfo() . (Request::getQueryString() ? ('?' . Request::getQueryString()) : ''));
+    // return str_replace(url(), '', Request::fullUrl());
+}
 
+function ga($title = null) {
     if(!config('app.debug')) {
         $gamp = GAMP::setClientId(Session::getId());
-        $gamp->setDocumentPath(Request::getPathInfo());
+        
+        $gamp->setDocumentPath(getCurrentPath());
+        $gamp->setDocumentLocationUrl(Request::fullUrl());
         if(Request::ip())
             $gamp->setIpOverride(Request::ip());
         if(Request::server('HTTP_USER_AGENT'))
             $gamp->setUserAgentOverride(Request::server('HTTP_USER_AGENT'));
-        if($title)
+        
+        if(Auth::user()) $title = 'Admin ' . $title;
+        if($title) 
             $gamp->setDocumentTitle($title);
+
         if(Request::server('HTTP_REFERER'))
             $gamp->setDocumentReferrer(Request::server('HTTP_REFERER'));
 
