@@ -12,10 +12,11 @@ class Product extends Model {
         'name',
         'description',
         'available',
+        'sizes',
         'length',
         'neckline',
         'fabric',
-        'rinse_care'
+        'rinse_care',
     ];
 
     public function images()
