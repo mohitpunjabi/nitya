@@ -65,3 +65,7 @@ Route::resource('enquiries', 'EnquiriesController');
 Route::get('search', 'SearchController@search');
 
 Route::get('{access_key}', 'CataloguesController@showCatalogue');
+
+/*\App\Image::all()->each(function($image) {
+    echo $image->name;
+});*/

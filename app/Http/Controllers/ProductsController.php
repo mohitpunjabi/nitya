@@ -137,9 +137,10 @@ class ProductsController extends Controller {
                      '-' . str_random(6) .
                      '.' . $image->getClientOriginalExtension();
         Image::make($image)
-            ->heighten(2000)->save('img/lg/' . $imageName)
-            ->heighten(800)->save('img/md/' . $imageName)
-            ->heighten(120)->save('img/sm/' . $imageName);
+            ->heighten(2000, function($constraint) { $constraint->upsize(); })->save('img/lg/' . $imageName)
+            ->widen(650, function($constraint) { $constraint->upsize(); })->save('img/md/' . $imageName)
+            ->widen(400)->save('img/sm/' . $imageName)
+            ->heighten(120)->save('img/xs/' . $imageName);
 
         return $imageName;
     }

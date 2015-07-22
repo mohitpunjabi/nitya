@@ -3,7 +3,7 @@
      itemscope itemtype="http://schema.org/Product">
     <div class="img-container">
         @if(isset($product->images[0]))
-            <img itemprop="image" class="img img-responsive" src="{{ asset('img/md/' . $product->images[0]->name) }}" alt="{{ $product->name }}">
+            <img itemprop="image" class="img img-responsive product-image center-block" src="{{ asset('img/nitya-default-product-img.png') }}" data-source="{{ $product->images[0]->name }}" alt="{{ $product->name }}">
         @endif
         <a href="{{ url_product($product) }}"itemprop="url" class="detail-link" title="{{ $product->name }}">
             <span>View details</span>

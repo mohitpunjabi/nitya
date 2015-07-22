@@ -36,3 +36,22 @@
 
     </div>
 @endsection
+
+@section('script')
+
+    <script type="text/javascript">
+        $(function() {
+            $('.thumbnail-product').each(function() {
+                var $this = $(this);
+                var $productImage = $this.find('.product-image');
+                var imageSrc = $productImage.data('source');
+                var width = $this.width();
+                var folder = 'md';
+                if(width <= 120) folder = 'xs';
+                else if(width <= 400) folder = 'sm'
+                imageSrc = url('img/' + folder + '/' + imageSrc);
+                $productImage.attr('src', imageSrc);
+            });
+        });
+    </script>
+@endsection
