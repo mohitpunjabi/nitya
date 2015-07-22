@@ -22,7 +22,7 @@
     </div>
 
     <div class="container">
-        <h2 class="text-center">About Us</h2>
+        <h1 class="text-center">Nitya - Eternal Fashion</h1>
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <p class="text-center lead">We bring traditional Jaipuri prints and embroidery to the world with trending fashion.</p>
