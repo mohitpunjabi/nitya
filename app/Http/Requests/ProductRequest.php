@@ -21,13 +21,28 @@ class ProductRequest extends Request {
 	 * @return array
 	 */
 	public function rules()
-	{
-		return [
+    {
+        return [
             'design_no' => 'required',
-            'name'      => 'required',
+            'name' => 'required',
             'description' => 'required',
-            'images'     => 'required'
-		];
-	}
+            'images' => 'required'
+        ];
+    }
+    public function all()
+    {
+        $data = parent::all();
+        $data['name'] = ucwords(strtolower($data['name']));
+        $data['fabric'] = ucwords(strtolower($data['fabric']));
+        $data['sizes'] = strtoupper($data['sizes']);
+        $data['length'] = ucwords(strtolower($data['length']));
+        $data['neckline'] = ucwords(strtolower($data['neckline']));
+        $data['rinse_care'] = ucwords(strtolower($data['rinse_care']));
+        $data['description'] = preg_replace_callback('/([.!?])\s*(\w)/', function ($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(strtolower($data['description'])));
+
+        return $data;
+    }
 
 }
