@@ -152,7 +152,7 @@
                         @endif
                 </div>
 
-                <div id="enquire" class="enquiry-form">
+                <div id="enquire" class="enquiry-form" style="display: none">
                     <h2 class="media-heading">Need more details?</h2>
                     <p>Please fill out your contact details, and we shall get back to you.</p>
                     @include('enquiries.partials.form', [
