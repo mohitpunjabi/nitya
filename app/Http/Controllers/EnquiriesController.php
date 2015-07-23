@@ -52,15 +52,15 @@ class EnquiriesController extends Controller {
 	{
         Session::put('user_info', $request->only(['name', 'email', 'contact', 'message']));
 		$enquiry = new Enquiry($request->all());
+        $product = null;
         if($request->has('product_id')) {
-            Product::find($request->input('product_id'))
-                ->enquiries()
-                ->save($enquiry);
+            $product = Product::find($request->input('product_id'));
+            $product->enquiries()->save($enquiry);
         } else {
             $enquiry->save();
         }
 
-        Mail::queue('emails.enquiry', compact('enquiry'), function($message) use ($enquiry)
+        Mail::queue('emails.enquiry', compact('enquiry', 'product'), function($message) use ($enquiry)
         {
             $admin = User::first();
             $message->to($admin->email, 'Nitya - Eternal Fashion');

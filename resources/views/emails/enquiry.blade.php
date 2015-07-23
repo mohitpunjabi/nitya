@@ -1,8 +1,8 @@
-@if(isset($enquiry['product']))
+@if(isset($product))
     <p>
         <strong>Product: </strong>
-        <a href="{{ url_product($enquiry['product']) }}" title="{{ $enquiry['product']['name'] }}">
-            {{ $enquiry['product']['design_no'] }} - {{ $enquiry['product']['name'] }}
+        <a href="{{ url('products/' . $product['id']) }}" title="{{ $product['name'] }}">
+            {{ $product['design_no'] }} - {{ $product['name'] }}
         </a>
     </p>
 @endif
