@@ -27,13 +27,17 @@ class EnquiryRequest extends Request {
             'email'   => 'required|email',
             'contact' => 'required',
             'message' => 'required',
-            'product_id' => 'exists:products,id'
+            'product_id' => 'exists:products,id',
 		];
 	}
 
     public function all()
     {
         $data = parent::all();
+
+        if(isset($data['i_am_not_human'])) abort(404);
+        if($data['leave_blank'] !== '') abort(404);
+
         $data['name'] = ucwords(strtolower($data['name']));
         $data['email'] = strtolower($data['email']);
 

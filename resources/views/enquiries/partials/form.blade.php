@@ -3,7 +3,8 @@
 @if(isset($product))
     {!! Form::hidden('product_id', $product->id, []) !!}
 @endif
-
+    {!! Form::checkbox('i_am_not_human', 'no', null, ['class' => 'hidden']) !!}
+    {!! Form::text('leave_blank', '', ['class' => 'hidden', 'placeholder' => 'Leave this field blank']) !!}
 <div>
     {!! Form::text('name', Session::get('user_info.name', null), ['class' => 'form-control input-lg', 'placeholder' => 'Name', 'required' => 'required']) !!}
     <label class="help-block"></label>
