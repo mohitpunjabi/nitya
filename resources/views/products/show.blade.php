@@ -58,6 +58,22 @@
             <div class="col-md-5 col-lg-4">
                 <div id="zoomView">
                 </div>
+
+                <ol class="breadcrumb" style="background: transparent; border: 0" itemscope itemtype="http://schema.org/BreadcrumbList">
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a itemprop="item"  href="{{ url() }}"><span itemprop="name">Home</span></a>
+                        <meta itemprop="position" content="1" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a itemprop="item"  href="{{ url('products') }}"><span itemprop="name">Products</span></a>
+                        <meta itemprop="position" content="2" />
+                    </li>
+                    <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+                        <a itemprop="item" class="active" href="{{ url_product($product) }}"><span itemprop="name">{{ $product->name }}</span></a>
+                        <meta itemprop="position" content="3" />
+                    </li>
+                </ol>
+
                 <div class="product-details">
                     @if(Auth::user())
                         <div>
