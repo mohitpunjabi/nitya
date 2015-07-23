@@ -9,6 +9,7 @@
                 <br/>
                 <h1 class="page-header">
                     All Enquiries
+
                     @if(isset($showingRead) && $showingRead)
                         <a class="btn btn-default pull-right" href="{{ url('enquiries') }}">Hide read enquiries</a>
                     @else
@@ -16,11 +17,19 @@
                     @endif
                 </h1>
 
-                    @if($enquiries->isEmpty())
+                <div class="alert alert-success">
+                    <strong>NEW!</strong>
+                    Enquiries are now also sent to gmail directly. Check for mails labeled <span class="label label-default">enquired</span> on gmail.
+                </div>
+
+
+
+            @if($enquiries->isEmpty())
                         <p>There are no enquiries yet.</p>
                     @endif
                     @foreach($enquiries as $enquiry)
-                        <div class="row enquiry @unless($enquiry->trashed()) well well-sm @endunless">
+                        @unless($enquiry->trashed()) <div class="well well-sm">@endunless
+                        <div class="row enquiry">
                             <div class="col-xs-3 col-sm-2">
                                 @if(isset($enquiry->product))
                                     @include('products.partials.thumbnail', [
@@ -51,6 +60,7 @@
                                 </p>
                             </div>
                         </div>
+                        @unless($enquiry->trashed()) </div>@endunless
                     @endforeach
                 <br/>
 
