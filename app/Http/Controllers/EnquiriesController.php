@@ -5,6 +5,8 @@ use App\Http\Requests;
 
 use App\Http\Requests\EnquiryRequest;
 use App\Product;
+use App\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class EnquiriesController extends Controller {
@@ -51,10 +53,21 @@ class EnquiriesController extends Controller {
         Session::put('user_info', $request->only(['name', 'email', 'contact', 'message']));
 		$enquiry = new Enquiry($request->all());
         if($request->has('product_id')) {
-            Product::find($request->input('product_id'))->enquiries()->save($enquiry);
+            Product::find($request->input('product_id'))
+                ->enquiries()
+                ->save($enquiry);
         } else {
             $enquiry->save();
         }
+
+        Mail::queue('emails.enquiry', compact('enquiry'), function($message) use ($enquiry)
+        {
+            $admin = User::first();
+            $message->to($admin->email, 'Nitya - Eternal Fashion');
+            $message->from($enquiry->email, $enquiry->name);
+            $message->subject('Enquiry from ' . $enquiry->name);
+            $message->replyTo($enquiry->email, $enquiry->name);
+        });
 
         return redirect()->back()->withInput()->with('sent', true);
 	}

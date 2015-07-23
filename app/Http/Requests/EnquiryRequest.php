@@ -30,4 +30,13 @@ class EnquiryRequest extends Request {
             'product_id' => 'exists:products,id'
 		];
 	}
+
+    public function all()
+    {
+        $data = parent::all();
+        $data['name'] = ucwords(strtolower($data['name']));
+        $data['email'] = strtolower($data['email']);
+
+        return $data;
+    }
 }
