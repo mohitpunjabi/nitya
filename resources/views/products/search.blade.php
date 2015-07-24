@@ -1,5 +1,6 @@
 @extends('app', [
-    'title' => ((isset($query) and $query != '')? 'Search results for "' . $query. '"': 'Search for something')
+    'title' => ((isset($query) and $query != '')? 'Search results for "' . $query. '"': 'Search for something'),
+    'metaDescription' => 'Search for our products. Kurtis, Jaipuri kurtis, chanderi, rayon kurtis, cotton kurtis, palazzos, jaipuri prints and more.'
 ])
 
 @section('content')
