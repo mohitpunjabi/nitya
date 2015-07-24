@@ -14,12 +14,19 @@ function getCurrentPath() {
     // return str_replace(url(), '', Request::fullUrl());
 }
 
-function ga($title = null) {
-    if(!config('app.debug')) {
+function ga($title = null, $responseTime = null) {
+    if(config('app.debug')) {
+        Log::info(getCurrentPath() . ': ' . $responseTime . 'ms');
+    }
+    else {
         $gamp = GAMP::setClientId(Session::getId());
         
         $gamp->setDocumentPath(getCurrentPath());
+
         $gamp->setDocumentLocationUrl(Request::fullUrl());
+
+        if($responseTime)
+            $gamp->setServerResponseTime($responseTime);
         if(Request::ip())
             $gamp->setIpOverride(Request::ip());
         if(Request::server('HTTP_USER_AGENT'))

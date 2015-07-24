@@ -21,7 +21,8 @@ class SendAnalytics implements TerminableMiddleware {
 	}
 
     public function terminate($request, $response) {
-        ga();
+        $responseTime = intval((microtime(true) - LARAVEL_START) * 1000);
+        if($response->getStatusCode() < 400) ga(null, $responseTime);
     }
 
 }
