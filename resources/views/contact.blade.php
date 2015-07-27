@@ -1,5 +1,6 @@
 @extends('app', [
-    'title' =>(isset($title)? $title: 'Contact us')
+    'title' =>(isset($title)? $title: 'Contact us'),
+    'metaDescription' => 'For bulk orders and enquiries, contact us at +91 9660009899, visit us at 132 Pitaliyon ka Chowk, Johari Bazar, Jaipur.'
 ])
 
 @section('content')

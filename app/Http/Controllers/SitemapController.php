@@ -61,13 +61,13 @@ class SitemapController extends Controller {
             $sitemap->add(URL::to('about'), $lastMod, '0.9', 'monthly');
             $sitemap->add(URL::to('products'), $lastMod, '0.9', 'weekly');
             $sitemap->add(URL::to('contact'), $lastMod, '0.9', 'weekly');
-            $sitemap->add(URL::to('search'), $lastMod, '0.8', 'weekly');
+            $sitemap->add(URL::to('search'), $lastMod, '0.9', 'weekly');
             $products = Product::visibleToUser()->get();
 
             // add every public Product to the sitemap
             foreach ($products as $product)
             {
-                $sitemap->add(url_product($product), $product->updated_at, '0.8', 'weekly');
+                $sitemap->add(url_product($product), $product->updated_at, '0.9', 'weekly');
             }
 
             $sitemap->add(URL::to('more'), $lastMod, '0.7', 'weekly');

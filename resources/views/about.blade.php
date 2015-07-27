@@ -1,5 +1,6 @@
 @extends('app', [
-    'title' => 'About Us'
+    'title' => 'About Us',
+    'metaDescription' => 'We are manufaturers and wholesalers of Jaipuri Kurtis, Cotton Kurtis, Embroidered Dress Material, Gota Patti Work, Pallazos and more.',
 ])
 
 @section('content')
