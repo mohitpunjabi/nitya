@@ -57,17 +57,33 @@ class SitemapController extends Controller {
         {
             $lastMod = Carbon::now();
             // add item to the sitemap (url, date, priority, freq)
-            $sitemap->add(URL::to('/'), $lastMod, '1.0', 'weekly');
+            $sitemap->add(URL::to('/'), $lastMod, '1.0', 'weekly',  [
+                [
+                    'url' => asset('img/nitya-logo.png'),
+                    'caption' => 'Nitya - Eternal Fashion'
+                ],
+                [
+                    'url' => asset('img/default-og-image.jpg'),
+                    'caption' => 'Manufacturers and wholesalers of Jaipuri kurtis, Cotton kurtis, Palazzos, indian women\'s clothing and dress material'
+                ]
+            ]);
             $sitemap->add(URL::to('about'), $lastMod, '0.9', 'monthly');
             $sitemap->add(URL::to('products'), $lastMod, '0.9', 'weekly');
             $sitemap->add(URL::to('contact'), $lastMod, '0.9', 'weekly');
             $sitemap->add(URL::to('search'), $lastMod, '0.9', 'weekly');
-            $products = Product::visibleToUser()->get();
+            $products = Product::visibleToUser()->with('images')->get();
 
             // add every public Product to the sitemap
             foreach ($products as $product)
             {
-                $sitemap->add(url_product($product), $product->updated_at, '0.9', 'weekly');
+                $imageUrls = [];
+                foreach($product->images as $image) {
+                    $imageUrls[] = [
+                        'url' => asset('img/md/' . $image->name),
+                        'caption' => $product->name
+                    ];
+                }
+                $sitemap->add(url_product($product), $product->updated_at, '0.9', 'weekly', $imageUrls);
             }
 
             $sitemap->add(URL::to('more'), $lastMod, '0.7', 'weekly');
