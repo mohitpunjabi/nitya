@@ -109,6 +109,8 @@
     {
        "@context": "http://schema.org",
        "@type": "WebSite",
+       "name": "Nitya",
+       "alternateName": "Nitya - Eternal Fashion",
        "url": "{{ url() }}",
        "potentialAction": {
          "@type": "SearchAction",
