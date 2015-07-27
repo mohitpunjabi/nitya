@@ -24,7 +24,7 @@ class Kernel extends ConsoleKernel {
 	{
         $schedule->call(function() {
             submit_sitemap();
-        })->hourly();
+        })->daily();
 	}
 
 }
