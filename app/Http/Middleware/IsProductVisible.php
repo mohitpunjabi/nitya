@@ -18,7 +18,11 @@ class IsProductVisible {
         if(Product::visibleToUser()->where('id', $request->route()->parameter('products')->id)->exists())
     		return $next($request);
 
-        abort(404);
+        return view('contact', [
+            'title' => 'This product is not available',
+            'subtitle' => 'To view more products, place an order or get price details, please reach out to us.',
+            'showMap'  => false
+        ]);
 	}
 
 }
