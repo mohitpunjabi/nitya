@@ -1,6 +1,6 @@
 @extends('app', [
     'title' => 'About Us',
-    'metaDescription' => 'We are manufaturers and wholesalers of Jaipuri Kurtis, Cotton Kurtis, Embroidered Dress Material, Gota Patti Work, Pallazos and more.',
+    'metaDescription' => 'We are manufacturers and wholesalers of fashion clothing including Jaipuri kurtis, Cotton kurtis, Rayon kurtis, Embroidered kurtis, Palazzos, Indian Women\'s Clothing and dress material.',
 ])
 
 @section('content')
@@ -9,7 +9,8 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <p class="text-center lead">
-                    Our vision is to change the local to global by bringing Jaipuri prints and embroidery to the world with trending fashion.
+                     We are manufacturers and wholesalers of women's clothing based out of Jaipur. We focus on manufacturing a wide range of wholesale fashion clothing including
+                    Jaipuri kurtis, Cotton kurtis, Rayon kurtis, Embroidered kurtis, Palazzos, Indian Women's Clothing and dress material.
                 </p>
             </div>
         </div>

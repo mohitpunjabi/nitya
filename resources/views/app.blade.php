@@ -69,7 +69,10 @@
             <div class="col-md-6">
                 <h3>About Nitya</h3>
                 <p itemprop="description">
-                    Nitya – Eternal Fashion is a premium lifestyle apparel brand for women that started in December 2014 with a strong focus on fits, quality and customer experience. We offer wearable fashion at pocket-friendly prices.
+                    We are manufacturers and wholesalers of women's clothing based out of Jaipur. We focus on manufacturing a wide range of wholesale fashion clothing including
+                    Jaipuri kurtis, Cotton kurtis, Rayon kurtis, Embroidered kurtis, Palazzos, Indian Women's Clothing and dress material.
+                    <br/>
+                    We started in December 2014 with a strong focus on fits, quality and customer experience. We offer wearable wholesale fashion at pocket-friendly prices.
                 </p>
                 <p>
                     Our vision is to change the local to global by bringing Jaipuri prints and embroidery to the world with trending fashion.
