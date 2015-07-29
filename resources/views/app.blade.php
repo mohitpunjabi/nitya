@@ -108,20 +108,6 @@
     </script>
     <script src="{{ elixir('js/app.js') }}"></script>
 
-    <script type="application/ld+json">
-    {
-       "@context": "http://schema.org",
-       "@type": "WebSite",
-       "name": "Nitya",
-       "alternateName": "Nitya - Eternal Fashion",
-       "url": "{{ url() }}",
-       "potentialAction": {
-         "@type": "SearchAction",
-         "target": "{{ url('search')}}?q={search_term_string}",
-         "query-input": "required name=search_term_string"
-       }
-    }
-    </script>
     @yield('script', '')
 </body>
 </html>

@@ -36,3 +36,29 @@
 
     </div>
 @endsection
+
+
+@section('script')
+
+    <script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "item": {
+      "@id": "{{ url() }}",
+      "name": "Home"
+    }
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "item": {
+      "@id": "{{ url('products') }}",
+      "name": "Products"
+    }
+  }]
+}
+</script>
+@endsection
