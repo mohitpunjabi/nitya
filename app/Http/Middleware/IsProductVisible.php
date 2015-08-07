@@ -15,12 +15,13 @@ class IsProductVisible {
 	 */
 	public function handle($request, Closure $next)
 	{
-        if(Product::visibleToUser()->where('id', $request->route()->parameter('products')->id)->exists())
+        $product = $request->route()->parameter('products');
+        if(Product::visibleToUser()->where('id', $product->id)->exists())
     		return $next($request);
 
         return view('contact', [
-            'title' => 'This product is not available',
-            'subtitle' => 'To view more products, place an order or get price details, please reach out to us.',
+            'title' => $product->name,
+            'subtitle' => 'To view this product, to place an order or to get price details, please reach out to us.',
             'showMap'  => false
         ]);
 	}
