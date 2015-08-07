@@ -17,9 +17,9 @@
                     @endif
                 </h1>
 
-                <div class="alert alert-success">
+                <div class="alert alert-info">
                     <strong>NEW!</strong>
-                    Enquiries are now also sent to gmail directly. Check for mails labeled <span class="label label-default">enquired</span> on gmail.
+                    Click on the phone numbers to search them on Truecaller.
                 </div>
 
 
@@ -48,7 +48,7 @@
                                     @endif
                                 {!! Form::close() !!}
 
-                                <a target="_blank" class="btn btn-primary btn-xs pull-right btn-reply" href="mailto:{{ $enquiry->email }}"><i class="glyphicon glyphicon-share-alt"></i> Reply</a>
+                                <a target="_blank" class="btn btn-primary btn-xs pull-right btn-reply" href="https://mail.google.com/mail/u/?authuser=nityajaipur@gmail.com&#label/Enquiry"><i class="glyphicon glyphicon-share-alt"></i> Reply</a>
 
                                 <p class="lead">{!! nl2br(htmlentities($enquiry->message)) !!}</p>
                                 <p class="small text-muted">{{ $enquiry->created_at->diffForHumans() }}</p>
@@ -56,7 +56,7 @@
                                 <p class="small">
                                     <strong>{{ $enquiry->name }}</strong><br/>
                                     {{ $enquiry->email }}<br/>
-                                    {{ $enquiry->contact }}
+                                    <a target="_blank" href="https://truecaller.com/in/{{ $enquiry->contact }}">{{ $enquiry->contact }} <i class="glyphicon glyphicon-search"></i></a>
                                 </p>
                             </div>
                         </div>
