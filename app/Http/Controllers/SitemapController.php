@@ -71,18 +71,24 @@ class SitemapController extends Controller {
             $sitemap->add(URL::to('products'), $lastMod, '0.9', 'weekly');
             $sitemap->add(URL::to('contact'), $lastMod, '0.9', 'weekly');
             $sitemap->add(URL::to('search'), $lastMod, '0.9', 'weekly');
-            $products = Product::visibleToUser()->with('images')->get();
+
+            $visibleProducts = Product::visibleToUser()->get();
+            $products = Product::with('images')->get();
 
             // add every public Product to the sitemap
             foreach ($products as $product)
             {
                 $imageUrls = [];
-                foreach($product->images as $image) {
-                    $imageUrls[] = [
-                        'url' => asset('img/md/' . $image->name),
-                        'caption' => $product->name
-                    ];
+
+                if($visibleProducts->contains($product)) {
+                    foreach($product->images as $image) {
+                        $imageUrls[] = [
+                            'url' => asset('img/md/' . $image->name),
+                            'caption' => $product->name
+                        ];
+                    }
                 }
+
                 $sitemap->add(url_product($product), $product->updated_at, '0.9', 'weekly', $imageUrls);
             }
 
