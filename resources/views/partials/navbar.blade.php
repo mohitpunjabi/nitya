@@ -23,6 +23,7 @@
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ url('/products/create') }}">A product</a></li>
                             <li><a href="{{ url('/catalogues/create') }}">A catalogue</a></li>
+                            <li><a href="{{ url('/orders/create') }}">An order</a></li>
                         </ul>
                     </li>
 
@@ -32,6 +33,7 @@
                             <li><a href="{{ url('/enquiries') }}">All Enquiries</a></li>
                             <li><a href="{{ url('/products') }}">All products</a></li>
                             <li><a href="{{ url('/catalogues') }}">All catalogues</a></li>
+                            <li><a href="{{ url('/orders') }}">All orders</a></li>
                         </ul>
                     </li>
 
