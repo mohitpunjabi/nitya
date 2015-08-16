@@ -16,7 +16,7 @@
             </div>
         </td>
         <td>
-            <button type="button" class="removeButton btn btn-sm btn-danger"><i class="fa fa-close"> </i></button>
+            <button type="button" class="removeButton btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
         </td>
     </tr>
 </table>
