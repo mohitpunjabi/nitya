@@ -83,7 +83,7 @@
                                                     <a style="color: #000" href="{{ url_product($product) }}">
                                                         <span class="text-muted">{{ $product->design_no }} -</span> <strong>{{ $product->name }}</strong><br/>
                                                     </a>
-                                                    <small><i class="fa fa-inr"></i></small> <span>{{ number_format($product->pivot->unit_price) }}</span>
+                                                    <small><span>&#8377;</span></small> <span>{{ number_format($product->pivot->unit_price) }}</span>
                                                 </div>
                                             </div>
                                         </td>
@@ -91,7 +91,7 @@
                                             <span class="text-lg">{{ number_format($product->pivot->quantity) }}</span>
                                         </td>
                                         <td>
-                                            <i class="fa fa-inr"></i> <span class="text-lg">{{ number_format($product->pivot->quantity * $product->pivot->unit_price) }}</span>
+                                            <span>&#8377;</span> <span class="text-lg">{{ number_format($product->pivot->quantity * $product->pivot->unit_price) }}</span>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -106,7 +106,7 @@
                                             </strong>
                                         </th>
                                         <td>
-                                            <i class="fa fa-inr"></i> <strong class="text-lg" id="grandTotal">{{ number_format($order->amount) }}</strong>
+                                            <span>&#8377;</span> <strong class="text-lg" id="grandTotal">{{ number_format($order->amount) }}</strong>
                                         </td>
                                     </tr>
                                 </tfoot>

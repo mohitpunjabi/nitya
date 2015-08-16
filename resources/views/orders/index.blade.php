@@ -11,6 +11,10 @@
                     All Orders
                 </h1>
 
+                @if($orders->isEmpty())
+                    There are no orders to show. <a class="btn btn-default" href="{{ url('orders/create') }}">Create an order</a>.
+                @endif
+
                 @foreach($orders as $order)
                     <div class="well well-sm">
                         <div class="row">
@@ -27,7 +31,7 @@
                                     Tracking ID: <strong>{{ $order->tracking_id }}</strong><br>
                                     <a href="{{ $order->link }}"><small>{{ $order->link }}</small></a>
                                 </div>
-                                <h2 class="media-heading"><small><i class="fa fa-inr"></i></small>{{ number_format($order->amount) }}</h2>
+                                <h2 class="media-heading"><small><span>&#8377;</span></small>{{ number_format($order->amount) }}</h2>
                                 <div>
                                     @foreach($order->products->slice(0, 5) as $product)
                                         <a href="{{ url_product($product) }}">
