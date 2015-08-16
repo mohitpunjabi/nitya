@@ -49,7 +49,7 @@
     <script type="text/javascript">
         $(function() {
             $('.product-select2').productSelect2({
-                placeholder: 'Add more products'
+                placeholder: 'Add more products',
             });
         });
     </script>

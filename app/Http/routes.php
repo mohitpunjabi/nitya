@@ -50,6 +50,7 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+
 Route::get('products/search', 'ProductsController@search');
 Route::resource('products', 'ProductsController');
 Route::get('products/{products}/{slug}', 'ProductsController@show');
@@ -61,6 +62,9 @@ Route::resource('catalogues', 'CataloguesController');
 
 Route::get('enquiries/read', 'EnquiriesController@read');
 Route::resource('enquiries', 'EnquiriesController');
+
+Route::resource('orders', 'OrdersController');
+Route::get('orders/track/{trackingId}', 'OrdersController@track');
 
 Route::get('search', 'SearchController@search');
 

@@ -29,6 +29,7 @@ class ProductRequest extends Request {
             'images' => 'required'
         ];
     }
+
     public function all()
     {
         $data = parent::all();

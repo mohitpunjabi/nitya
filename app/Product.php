@@ -26,7 +26,7 @@ class Product extends Model {
 
     public function catalogues()
     {
-            return $this->belongsToMany('App\Catalogue')->withTimestamps();
+        return $this->belongsToMany('App\Catalogue')->withTimestamps();
     }
 
     public function scopeInCatalogue($query, $catalogue) {
@@ -118,6 +118,10 @@ class Product extends Model {
 
     public function enquiries() {
         return $this->hasMany('App\Enquiry');
+    }
+
+    public function orders() {
+        return $this->belongsToMany('App\Order')->withPivot('unit_price', 'quantity');
     }
 
 }

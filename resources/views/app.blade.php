@@ -38,6 +38,8 @@
     <script type="text/javascript" async defer
             src="https://apis.google.com/js/platform.js?publisherid=105229227002561113902">
     </script>
+
+    <style type="text/css" media="print"> @page { size: auto; } </style>
 </head>
 <body>
 
@@ -56,7 +58,7 @@
 	@yield('content')
 
 
-    <div class="bg-primary">
+    <div class="bg-primary hidden-print">
         <div class="container">
             <div class="text-center text-lg" style="padding: 20px">
                 For bulk orders and enquiries, <a href="{{ url('/contact') }}#write-to-us">write to us</a> or contact us at @include('partials.mobiles') or <a href="#">@include('partials.email')</a>
@@ -64,7 +66,7 @@
         </div>
     </div>
 
-    <footer>
+    <footer class="hidden-print">
         <div class="container" itemscope itemtype="http://schema.org/Organization">
             <div class="col-md-6">
                 <h3>About Nitya</h3>
