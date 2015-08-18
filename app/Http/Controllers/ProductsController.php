@@ -20,15 +20,23 @@ class ProductsController extends Controller {
         $this->middleware('auth', ['except' => $public]);
     }
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @return Response
+     */
+	public function index(Request $request)
 	{
-        $products = Product::visibleToUser()->with(Product::getAssociatedModels())->get();
+        $products = Product::visibleToUser()
+                    ->with(Product::getAssociatedModels())
+                    ->simplePaginate(8);
 
+        if($request->input('responseType') == 'JSON')
+            return [
+                'nextPageUrl' => $products->nextPageUrl(),
+                'data'        => $products->lists('thumbnail_markup')
+            ];
         return view('products.index', compact('products'));
 	}
 

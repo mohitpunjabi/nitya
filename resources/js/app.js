@@ -55,3 +55,49 @@ function hideEnquiry(e) {
         }, animTime);
     });
 }
+
+$(function() {
+    var $loadMoreButton = $('.btn-load-more');
+    var $window = $(window);
+
+    function loadMoreProducts() {
+        var $loadMoreButton = $('.btn-load-more');
+        if($loadMoreButton.length > 0 && !$loadMoreButton.hasClass('disabled')) {
+            $loadMoreButton.button('loading');
+            $.ajax({
+                type: 'GET',
+                url: $loadMoreButton.attr('href'),
+                data: {responseType: 'JSON'},
+                success: function (data) {
+                    var $productsGrid = $('.product-grid');
+                    data.data.forEach(function (product) {
+                        var $newCol = $('<div class="col-md-3 col-sm-6"></div>').append(product);
+                        $newCol.hide().appendTo($productsGrid).fadeIn(300);
+                    });
+                    console.log(data.nextPageUrl);
+                    if (!data.nextPageUrl) {
+                        $loadMoreButton.attr('href', url('more'));
+                        $loadMoreButton.removeClass('btn-load-more');
+                    }
+                    else $loadMoreButton.attr('href', data.nextPageUrl);
+
+                    $loadMoreButton.button('reset');
+                }
+            });
+        }
+    }
+
+    if($loadMoreButton.length) {
+        $('body').on('click', '.btn-load-more', function(e) {
+            loadMoreProducts();
+            e.preventDefault();
+        });
+
+        $window.scroll(function() {
+            if($window.scrollTop() > $loadMoreButton.offset().top - $window.height() - 200) {
+                loadMoreProducts();
+            }
+        });
+    }
+
+});

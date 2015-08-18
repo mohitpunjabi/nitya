@@ -27,7 +27,7 @@
 
         <div class="row">
             <div class="col-md-6 col-md-offset-3 col-sm-12">
-                <a href="{{ url('more') }}" class="btn btn-block btn-lg btn-primary">
+                <a data-loading-text="<h2>Loading More ...</h2>" href="{{ ($products->nextPageUrl())? $products->nextPageUrl(): url('more') }}" class="btn btn-block btn-lg btn-primary btn-load-more">
                     <h2><i class="glyphicon glyphicon-plus"></i> More</h2>
                 </a>
             </div>
@@ -39,26 +39,36 @@
 
 
 @section('script')
-
     <script type="application/ld+json">
-{
-  "@context": "http://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "item": {
-      "@id": "{{ url() }}",
-      "name": "Home"
-    }
-  },{
-    "@type": "ListItem",
-    "position": 2,
-    "item": {
-      "@id": "{{ url('products') }}",
-      "name": "Products"
-    }
-  }]
-}
-</script>
+        {
+          "@context": "http://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [{
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+              "@id": "{{ url() }}",
+              "name": "Home"
+            }
+          },{
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+              "@id": "{{ url('products') }}",
+              "name": "Products"
+            }
+          }
+          @if($products->currentPage() > 1)
+          ,{
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+              "@id": "{{ Request::url() }}",
+              "name": "Page {{ $products->currentPage() }}"
+            }
+          }
+          @endif
+          ]
+        }
+    </script>
 @endsection

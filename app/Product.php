@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 
 class Product extends Model {
 
@@ -114,6 +115,10 @@ class Product extends Model {
 
     public function getSlugAttribute() {
         return str_slug($this->name);
+    }
+
+    public function getThumbnailMarkupAttribute() {
+        return View::make('products.partials.thumbnail', ['product' => $this])->render();
     }
 
     public function enquiries() {
