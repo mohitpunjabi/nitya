@@ -118,13 +118,10 @@
                 <div class="row hidden-print">
                     <div class="col-md-12">
                         <p align="right">
-                            <button id="print" class="btn btn-primary">
-                                Print
-                            </button>
+                            <button id="print" class="btn btn-primary">Print</button>
                             @if(Auth::user())
-                                <button class="btn btn-default">
-                                    Email
-                                </button>
+                                <a class="btn btn-warning" href="{{ route('orders.edit', $order) }}">Edit</a>
+                                <button class="btn btn-default">Email</button>
                             @endif
                         </p>
                     </div>

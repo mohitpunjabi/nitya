@@ -2,17 +2,17 @@
     <tr id="sampleItem">
         <td width="45%">
             <div>
-                {!! Form::select('products[]', [-1 => 'Select an item'], null, ['class' => 'product-select2 form-control', 'required' => 'required']) !!}
+                {!! Form::select('product', [-1 => 'Select an item'], null, ['class' => 'products product-select2 form-control', 'required' => 'required']) !!}
             </div>
         </td>
         <td>
             <div>
-                {!! Form::text('unit_prices[]', null, ['class' => 'form-control', 'size' => '5', 'required' => 'required', 'placeholder' => 'Price']) !!}
+                {!! Form::text('unit_price', null, ['class' => 'unit_prices form-control', 'size' => '5', 'required' => 'required', 'placeholder' => 'Price']) !!}
             </div>
         </td>
         <td>
             <div>
-                {!! Form::text('quantities[]', null, ['class' => 'form-control', 'required' => 'required', 'size' => '5', 'placeholder' => 'Quantity']) !!}
+                {!! Form::text('quantity', null, ['class' => 'quantities form-control', 'required' => 'required', 'size' => '5', 'placeholder' => 'Quantity']) !!}
             </div>
         </td>
         <td>
@@ -74,6 +74,31 @@
                     </thead>
 
                     <tbody>
+                    @if(isset($order))
+                        <?php $i = 0; ?>
+                        @foreach($order->products as $product)
+                            <tr class="item">
+                                <td width="45%">
+                                    <div>
+                                        {!! Form::select('products['.$i.']', [$product->id => '<strong>' . $product->design_no. ':</strong> ' . $product->name], null, ['class' => 'products product-select2 form-control', 'required' => 'required']) !!}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        {!! Form::text('unit_prices['.$i.']', $product->pivot->unit_price, ['class' => 'unit_prices form-control', 'size' => '5', 'required' => 'required', 'placeholder' => 'Price']) !!}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        {!! Form::text('quantities['.$i.']', $product->pivot->quantity, ['class' => 'quantities form-control', 'required' => 'required', 'size' => '5', 'placeholder' => 'Quantity']) !!}
+                                    </div>
+                                </td>
+                                <td>
+                                    <button type="button" class="removeButton btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
                     </tbody>
                     <tfoot>
                     <tr>
@@ -109,12 +134,34 @@
             var $sampleItem = $("#sampleItem");
             var $tbody = $("#itemsTable > tbody");
 
+            var resetItemNames = function() {
+                ['products', 'unit_prices', 'quantities'].forEach(function(elemName) {
+                    $tbody.find('.' + elemName).each(function(i) {
+                        $(this).attr('name', elemName + '[' + i + ']');
+                    });
+                });
+
+            };
+
+            var getNewItem = function() {
+                var totalItems = $('.item').length;
+                var $newItem = $sampleItem.clone().removeAttr('id');
+
+                resetItemNames();
+
+                return $newItem.addClass('item')
+                               .show(200);
+
+            };
+
             var addNewItem = function() {
-                var $newItem = $sampleItem.clone().removeAttr('id').addClass('item').show(200);
+                var $newItem = getNewItem();
                 $tbody.append($newItem);
                 $newItem.find('.product-select2')
                         .css('width', '100%')
                         .productSelect2(select2Properties);
+
+                resetItemNames();
             };
 
             $('body').on('click', '.removeButton', function() {
@@ -144,6 +191,9 @@
             });
 
             if($('.item').size() == 0) addNewItem();
+            else                       $('.item').find('.product-select2').productSelect2(select2Properties);
+
+            resetItemNames();
 
             $('form').on('keyup keypress', function(e) {
                 var code = e.keyCode || e.which;

@@ -27,6 +27,9 @@
                                 </p>
                             </div>
                             <div class="col-sm-9">
+                                <div class="pull-right">
+                                    <a class="btn btn-warning" href="{{ route('orders.edit', $order) }}">Edit</a>
+                                </div>
                                 <div>
                                     Tracking ID: <strong>{{ $order->tracking_id }}</strong><br>
                                     <a href="{{ $order->link }}"><small>{{ $order->link }}</small></a>

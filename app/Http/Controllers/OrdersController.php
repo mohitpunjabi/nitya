@@ -51,7 +51,6 @@ class OrdersController extends Controller {
 
         $attachProducts = [];
         foreach($products as $i => $id) {
-//            $attachProducts[] = ;
             $order->products()->attach([$id => ['unit_price' => $unitPrices[$i], 'quantity' => $quantities[$i]]]);
         }
 
@@ -76,9 +75,9 @@ class OrdersController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit(Order $order)
 	{
-		//
+        return view('orders.edit', compact('order'));
 	}
 
 	/**
@@ -87,9 +86,20 @@ class OrdersController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update(OrderRequest $request, Order $order)
 	{
-		//
+        $order->update($request->only(['billing_name', 'billing_address', 'billing_email', 'billing_contact']));
+
+        $products = $request->get('products');
+        $unitPrices = $request->get('unit_prices');
+        $quantities = $request->get('quantities');
+
+        $order->products()->detach();
+        foreach($products as $i => $id) {
+            $order->products()->attach([$id => ['unit_price' => $unitPrices[$i], 'quantity' => $quantities[$i]]]);
+        }
+
+        return redirect()->route('orders.show', $order  );
 	}
 
 	/**
