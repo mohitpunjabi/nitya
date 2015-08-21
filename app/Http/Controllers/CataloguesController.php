@@ -58,6 +58,7 @@ class CataloguesController extends Controller {
 	 */
 	public function show(Catalogue $catalogue)
 	{
+        $catalogue->load('products', 'products.images');
 		return view('catalogues.show', compact('catalogue'));
 	}
 
