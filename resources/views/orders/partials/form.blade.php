@@ -1,24 +1,10 @@
 <table class="hidden">
-    <tr id="sampleItem">
-        <td width="45%">
-            <div>
-                {!! Form::select('product', [-1 => 'Select an item'], null, ['class' => 'products product-select2 form-control', 'required' => 'required']) !!}
-            </div>
-        </td>
-        <td>
-            <div>
-                {!! Form::text('unit_price', null, ['class' => 'unit_prices form-control', 'size' => '5', 'required' => 'required', 'placeholder' => 'Price']) !!}
-            </div>
-        </td>
-        <td>
-            <div>
-                {!! Form::text('quantity', null, ['class' => 'quantities form-control', 'required' => 'required', 'size' => '5', 'placeholder' => 'Quantity']) !!}
-            </div>
-        </td>
-        <td>
-            <button type="button" class="removeButton btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
-        </td>
-    </tr>
+    @include('orders.partials.form-row', [
+        'isSample'  => true,
+        'product'   => ['product', []],
+        'unitPrice' => ['unit_price', null],
+        'quantity'  => ['quantity', null]
+    ])
 </table>
 
 <div class="row">
@@ -77,36 +63,37 @@
                     @if(isset($order))
                         <?php $i = 0; ?>
                         @foreach($order->products as $product)
-                            <tr class="item">
-                                <td width="45%">
-                                    <div>
-                                        {!! Form::select('products['.$i.']', [$product->id => '<strong>' . $product->design_no. ':</strong> ' . $product->name], null, ['class' => 'products product-select2 form-control', 'required' => 'required']) !!}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        {!! Form::text('unit_prices['.$i.']', $product->pivot->unit_price, ['class' => 'unit_prices form-control', 'size' => '5', 'required' => 'required', 'placeholder' => 'Price']) !!}
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        {!! Form::text('quantities['.$i.']', $product->pivot->quantity, ['class' => 'quantities form-control', 'required' => 'required', 'size' => '5', 'placeholder' => 'Quantity']) !!}
-                                    </div>
-                                </td>
-                                <td>
-                                    <button type="button" class="removeButton btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
-                                </td>
-                            </tr>
+                            @include('orders.partials.form-row', [
+                                'isSample'  => false,
+                                'product'   => ['products['.$i.']', [$product->id => '<strong>' . $product->design_no. ':</strong> ' . $product->name]],
+                                'unitPrice' => ['unit_prices['.$i.']', $product->pivot->unit_price],
+                                'quantity'  => ['quantities['.$i.']', $product->pivot->quantity]
+                            ])
                         @endforeach
                     @endif
                     </tbody>
                     <tfoot>
                     <tr>
-                        <td colspan="5">
+                        <td colspan="4">
                             <div class="text-center">
                                 <button type="button" class="btn btn-sm btn-info" id="addButton"><i class="glyphicon glyphicon-plus"></i> Add an item</button>
                             </div>
                         </td>
+                    </tr>
+
+                    <tr valign="bottom">
+                        <td colspan="2"></td>
+                        <td>
+                            <div>
+                                {!! Form::label('shipping_charges', 'Shipping Charges') !!}
+                                <div class="input-group">
+                                    <span class="input-group-addon">&#8377;</span>
+                                    {!! Form::text('shipping_charges', null, ['class' => 'form-control', 'size' => '4', 'placeholder' => 'Shipping Charges']) !!}
+                                </div>
+                                @if($errors->first('shipping_charges')) <div class="alert alert-danger">{{ $errors->first('shipping_charges') }}</div> @endif
+                            </div>
+                        </td>
+                        <td></td>
                     </tr>
                     </tfoot>
 

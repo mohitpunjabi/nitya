@@ -57,20 +57,22 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Order summary</div>
 
-                            <table class="table bordered">
+                            <table class="table bordered condensed">
                                 <thead>
                                     <tr>
-                                        <th>S No</th>
+                                        <th width="5%">#</th>
                                         <th>Item</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
+                                        <th width="17%">Rate</th>
+                                        <th width="17%">Quantity</th>
+                                        <th width="17%" style="text-align: right">Amount</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
                                 <?php $sNo = 1; ?>
                                 @foreach($order->products as $product)
                                     <tr>
-                                        <td align="right"><span class="text-lg">{{ $sNo++ }}</span></td>
+                                        <td><span class="text-lg">{{ $sNo++ }}</span></td>
                                         <td>
                                             <div class="media">
                                                 <div class="media-left">
@@ -81,17 +83,20 @@
 
                                                 <div class="media-body">
                                                     <a style="color: #000" href="{{ url_product($product) }}">
-                                                        <span class="text-muted">{{ $product->design_no }} -</span> <strong>{{ $product->name }}</strong><br/>
+                                                        <strong>{{ $product->name }}</strong><br/>
+                                                        <span class="text-muted">ID {{ $product->design_no }}</span>
                                                     </a>
-                                                    <small><span>&#8377;</span></small> <span>{{ number_format($product->pivot->unit_price) }}</span>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <span class="text-lg">{{ number_format($product->pivot->quantity) }}</span>
+                                            <span>&#8377;</span><span class="text-lg">{{ number_format($product->pivot->unit_price) }}</span>
                                         </td>
                                         <td>
-                                            <span>&#8377;</span> <span class="text-lg">{{ number_format($product->pivot->quantity * $product->pivot->unit_price) }}</span>
+                                            <span class="text-lg">{{ number_format($product->pivot->quantity) }}</span>
+                                        </td>
+                                        <td align="right">
+                                            <span>&#8377;</span><span class="text-lg">{{ number_format($product->pivot->quantity * $product->pivot->unit_price) }}</span>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -99,14 +104,21 @@
 
                                 <tfoot>
                                     <tr style="border-top: 2px #AAA solid">
-                                        <td colspan="2"></td>
-                                        <th>
-                                            <strong class="text-lg">
-                                                Total
-                                            </strong>
-                                        </th>
-                                        <td>
-                                            <span>&#8377;</span> <strong class="text-lg" id="grandTotal">{{ number_format($order->amount) }}</strong>
+                                        <td colspan="4" align="right"><strong>Subtotal</strong></td>
+                                        <td align="right">
+                                            <span>&#8377;</span>{{ number_format($order->amount - $order->shipping_charges) }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" align="right"><strong>Shipping Charges</strong></td>
+                                        <td align="right">
+                                            <span>&#8377;</span>{{ number_format($order->shipping_charges) }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4" align="right"><strong class="text-lg">Total</strong></td>
+                                        <td align="right">
+                                            <span>&#8377;</span><strong class="text-lg" id="grandTotal">{{ number_format($order->amount) }}</strong>
                                         </td>
                                     </tr>
                                 </tfoot>

@@ -21,7 +21,7 @@ class OrdersController extends Controller {
 	 */
 	public function index()
 	{
-        $orders = Order::all();
+        $orders = Order::with(['products'])->get();
 		return view('orders.index', compact('orders'));
 	}
 
@@ -42,17 +42,11 @@ class OrdersController extends Controller {
 	 */
 	public function store(OrderRequest $request)
 	{
-		$products = $request->get('products');
-        $unitPrices = $request->get('unit_prices');
-        $quantities = $request->get('quantities');
-        $order = new Order($request->only(['billing_name', 'billing_address', 'billing_email', 'billing_contact']));
+        $order = new Order($request->all());
         $order->tracking_id = mt_rand(100, 999999);
         $order->save();
 
-        $attachProducts = [];
-        foreach($products as $i => $id) {
-            $order->products()->attach([$id => ['unit_price' => $unitPrices[$i], 'quantity' => $quantities[$i]]]);
-        }
+        $this->attachProducts($order, $request);
 
         return redirect()->route('orders.index');
 	}
@@ -88,16 +82,8 @@ class OrdersController extends Controller {
 	 */
 	public function update(OrderRequest $request, Order $order)
 	{
-        $order->update($request->only(['billing_name', 'billing_address', 'billing_email', 'billing_contact']));
-
-        $products = $request->get('products');
-        $unitPrices = $request->get('unit_prices');
-        $quantities = $request->get('quantities');
-
-        $order->products()->detach();
-        foreach($products as $i => $id) {
-            $order->products()->attach([$id => ['unit_price' => $unitPrices[$i], 'quantity' => $quantities[$i]]]);
-        }
+        $order->update($request->all());
+        $this->attachProducts($order, $request);
 
         return redirect()->route('orders.show', $order  );
 	}
@@ -117,6 +103,18 @@ class OrdersController extends Controller {
     public function track($trackingId)
     {
         $order = Order::where('tracking_id', $trackingId)->firstOrFail();
+        $order->load('products', 'products.images');
         return view('orders.show', compact('order'));
+    }
+
+    private function attachProducts($order, $request) {
+        $products = $request->get('products');
+        $unitPrices = $request->get('unit_prices');
+        $quantities = $request->get('quantities');
+
+        $order->products()->detach();
+        foreach($products as $i => $id) {
+            $order->products()->attach([$id => ['unit_price' => $unitPrices[$i], 'quantity' => $quantities[$i]]]);
+        }
     }
 }

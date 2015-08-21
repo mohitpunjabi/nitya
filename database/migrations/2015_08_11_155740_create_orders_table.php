@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration {
             $table->text('billing_email')->nullable()->default(null);
 
             $table->integer('discount')->default(0);
+            $table->integer('shipping_charges')->default(0);
 
             $table->foreign('user_id')
                   ->references('id')

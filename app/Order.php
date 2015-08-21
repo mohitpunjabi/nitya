@@ -12,6 +12,7 @@ class Order extends Model {
         'billing_contact',
         'billing_email',
         'discount',
+        'shipping_charges'
     ];
 
     protected $appends = [
@@ -29,7 +30,7 @@ class Order extends Model {
     }
 
     public function getAmountAttribute() {
-        return $this->products()->select(DB::raw('sum(unit_price * quantity) amount'))->first()->amount;
+        return $this->products()->select(DB::raw('sum(unit_price * quantity) amount'))->first()->amount + $this->shipping_charges;
     }
 
     public function getLinkAttribute() {
