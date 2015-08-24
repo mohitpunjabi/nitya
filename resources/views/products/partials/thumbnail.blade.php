@@ -3,7 +3,7 @@
      itemscope itemtype="http://schema.org/Product">
     <div class="img-container">
         @if(isset($product->images[0]))
-            <img itemprop="image" class="img img-responsive center-block" data-attribute="image" src="{{ asset('img/md/' . $product->images[0]->name) }}" alt="{{ $product->name }}">
+            <img itemprop="image" class="img img-responsive center-block" data-attribute="image" src="{{ $product->images[0]->path('md') }}" alt="{{ $product->name }}">
         @endif
         <a href="{{ url_product($product) }}"itemprop="url" data-attribute="name" class="detail-link" title="{{ $product->name }}">
             <span>View details</span>

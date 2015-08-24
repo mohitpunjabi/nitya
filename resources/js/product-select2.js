@@ -64,7 +64,7 @@
             return $(
                 '<div class="clearfix">' +
                 '<div class="col-sm-' + thumColWidth + '">' +
-                '<img class="img img-responsive" src="' + url('img/sm/' + product.images[0].name) + '"/>' +
+                '<img class="img img-responsive" src="' + url('img/xs/' + product.images[0].name) + '"/>' +
                 '</div>' +
                 '<div class="col-sm-' + (12 - thumColWidth) + '">' +
                 $catalogues +
@@ -82,7 +82,7 @@
 
             if(plugin.settings.mini) {
                 return $(
-                    '<span><img height="30" src="' + url('img/sm/' + product.images[0].name) + '"/></span> ' +
+                    '<span><img height="30" src="' + url('img/xs/' + product.images[0].name) + '"/></span> ' +
                     '<strong>' + product.design_no + ':</strong> <span style="max-width: 150px" class="text-overflow text-uppercase small">' + product.name + '</span>'
                 );
             }

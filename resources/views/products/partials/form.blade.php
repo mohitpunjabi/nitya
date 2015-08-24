@@ -5,7 +5,7 @@
             @if(isset($product))
                 @foreach($product->images as $image)
                     <div class="thumbnail col-sm-3">
-                        <img class="img img-responsive" src="{{ asset('img/sm/'.$image->name) }}"/>
+                        <img class="img img-responsive" src="{{ $image->path('xs') }}"/>
                         <a href="{{ url('products/' . $product->id . '/removeImage/' . $image->id) }}" class="btn btn-xs btn-block btn-danger">&times; Remove</a>
                     </div>
                 @endforeach

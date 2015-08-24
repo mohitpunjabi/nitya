@@ -77,7 +77,7 @@
                                             <div class="media">
                                                 <div class="media-left">
                                                     <a href="{{ url_product($product) }}">
-                                                        <img height="42" src="{{ asset('img/sm/' . $product->images[0]->name) }}" alt="{{ $product->name }}"/>
+                                                        <img height="42" src="{{ $product->images[0]->path('xs') }}" alt="{{ $product->name }}"/>
                                                     </a>
                                                 </div>
 

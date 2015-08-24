@@ -1,7 +1,7 @@
 @extends('app', [
     'title'           => $product->name,
     'metaDescription' => $product->description,
-    'ogImage'         => asset('img/md/'.$product->images[0]->name)
+    'ogImage'         => $product->images[0]->path('lg')
 ])
 
 @section('content')
@@ -44,10 +44,10 @@
 
                     <ul class="row thumbnails show-on-hover text-right">
                         @foreach($product->images as $image)
-                            <meta itemprop="image" content="{{ asset('img/lg/' . $image->name) }}"/>
-                            <li class="thumbnail col-xs-1" data-large-src="{{ asset('img/lg/'.$image->name) }}" data-small-src="{{ asset('img/md/'.$image->name) }}" data-thumbnail-src="{{ asset('img/sm/'.$image->name) }}">
+                            <meta itemprop="image" content="{{ $image->path('lg') }}"/>
+                            <li class="thumbnail col-xs-1" data-large-src="{{ $image->path('lg') }}" data-small-src="{{ $image->path('md') }}" data-thumbnail-src="{{ $image->path('xs') }}">
                                 <a href="#">
-                                    <img itemprop="image" class="img img-responsive" src="{{ asset('img/lg/'.$image->name) }}" >
+                                    <img itemprop="image" class="img img-responsive" src="{{ $image->path('lg') }}" >
                                 </a>
                             </li>
                         @endforeach

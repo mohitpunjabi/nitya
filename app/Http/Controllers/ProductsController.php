@@ -2,13 +2,11 @@
 
 use App\Catalogue;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
 use App\Http\Requests\ProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -134,24 +132,9 @@ class ProductsController extends Controller {
     private function saveImages(Product $product, $imageFiles = []) {
         $images = [];
         foreach($imageFiles as $imageFile) {
-            if($imageFile != null)  array_push($images, new \App\Image(['name' => $this->processImage($product, $imageFile)]));
+            if($imageFile != null) array_push($images, new \App\Image(['name' => $imageFile]));
         }
         $product->images()->saveMany($images);
-    }
-
-    private function processImage(Product $product, UploadedFile $image) {
-        $imageName = $product->design_no . '-' .
-                     substr(str_slug($product->name), 0, 10) .
-                     '-' . str_random(6) .
-                     '.' . $image->getClientOriginalExtension();
-        Image::make($image)
-            ->heighten(2000, function($constraint) {
-                $constraint->upsize();
-            })->save('img/lg/' . $imageName)
-            ->heighten(800)->save('img/md/' . $imageName)
-            ->heighten(120)->save('img/sm/' . $imageName);
-
-        return $imageName;
     }
 
     private function syncCatalogues(Product $product, $catalogues = [])
