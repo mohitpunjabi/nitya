@@ -145,7 +145,7 @@
                                     </p>
                                 @else
                                     <a href="{{ route('products.edit', $product) }}" class="btn btn-lg btn-primary btn-block" role="button">Edit</a>
-
+                                    <button id="shareOnFacebook" class="btn btn-lg btn-primary">Post on Facebook</button>
                                 @endif
 
                             </div>
@@ -203,4 +203,46 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+    @if(Auth::user())
+    <script type="text/javascript">
+        $(function() {
+            $("#shareOnFacebook").click(function() {
+                 FB.login(function(){
+                     /*
+                    FB.ui({
+                        method: 'share_open_graph',
+                        action_type: 'product.group',
+                        action_properties: JSON.sringify({
+                            object: '{{ str_replace('dev', 'www', url_product($product)) }}'
+                        }),
+                        link: '{{ str_replace('dev', 'www', url_product($product)) }}',
+                        name: '{{ $product->name }}',
+                        description: '{{ $product->description }}',
+                        picture: '{{  str_replace('dev', 'www', $product->images[0]->path('md'))  }}',
+                        from: 1641342146084182
+                    }, function(response) {
+                        console.log(response);
+                    }); */
+                    FB.api(
+                            '/1641342146084182/feed',
+                            'POST',
+                            {
+                                message: "{{ $product->description }}\nFor wholesale enquiries, visit {{ url_product($product) }}",
+                                link: '{{ str_replace('dev', 'www', url_product($product)) }}',
+                                picture: '{{  str_replace('dev', 'www', $product->images[0]->path('md'))  }}',
+                                name: '{{ $product->name }}',
+                                description: "{{ $product->description }}"
+                            },
+                            function(response) {
+                                console.log(response);
+                            }
+                    );
+                }, {scope: 'publish_actions,manage_pages,publish_pages'});
+            });
+        });
+    </script>
+    @endif
 @endsection
