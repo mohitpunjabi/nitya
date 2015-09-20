@@ -17,6 +17,14 @@
                                         <h3>{{ $catalogue->name }}
                                         <div class="pull-right">
                                             {{ $catalogue->link }}
+
+                                            @unless($catalogue->name == 'public')
+                                                {!! Form::open(['method' => 'DELETE', 'route' => ['catalogues.destroy', $catalogue], 'class' => 'pull-right']) !!}
+                                                <button onclick="return confirm('This cannot be undone. Continue?')" id="deleteBtn" class="btn btn-danger btn-xs" type="submit" title="Delete the catalogue">
+                                                    <i class="glyphicon glyphicon-remove"></i> Delete
+                                                </button>
+                                                {!! Form::close() !!}
+                                            @endunless
                                         </div>
                                         </h3>
                                     </div>
