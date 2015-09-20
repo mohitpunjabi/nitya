@@ -28,7 +28,7 @@ class ProductsController extends Controller {
 	{
         $products = Product::visibleToUser()
                     ->with(Product::getAssociatedModels())
-                    ->simplePaginate(16);
+                    ->simplePaginate(8);
 
         if($request->input('responseType') == 'JSON')
             return [
