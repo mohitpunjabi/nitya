@@ -90,9 +90,10 @@ class CataloguesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy(Catalogue $catalogue)
 	{
-		//
+		$catalogue->delete();
+		return redirect()->route('catalogues.index');
 	}
 
     public function add(Request $request, Catalogue $catalogue) {
