@@ -28,6 +28,7 @@
                             </div>
                             <div class="col-sm-9">
                                 <div class="pull-right">
+                                    <strong>{{ $order->created_at->toFormattedDateString() }}</strong><br>
                                     <a class="btn btn-warning" href="{{ route('orders.edit', $order) }}">Edit</a>
                                 </div>
                                 <div>
