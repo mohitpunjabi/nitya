@@ -29,7 +29,7 @@
                             <div class="col-sm-9">
                                 <div class="pull-right">
                                     <strong>{{ $order->created_at->toFormattedDateString() }}</strong><br>
-                                    <a class="btn btn-warning" href="{{ route('orders.edit', $order) }}">Edit</a>
+                                    <a class="btn btn-block btn-warning" href="{{ route('orders.edit', $order) }}">Edit</a>
                                 </div>
                                 <div>
                                     Tracking ID: <strong>{{ $order->tracking_id }}</strong><br>

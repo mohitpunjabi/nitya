@@ -69,8 +69,12 @@
                                 </thead>
 
                                 <tbody>
-                                <?php $sNo = 1; ?>
+                                <?php
+                                    $sNo = 1;
+                                    $totalQuantity = 0;
+                                ?>
                                 @foreach($order->products as $product)
+                                    <?php $totalQuantity += $product->pivot->quantity ?>
                                     <tr>
                                         <td><span class="text-lg">{{ $sNo++ }}</span></td>
                                         <td>
@@ -104,9 +108,12 @@
 
                                 <tfoot>
                                     <tr style="border-top: 2px #AAA solid">
-                                        <td colspan="4" align="right"><strong>Subtotal</strong></td>
+                                        <td colspan="3"></td>
+                                        <td>
+                                            <span class="text-lg">{{ number_format($totalQuantity) }}</span>
+                                        </td>
                                         <td align="right">
-                                            <span>&#8377;</span>{{ number_format($order->amount - $order->shipping_charges) }}
+                                            <span>&#8377;</span><span class="text-lg">{{ number_format($order->amount - $order->shipping_charges) }}</span>
                                         </td>
                                     </tr>
                                     <tr>
