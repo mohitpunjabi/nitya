@@ -23,12 +23,12 @@ elixir(function(mix) {
         'magnifier.js',
         'jquery.bgswitcher.js',
         'app.js'
-    ], 'public/js/app.js');
+    ], 'public/js/app.js', './resources/js');
 
     mix.styles([
         'app.css',
         'select2.min.css'
-    ], 'public/css/app.css');
+    ], 'public/css/app.css', './resources/css');
 
     mix.version(['css/app.css', 'js/app.js']);
 
