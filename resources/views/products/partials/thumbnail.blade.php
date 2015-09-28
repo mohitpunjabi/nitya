@@ -3,7 +3,7 @@
      itemscope itemtype="http://schema.org/Product">
     <div class="img-container">
         @if(isset($product->images[0]))
-            <img itemprop="image" class="img img-responsive center-block" data-attribute="image" src="{{ $product->images[0]->path('md') }}" alt="{{ $product->name }}">
+            <img itemprop="image" class="img img-responsive center-block" data-attribute="image" src="{{ $product->images[0]->path('sm') }}" alt="{{ $product->name }}">
         @endif
         <a href="{{ url_product($product) }}"itemprop="url" data-attribute="name" class="detail-link" title="{{ $product->name }}">
             <span>View details</span>
@@ -36,7 +36,7 @@
             @unless(isset($small))
                 <div class="pull-right">
                     @if(Auth::guest())
-                        <a  data-attribute="enquire_link" href="{{ url('products/' . $product->id . '#enquire') }}" class="btn btn-xs btn-primary" role="button">Enquire</a>
+                        <a data-attribute="enquire_link" href="{{ url('products/' . $product->id . '#enquire') }}" class="btn btn-xs btn-primary" role="button">Enquire</a>
                     @else
                         @if(isset($currentCatalogue))
                             <a href="{{ url('catalogues/' . $currentCatalogue->id . '/remove?product=' . $product->id) }}" class="btn btn-xs btn-danger" title="Remove this product from {{ $currentCatalogue->name }}">&times; Remove</a>
