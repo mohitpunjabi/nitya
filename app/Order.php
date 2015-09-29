@@ -36,4 +36,10 @@ class Order extends Model {
     public function getLinkAttribute() {
         return url('orders/track/'.  $this->attributes['tracking_id']);
     }
+
+    public function getTotalQuantityAttribute() {
+        $totalQuantity = 0;
+        foreach($this->products as $product) $totalQuantity += $product->pivot->quantity;
+        return $totalQuantity;
+    }
 }

@@ -16,7 +16,7 @@
                         <h1 class="media-heading">
                             <small>Order #</small>{{ $order->tracking_id }}
                         </h1>
-                        <small class="text-muted">{{ $order->created_at->toFormattedDateString() }}</small>
+                        <small>{{ $order->created_at->toFormattedDateString() }}</small>
                     </div>
                 </div>
                 <br/>
@@ -27,37 +27,79 @@
                     <i class="glyphicon glyphicon-phone"></i> @include('partials.phone'), @include('partials.mobiles')
                 </p>
 
+                <div class="row">
                 @if($order->billing_name)
-                    <div class="row">
-                        <div class="col-md-12" style="vertical-align: bottom">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    To: <strong>{{ $order->billing_name }}</strong>
-                                </div>
-                                <div class="panel-body">
-                                    @if($order->billing_address)
-                                    <p>
-                                        {{ $order->billing_address }}
-                                    </p>
-                                    @endif
-                                    @if($order->billing_email)
-                                        <strong>Email:</strong> <span>{{ $order->billing_email }}</span><br/>
-                                    @endif
-                                    @if($order->billing_contact)
-                                        <strong>Contact:</strong> <span>{{ $order->billing_contact }}</span><br/>
-                                    @endif
-                                </div>
+                    <div class="col-sm-7">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Shipping Details
+                            </div>
+                            <div class="panel-body">
+                                <strong>{{ $order->billing_name }}</strong><br>
+                                @if($order->billing_address)
+                                <p>
+                                    {{ $order->billing_address }}
+                                </p>
+                                @endif
+                                @if($order->billing_email)
+                                    <strong>Email:</strong> <span>{{ $order->billing_email }}</span><br/>
+                                @endif
+                                @if($order->billing_contact)
+                                    <strong>Contact:</strong> <span>{{ $order->billing_contact }}</span><br/>
+                                @endif
                             </div>
                         </div>
                     </div>
                 @endif
+                    <div class="col-sm-5">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Order Summary
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-6 text-right">
+                                        <strong>Total items</strong>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <strong>{{ number_format($order->total_quantity) }}</strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 text-right">
+                                        Subtotal
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span>&#8377;{{ number_format($order->amount - $order->shipping_charges) }}</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 text-right">
+                                        Shipping charges
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span>&#8377;{{ number_format($order->shipping_charges) }}</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6 text-right">
+                                        <strong class="text-lg">Total</strong>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span>&#8377;</span><strong class="text-lg" id="grandTotal">{{ number_format($order->amount) }}</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Order summary</div>
+                            <div class="panel-heading">Order details</div>
 
-                            <table class="table bordered condensed">
+                            <table class="table table-hover table-striped table-condensed">
                                 <thead>
                                     <tr>
                                         <th width="5%">#</th>
@@ -69,12 +111,8 @@
                                 </thead>
 
                                 <tbody>
-                                <?php
-                                    $sNo = 1;
-                                    $totalQuantity = 0;
-                                ?>
+                                <?php $sNo = 1; ?>
                                 @foreach($order->products as $product)
-                                    <?php $totalQuantity += $product->pivot->quantity ?>
                                     <tr>
                                         <td><span class="text-lg">{{ $sNo++ }}</span></td>
                                         <td>
@@ -110,7 +148,7 @@
                                     <tr style="border-top: 2px #AAA solid">
                                         <td colspan="3"></td>
                                         <td>
-                                            <span class="text-lg">{{ number_format($totalQuantity) }}</span>
+                                            <span class="text-lg">{{ number_format($order->total_quantity) }}</span>
                                         </td>
                                         <td align="right">
                                             <span>&#8377;</span><span class="text-lg">{{ number_format($order->amount - $order->shipping_charges) }}</span>
