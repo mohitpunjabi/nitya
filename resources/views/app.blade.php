@@ -80,8 +80,11 @@
                 <p>
                     Our vision is to change the local to global by bringing Jaipuri prints and embroidery to the world with trending fashion.
                 </p>
-                <p>
-                <div class="fb-like" data-href="https://facebook.com/nityajaipur" style="max-width: 100%; overflow: hidden" data-layout="standard" data-colorscheme="dark" data-action="like" data-show-faces="true" data-share="true"></div>
+                <div class="row">
+                    <div class="col-sm-12 hidden-xs" >
+                        <div class="fb-like" data-href="https://facebook.com/nityajaipur" style="max-width: 100%; overflow: hidden" data-layout="standard" data-colorscheme="dark" data-action="like" data-show-faces="true" data-share="true"></div>
+                    </div>
+                </div>
                 </p>
             </div>
 
