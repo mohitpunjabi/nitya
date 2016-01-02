@@ -81,6 +81,18 @@
                                         <span>&#8377;{{ number_format($order->shipping_charges) }}</span>
                                     </div>
                                 </div>
+
+                                @if($order->tax)
+                                <div class="row">
+                                    <div class="col-xs-6 text-right">
+                                        Tax
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <span>&#8377;{{ number_format($order->tax) }}</span>
+                                    </div>
+                                </div>
+                                @endif
+                                
                                 <div class="row">
                                     <div class="col-xs-6 text-right">
                                         <strong class="text-lg">Total</strong>
@@ -151,7 +163,7 @@
                                             <span class="text-lg">{{ number_format($order->total_quantity) }}</span>
                                         </td>
                                         <td align="right">
-                                            <span>&#8377;</span><span class="text-lg">{{ number_format($order->amount - $order->shipping_charges) }}</span>
+                                            <span>&#8377;</span><span class="text-lg">{{ number_format($order->amount - $order->shipping_charges - $order->tax) }}</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -160,6 +172,14 @@
                                             <span>&#8377;</span>{{ number_format($order->shipping_charges) }}
                                         </td>
                                     </tr>
+                                    @if($order->tax > 0)
+                                        <tr>
+                                            <td colspan="4" align="right"><strong>Tax</strong></td>
+                                            <td align="right">
+                                                <span>&#8377;</span>{{ number_format($order->tax) }}
+                                            </td>
+                                        </tr>
+                                    @endif
                                     <tr>
                                         <td colspan="4" align="right"><strong class="text-lg">Total</strong></td>
                                         <td align="right">

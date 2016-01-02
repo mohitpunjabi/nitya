@@ -24,7 +24,8 @@ class OrderRequest extends Request {
 	{
 		$rules = [
 			'billing_email' => 'email',
-            'shipping_charges' => 'numeric|min:0'
+            'shipping_charges' => 'numeric|min:0',
+            'tax' => 'numeric|min:0'
 		];
 
         foreach($this->request->get('products') as $key => $val) {

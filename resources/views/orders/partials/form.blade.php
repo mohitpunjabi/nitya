@@ -95,6 +95,20 @@
                         </td>
                         <td></td>
                     </tr>
+                    <tr valign="bottom">
+                        <td colspan="2"></td>
+                        <td>
+                            <div>
+                                {!! Form::label('tax', 'Tax') !!}
+                                <div class="input-group">
+                                    <span class="input-group-addon">&#8377;</span>
+                                    {!! Form::text('tax', null, ['class' => 'form-control', 'size' => '4', 'placeholder' => 'Tax']) !!}
+                                </div>
+                                @if($errors->first('tax')) <div class="alert alert-danger">{{ $errors->first('tax') }}</div> @endif
+                            </div>
+                        </td>
+                        <td></td>
+                    </tr>
                     </tfoot>
 
                 </table>
